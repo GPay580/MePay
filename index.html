@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MePay – One Global Wallet</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config = {
+  theme: {
+    extend: {
+      colors: {
+        mint: '#D1FAE5',
+        mintsoft: '#A7F3D0',
+        emerald: '#065F46',
+        emeraldlight: '#047857',
+        slate: '#0F172A',
+        slategray: '#475569',
+        border: '#E2E8F0',
+        offwhite: '#F8FAFC'
+      }
+    }
+  }
+}
+</script>
+</head>
+<body class="bg-white text-slate antialiased">
+
+<!-- Navigation -->
+<nav class="bg-white border-b border-border sticky top-0 z-40">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex justify-between items-center h-16">
+      <div class="flex items-center space-x-2">
+        <div class="w-8 h-8 bg-emerald rounded-lg flex items-center justify-center">
+          <span class="text-white font-bold text-sm">M</span>
+        </div>
+        <span class="text-2xl font-bold tracking-tight text-emerald">MePay</span>
+      </div>
+      <div class="hidden md:flex items-center space-x-8 text-sm font-medium">
+        <a href="#how" class="text-slategray hover:text-emerald transition">How It Works</a>
+        <a href="#pricing" class="text-slategray hover:text-emerald transition">Pricing</a>
+      </div>
+      <button onclick="document.getElementById('bankModal').classList.remove('hidden')" class="bg-emerald hover:bg-emeraldlight text-white text-sm font-semibold px-5 py-2.5 rounded-lg transition shadow-sm">
+        Create Free Account
+      </button>
+    </div>
+  </div>
+</nav>
+
+<!-- Hero -->
+<section class="bg-offwhite py-20 lg:py-28">
+  <div class="max-w-4xl mx-auto px-4 text-center">
+    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-slate leading-tight">
+      One Global Wallet.<br class="hidden sm:block"> Every Bank on Earth Connected.
+    </h1>
+    <p class="mt-6 text-lg sm:text-xl text-slategray max-w-2xl mx-auto">
+      Instant worldwide bank connections. Send money globally with transparent fees over 50% cheaper than PayPal and Stripe. Get a $3/month virtual Visa card and shop anywhere online.
+    </p>
+    <div class="mt-10">
+      <button id="connectBtn" class="inline-flex items-center bg-emerald hover:bg-emeraldlight text-white text-base font-semibold px-8 py-4 rounded-xl shadow-lg transition transform hover:scale-[1.02]">
+        Connect Any Bank (Live Demo)
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- Bank Connection Modal -->
+<div id="bankModal" class="fixed inset-0 bg-slate/60 backdrop-blur-sm hidden z-50 flex items-center justify-center p-4">
+  <div class="bg-white rounded-2xl w-full max-w-xl max-h-[85vh] flex flex-col shadow-2xl">
+    <div class="p-6 border-b border-border">
+      <div class="flex justify-between items-center">
+        <h2 class="text-xl font-bold">Connect Your Bank</h2>
+        <button id="closeModal" class="text-slategray hover:text-slate text-3xl leading-none">&times;</button>
+      </div>
+      <input id="bankSearch" type="text" placeholder="Search banks..." class="mt-4 w-full px-4 py-3 border border-border rounded-xl focus:outline-none focus:ring-2 focus:ring-emerald/30">
+      <div id="regionTabs" class="flex gap-2 mt-4 overflow-x-auto pb-1 text-sm font-medium">
+        <button data-region="All" class="region-tab px-4 py-2 rounded-full bg-emerald text-white whitespace-nowrap">All</button>
+        <button data-region="North America" class="region-tab px-4 py-2 rounded-full bg-mint text-emerald whitespace-nowrap">North America</button>
+        <button data-region="Europe & UK" class="region-tab px-4 py-2 rounded-full bg-mint text-emerald whitespace-nowrap">Europe & UK</button>
+        <button data-region="Middle East" class="region-tab px-4 py-2 rounded-full bg-mint text-emerald whitespace-nowrap">Middle East</button>
+        <button data-region="South Asia" class="region-tab px-4 py-2 rounded-full bg-mint text-emerald whitespace-nowrap">South Asia</button>
+        <button data-region="Asia-Pacific & Africa" class="region-tab px-4 py-2 rounded-full bg-mint text-emerald whitespace-nowrap">Asia-Pacific & Africa</button>
+      </div>
+    </div>
+    <div id="bankList" class="flex-1 overflow-y-auto p-4 space-y-2"></div>
+  </div>
+</div>
+
+<!-- Dashboard (unlocked after connection) -->
+<section id="dashboard" class="hidden bg-offwhite py-12">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
+    <div class="flex items-center justify-between">
+      <h2 class="text-2xl font-bold">Your Global Dashboard</h2>
+      <span id="connectedBank" class="text-sm font-medium text-emerald bg-mint px-3 py-1 rounded-full">Connected</span>
+    </div>
+
+    <!-- Balance Card -->
+    <div class="bg-mint rounded-2xl p-6 sm:p-8">
+      <p class="text-sm font-medium text-emerald">Total Combined Balance</p>
+      <p class="text-4xl font-bold mt-1 text-slate">$12,847.50</p>
+      <div class="mt-6 grid grid-cols-2 sm:grid-cols-4 gap-4 text-sm">
+        <div><span class="text-slategray">USD</span><div class="font-semibold">$8,240.00</div></div>
+        <div><span class="text-slategray">EUR</span><div class="font-semibold">€1,850.20</div></div>
+        <div><span class="text-slategray">GBP</span><div class="font-semibold">£920.40</div></div>
+        <div><span class="text-slategray">AED + Others</span><div class="font-semibold">$1,836.90</div></div>
+      </div>
+    </div>
+
+    <div class="grid lg:grid-cols-3 gap-8">
+      <!-- Recent Transactions -->
+      <div class="lg:col-span-1 bg-white rounded-2xl border border-border p-6">
+        <h3 class="font-semibold mb-4">Recent International Transfers</h3>
+        <div class="space-y-4 text-sm">
+          <div class="flex justify-between"><div><div class="font-medium">To Sarah • London</div><div class="text-slategray text-xs">GBP • 2 hours ago</div></div><div class="font-medium text-emerald">-£240.00</div></div>
+          <div class="flex justify-between"><div><div class="font-medium">From Ahmed • Dubai</div><div class="text-slategray text-xs">AED • Yesterday</div></div><div class="font-medium text-emeraldlight">+AED 1,850</div></div>
+          <div class="flex justify-between"><div><div class="font-medium">To Priya • Mumbai</div><div class="text-slategray text-xs">INR • 3 days ago</div></div><div class="font-medium text-emerald">-₹18,400</div></div>
+          <div class="flex justify-between"><div><div class="font-medium">Salary • Remote</div><div class="text-slategray text-xs">USD • 5 days ago</div></div><div class="font-medium text-emeraldlight">+$2,100.00</div></div>
+        </div>
+      </div>
+
+      <!-- Send Money Calculator -->
+      <div class="lg:col-span-2 bg-white rounded-2xl border border-border p-6">
+        <h3 class="font-semibold mb-4">Global Send Money</h3>
+        <div class="grid sm:grid-cols-2 gap-4">
+          <div>
+            <label class="text-xs font-medium text-slategray">You send</label>
+            <div class="flex mt-1">
+              <input id="sendAmount" type="number" value="1000" class="flex-1 px-4 py-3 border border-border rounded-l-xl focus:outline-none focus:ring-2 focus:ring-emerald/30">
+              <select id="fromCurrency" class="px-3 border border-l-0 border-border rounded-r-xl bg-offwhite">
+                <option>USD</option><option>EUR</option><option>GBP</option><option>AED</option><option>SAR</option><option>PKR</option><option>INR</option><option>NGN</option><option>JPY</option>
+              </select>
+            </div>
+          </div>
+          <div>
+            <label class="text-xs font-medium text-slategray">Recipient gets</label>
+            <div class="flex mt-1">
+              <input id="receiveAmount" type="text" readonly class="flex-1 px-4 py-3 border border-border rounded-l-xl bg-offwhite">
+              <select id="toCurrency" class="px-3 border border-l-0 border-border rounded-r-xl bg-offwhite">
+                <option>EUR</option><option>USD</option><option>GBP</option><option>AED</option><option>SAR</option><option>PKR</option><option>INR</option><option>NGN</option><option>JPY</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <div id="feeBreakdown" class="mt-6 p-4 bg-mint rounded-xl text-sm space-y-2">
+          <div class="flex justify-between"><span>MePay fee (1.5% + $0.50)</span><span id="mepayFee" class="font-semibold"></span></div>
+          <div class="flex justify-between text-slategray"><span>PayPal typical fee (~4.5%)</span><span id="paypalFee"></span></div>
+          <div class="flex justify-between text-emerald font-semibold pt-2 border-t border-mintsoft"><span>You save</span><span id="savings"></span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Virtual Card -->
+    <div class="bg-white rounded-2xl border border-border p-6">
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-6">
+        <div>
+          <h3 class="font-semibold">Global Virtual Visa Card</h3>
+          <p class="text-sm text-slategray mt-1">$3/month • Shop anywhere online instantly</p>
+        </div>
+        <button id="activateCard" class="bg-emerald hover:bg-emeraldlight text-white font-semibold px-6 py-3 rounded-xl transition">
+          Get Virtual Card – $3/mo
+        </button>
+      </div>
+      <div class="mt-6 max-w-sm mx-auto">
+        <div class="bg-gradient-to-br from-mintsoft to-emerald text-white rounded-2xl p-6 shadow-lg relative overflow-hidden">
+          <div class="flex justify-between items-start">
+            <span class="text-xs opacity-80">VIRTUAL</span>
+            <span class="text-lg font-bold">VISA</span>
+          </div>
+          <div class="mt-8 text-xl tracking-widest font-mono" id="cardNumber">•••• •••• •••• 4829</div>
+          <div class="mt-6 flex justify-between text-xs">
+            <div><div class="opacity-70">CARDHOLDER</div><div class="font-medium">MEPAY USER</div></div>
+            <div><div class="opacity-70">EXPIRES</div><div class="font-medium">09/29</div></div>
+          </div>
+        </div>
+        <button id="toggleCard" class="mt-3 text-sm text-emerald hover:underline w-full text-center">Show card details</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- How It Works -->
+<section id="how" class="py-16 bg-white">
+  <div class="max-w-5xl mx-auto px-4 text-center">
+    <h2 class="text-3xl font-bold mb-12">How MePay Works</h2>
+    <div class="grid md:grid-cols-3 gap-8 text-left">
+      <div class="p-6 border border-border rounded-2xl">
+        <div class="w-10 h-10 bg-mint text-emerald rounded-lg flex items-center justify-center font-bold mb-4">1</div>
+        <h3 class="font-semibold mb-2">Connect any bank</h3>
+        <p class="text-sm text-slategray">Secure read-only OAuth connection. We never store your credentials or move money without your explicit approval.</p>
+      </div>
+      <div class="p-6 border border-border rounded-2xl">
+        <div class="w-10 h-10 bg-mint text-emerald rounded-lg flex items-center justify-center font-bold mb-4">2</div>
+        <h3 class="font-semibold mb-2">Send globally in seconds</h3>
+        <p class="text-sm text-slategray">Transparent 1.5% + $0.50 fee. Instant conversion across 9 major currencies.</p>
+      </div>
+      <div class="p-6 border border-border rounded-2xl">
+        <div class="w-10 h-10 bg-mint text-emerald rounded-lg flex items-center justify-center font-bold mb-4">3</div>
+        <h3 class="font-semibold mb-2">Shop with virtual Visa</h3>
+        <p class="text-sm text-slategray">$3/month Global Virtual Visa card accepted everywhere online.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Pricing & Trust -->
+<section id="pricing" class="py-16 bg-offwhite">
+  <div class="max-w-5xl mx-auto px-4">
+    <h2 class="text-3xl font-bold text-center mb-12">Transparent Pricing. Bank-Level Security.</h2>
+    <div class="grid md:grid-cols-3 gap-6">
+      <div class="bg-white p-8 rounded-2xl border border-border">
+        <h3 class="font-semibold text-lg">Read-Only Connections</h3>
+        <p class="mt-3 text-sm text-slategray">Bank-level security. MePay only has read access. Zero risk of losing funds. Your money stays in your bank until you explicitly send.</p>
+      </div>
+      <div class="bg-white p-8 rounded-2xl border border-border">
+        <h3 class="font-semibold text-lg">Global Transfers</h3>
+        <p class="mt-3 text-4xl font-bold text-emerald">1.5% + $0.50</p>
+        <p class="mt-2 text-sm text-slategray">Flat, transparent fee. Over 50% cheaper than PayPal (~4.5%) and most traditional services. No hidden markups.</p>
+      </div>
+      <div class="bg-white p-8 rounded-2xl border border-border">
+        <h3 class="font-semibold text-lg">Virtual Visa Card</h3>
+        <p class="mt-3 text-4xl font-bold text-emerald">$3<span class="text-lg">/mo</span></p>
+        <p class="mt-2 text-sm text-slategray">One global virtual card. Instant issuance. Shop on any website that accepts Visa. Cancel anytime.</p>
+      </div>
+    </div>
+    <p class="text-center text-xs text-slategray mt-10 max-w-2xl mx-auto">MePay is a technology platform that facilitates connections and transfers. Funds are held by licensed banking partners. This is a live interactive demo.</p>
+  </div>
+</section>
+
+<script>
+const banks = [
+  {name:"Chase", region:"North America"},
+  {name:"Bank of America", region:"North America"},
+  {name:"Citibank", region:"North America"},
+  {name:"HSBC", region:"Europe & UK"},
+  {name:"Barclays", region:"Europe & UK"},
+  {name:"Revolut", region:"Europe & UK"},
+  {name:"Monzo", region:"Europe & UK"},
+  {name:"Deutsche Bank", region:"Europe & UK"},
+  {name:"Santander", region:"Europe & UK"},
+  {name:"Emirates NBD", region:"Middle East"},
+  {name:"Al Rajhi Bank", region:"Middle East"},
+  {name:"HBL", region:"South Asia"},
+  {name:"Meezan Bank", region:"South Asia"},
+  {name:"HDFC Bank", region:"South Asia"},
+  {name:"DBS Bank", region:"Asia-Pacific & Africa"},
+  {name:"M-Pesa / Equity Bank", region:"Asia-Pacific & Africa"},
+  {name:"Nubank", region:"Asia-Pacific & Africa"}
+];
+
+let currentRegion = "All";
+let cardVisible = false;
+const rates = {USD:1, EUR:0.92, GBP:0.78, AED:3.67, SAR:3.75, PKR:278, INR:83.5, NGN:1550, JPY:149};
+
+function renderBanks() {
+  const search = document.getElementById('bankSearch').value.toLowerCase();
+  const list = document.getElementById('bankList');
+  list.innerHTML = banks
+    .filter(b => (currentRegion === "All" || b.region === currentRegion) && b.name.toLowerCase().includes(search))
+    .map(b => `<button class="w-full text-left p-4 rounded-xl border border-border hover:border-emerald hover:bg-mint/50 transition flex justify-between items-center" data-bank="${b.name}">
+      <span class="font-medium">${b.name}</span>
+      <span class="text-xs text-slategray">${b.region}</span>
+    </button>`).join('');
+  
+  list.querySelectorAll('button').forEach(btn => {
+    btn.onclick = () => connectBank(btn.dataset.bank);
+  });
+}
+
+function connectBank(name) {
+  const list = document.getElementById('bankList');
+  list.innerHTML = `<div class="text-center py-16"><div class="inline-block w-8 h-8 border-4 border-emerald border-t-transparent rounded-full animate-spin"></div><p class="mt-4 font-medium">Establishing encrypted connection to ${name}...</p></div>`;
+  setTimeout(() => {
+    document.getElementById('bankModal').classList.add('hidden');
+    document.getElementById('dashboard').classList.remove('hidden');
+    document.getElementById('connectedBank').textContent = `Connected • ${name}`;
+    document.getElementById('connectBtn').textContent = 'Bank Connected ✓';
+    document.getElementById('connectBtn').disabled = true;
+    document.getElementById('dashboard').scrollIntoView({behavior:'smooth'});
+    updateCalculator();
+  }, 1500);
+}
+
+function updateCalculator() {
+  const amount = parseFloat(document.getElementById('sendAmount').value) || 0;
+  const from = document.getElementById('fromCurrency').value;
+  const to = document.getElementById('toCurrency').value;
+  const usdAmount = amount / rates[from];
+  const fee = usdAmount * 0.015 + 0.50;
+  const paypalFee = usdAmount * 0.045;
+  const receivedUSD = usdAmount - fee;
+  const received = receivedUSD * rates[to];
+  
+  document.getElementById('receiveAmount').value = received.toFixed(2);
+  document.getElementById('mepayFee').textContent = `$${fee.toFixed(2)}`;
+  document.getElementById('paypalFee').textContent = `$${paypalFee.toFixed(2)}`;
+  document.getElementById('savings').textContent = `$${(paypalFee - fee).toFixed(2)}`;
+}
+
+document.getElementById('connectBtn').onclick = () => document.getElementById('bankModal').classList.remove('hidden');
+document.getElementById('closeModal').onclick = () => document.getElementById('bankModal').classList.add('hidden');
+document.getElementById('bankSearch').oninput = renderBanks;
+
+document.querySelectorAll('.region-tab').forEach(tab => {
+  tab.onclick = () => {
+    document.querySelectorAll('.region-tab').forEach(t => {
+      t.classList.remove('bg-emerald','text-white');
+      t.classList.add('bg-mint','text-emerald');
+    });
+    tab.classList.remove('bg-mint','text-emerald');
+    tab.classList.add('bg-emerald','text-white');
+    currentRegion = tab.dataset.region;
+    renderBanks();
+  };
+});
+
+document.getElementById('sendAmount').oninput = updateCalculator;
+document.getElementById('fromCurrency').onchange = updateCalculator;
+document.getElementById('toCurrency').onchange = updateCalculator;
+
+document.getElementById('toggleCard').onclick = () => {
+  cardVisible = !cardVisible;
+  document.getElementById('cardNumber').textContent = cardVisible ? '4532 1890 4721 4829' : '•••• •••• •••• 4829';
+  document.getElementById('toggleCard').textContent = cardVisible ? 'Hide card details' : 'Show card details';
+};
+
+document.getElementById('activateCard').onclick = () => {
+  alert('Virtual Visa card activated for $3/month. You can now shop online anywhere Visa is accepted.');
+  document.getElementById('activateCard').textContent = 'Card Active ✓';
+  document.getElementById('activateCard').disabled = true;
+};
+
+renderBanks();
+</script>
+</body>
+</html>
