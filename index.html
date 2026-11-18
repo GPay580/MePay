@@ -10,14 +10,15 @@ tailwind.config = {
   theme: {
     extend: {
       colors: {
-        mint: '#D1FAE5',
-        mintsoft: '#A7F3D0',
-        emerald: '#065F46',
-        emeraldlight: '#047857',
+        rose: '#FEF2F2',
+        roseborder: '#FEE2E2',
+        roseaccent: '#FECACA',
+        red: '#DC2626',
+        redhover: '#B91C1C',
         slate: '#0F172A',
         slategray: '#475569',
-        border: '#E2E8F0',
-        offwhite: '#F8FAFC'
+        border: '#E5E7EB',
+        offwhite: '#FAFAFA'
       }
     }
   }
@@ -31,14 +32,14 @@ tailwind.config = {
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="flex justify-between items-center h-16">
       <div class="flex items-center space-x-2">
-        <div class="w-8 h-8 bg-emerald rounded-lg flex items-center justify-center">
+        <div class="w-8 h-8 bg-red rounded-lg flex items-center justify-center">
           <span class="text-white font-bold text-sm">M</span>
         </div>
-        <span class="text-2xl font-bold tracking-tight text-emerald">MePay</span>
+        <span class="text-2xl font-bold tracking-tight text-red">MePay</span>
       </div>
       <div class="hidden md:flex items-center space-x-8 text-sm font-medium">
-        <a href="#partners" class="text-slategray hover:text-emerald">Partners</a>
-        <a href="#calculator" class="text-slategray hover:text-emerald">Savings Calculator</a>
+        <a href="#partners" class="text-slategray hover:text-red">Partners</a>
+        <a href="#calculator" class="text-slategray hover:text-red">Savings Calculator</a>
       </div>
     </div>
   </div>
@@ -63,8 +64,8 @@ tailwind.config = {
     <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
 
       <!-- RedotPay -->
-      <div class="border border-border rounded-2xl p-6 hover:shadow-lg transition">
-        <h3 class="text-xl font-bold text-emerald">RedotPay</h3>
+      <div class="border border-border rounded-2xl p-6 hover:shadow-lg transition bg-rose">
+        <h3 class="text-xl font-bold text-red">RedotPay</h3>
         <p class="text-sm text-slategray mt-2">Global Virtual Visa & Mastercard for Shopping, AI & Ads</p>
         <ul class="mt-4 text-sm space-y-2 text-slate">
           <li>• Instant Visa/Mastercard issuance</li>
@@ -72,14 +73,14 @@ tailwind.config = {
           <li>• High global spending limits</li>
         </ul>
         <div class="mt-6 flex flex-col gap-2">
-          <a href="https://url.hk" target="_blank" rel="noopener" class="block text-center bg-emerald text-white font-semibold py-2.5 rounded-xl hover:bg-emeraldlight">Get RedotPay Card</a>
-          <button data-code="i61b4" class="copy-btn border border-emerald text-emerald text-sm py-2 rounded-xl hover:bg-mint">Copy Code: i61b4</button>
+          <a href="https://url.hk" target="_blank" rel="noopener" class="block text-center bg-red text-white font-semibold py-2.5 rounded-xl hover:bg-redhover">Get RedotPay Card</a>
+          <button data-code="i61b4" class="copy-btn border border-red text-red text-sm py-2 rounded-xl hover:bg-roseborder">Copy Code: i61b4</button>
         </div>
       </div>
 
       <!-- Wise -->
       <div class="border border-border rounded-2xl p-6 hover:shadow-lg transition">
-        <h3 class="text-xl font-bold text-emerald">Wise</h3>
+        <h3 class="text-xl font-bold text-red">Wise</h3>
         <p class="text-sm text-slategray mt-2">Cheapest Global Bank Transfers & Multi-Currency Account</p>
         <ul class="mt-4 text-sm space-y-2 text-slate">
           <li>• Real mid-market exchange rates</li>
@@ -87,13 +88,13 @@ tailwind.config = {
           <li>• Zero hidden markups</li>
         </ul>
         <div class="mt-6">
-          <a href="https://wise.com" target="_blank" rel="noopener" class="block text-center bg-emerald text-white font-semibold py-2.5 rounded-xl hover:bg-emeraldlight">Open Wise Account</a>
+          <a href="https://wise.com" target="_blank" rel="noopener" class="block text-center bg-red text-white font-semibold py-2.5 rounded-xl hover:bg-redhover">Open Wise Account</a>
         </div>
       </div>
 
       <!-- AirTM -->
       <div class="border border-border rounded-2xl p-6 hover:shadow-lg transition">
-        <h3 class="text-xl font-bold text-emerald">AirTM</h3>
+        <h3 class="text-xl font-bold text-red">AirTM</h3>
         <p class="text-sm text-slategray mt-2">Global Digital Dollar Vault & Local P2P Cash-Out</p>
         <ul class="mt-4 text-sm space-y-2 text-slate">
           <li>• Instant deposits & withdrawals</li>
@@ -101,7 +102,7 @@ tailwind.config = {
           <li>• Banks worldwide supported</li>
         </ul>
         <div class="mt-6">
-          <a href="https://airtm.com" target="_blank" rel="noopener" class="block text-center bg-emerald text-white font-semibold py-2.5 rounded-xl hover:bg-emeraldlight">Join AirTM</a>
+          <a href="https://airtm.com" target="_blank" rel="noopener" class="block text-center bg-red text-white font-semibold py-2.5 rounded-xl hover:bg-redhover">Join AirTM</a>
         </div>
       </div>
 
@@ -109,7 +110,7 @@ tailwind.config = {
 
     <!-- Extra code mention -->
     <div class="mt-10 text-center text-sm text-slategray">
-      Additional referral: <button data-code="44LF7JL" class="copy-btn text-emerald font-medium hover:underline">Copy Code: 44LF7JL</button> · <a href="https://sng.link" target="_blank" class="text-emerald hover:underline">sng.link</a>
+      Additional referral: <button data-code="44LF7JL" class="copy-btn text-red font-medium hover:underline">Copy Code: 44LF7JL</button> · <a href="https://sng.link" target="_blank" class="text-red hover:underline">sng.link</a>
     </div>
   </div>
 </section>
@@ -124,11 +125,11 @@ tailwind.config = {
       <div class="grid sm:grid-cols-2 gap-4 mb-6">
         <div>
           <label class="text-sm font-medium text-slategray">Amount to send</label>
-          <input id="calcAmount" type="number" value="500" min="1" class="mt-1 w-full px-4 py-3 border border-border rounded-xl focus:outline-none focus:ring-2 focus:ring-emerald/30">
+          <input id="calcAmount" type="number" value="500" min="1" class="mt-1 w-full px-4 py-3 border border-border rounded-xl focus:outline-none focus:ring-2 focus:ring-red/30">
         </div>
         <div>
           <label class="text-sm font-medium text-slategray">Currency</label>
-          <select id="calcCurrency" class="mt-1 w-full px-4 py-3 border border-border rounded-xl bg-white focus:outline-none focus:ring-2 focus:ring-emerald/30">
+          <select id="calcCurrency" class="mt-1 w-full px-4 py-3 border border-border rounded-xl bg-white focus:outline-none focus:ring-2 focus:ring-red/30">
             <option value="USD">USD</option>
             <option value="EUR">EUR</option>
             <option value="GBP">GBP</option>
@@ -146,15 +147,15 @@ tailwind.config = {
         </div>
       </div>
 
-      <div id="calcResult" class="p-5 bg-mint rounded-xl text-sm space-y-2">
+      <div id="calcResult" class="p-5 bg-rose rounded-xl text-sm space-y-2 border border-roseaccent">
         <div class="flex justify-between"><span>Typical PayPal / Bank fee (~4.5%)</span><span id="calcFee" class="font-semibold">$22.50</span></div>
-        <div class="flex justify-between text-emerald font-semibold"><span>You save with Wise / AirTM</span><span id="calcSave">$22.50</span></div>
-        <div class="flex justify-between pt-2 border-t border-mintsoft font-bold"><span>Recipient gets more</span><span id="calcMore">$22.50</span></div>
+        <div class="flex justify-between text-red font-semibold"><span>You save with Wise / AirTM</span><span id="calcSave">$22.50</span></div>
+        <div class="flex justify-between pt-2 border-t border-roseborder font-bold"><span>Recipient gets more</span><span id="calcMore">$22.50</span></div>
       </div>
 
       <div class="mt-6 flex flex-col sm:flex-row gap-3">
-        <a href="https://wise.com" target="_blank" rel="noopener" class="flex-1 text-center bg-emerald text-white font-semibold py-3 rounded-xl hover:bg-emeraldlight">Send with Wise</a>
-        <a href="https://airtm.com" target="_blank" rel="noopener" class="flex-1 text-center border border-emerald text-emerald font-semibold py-3 rounded-xl hover:bg-mint">Use AirTM</a>
+        <a href="https://wise.com" target="_blank" rel="noopener" class="flex-1 text-center bg-red text-white font-semibold py-3 rounded-xl hover:bg-redhover">Send with Wise</a>
+        <a href="https://airtm.com" target="_blank" rel="noopener" class="flex-1 text-center border border-red text-red font-semibold py-3 rounded-xl hover:bg-rose">Use AirTM</a>
       </div>
     </div>
   </div>
