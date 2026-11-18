@@ -72,7 +72,7 @@ tailwind.config = {
         <h2 class="text-xl font-bold">Connect Your Bank</h2>
         <button id="closeModal" class="text-slategray hover:text-slate text-3xl leading-none">&times;</button>
       </div>
-      <input id="bankSearch" type="text" placeholder="Search banks..." class="mt-4 w-full px-4 py-3 border border-border rounded-xl focus:outline-none focus:ring-2 focus:ring-emerald/30">
+      <input id="bankSearch" type="text" placeholder="Search banks or wallets..." class="mt-4 w-full px-4 py-3 border border-border rounded-xl focus:outline-none focus:ring-2 focus:ring-emerald/30">
       <div id="regionTabs" class="flex gap-2 mt-4 overflow-x-auto pb-1 text-sm font-medium">
         <button data-region="All" class="region-tab px-4 py-2 rounded-full bg-emerald text-white whitespace-nowrap">All</button>
         <button data-region="North America" class="region-tab px-4 py-2 rounded-full bg-mint text-emerald whitespace-nowrap">North America</button>
@@ -228,23 +228,82 @@ tailwind.config = {
 
 <script>
 const banks = [
+  // North America
   {name:"Chase", region:"North America"},
   {name:"Bank of America", region:"North America"},
+  {name:"Wells Fargo", region:"North America"},
   {name:"Citibank", region:"North America"},
+  {name:"Capital One", region:"North America"},
+  {name:"TD Bank", region:"North America"},
+  {name:"RBC Royal Bank", region:"North America"},
+  {name:"Scotiabank", region:"North America"},
+
+  // Europe & UK
   {name:"HSBC", region:"Europe & UK"},
   {name:"Barclays", region:"Europe & UK"},
+  {name:"Lloyds Bank", region:"Europe & UK"},
+  {name:"NatWest", region:"Europe & UK"},
   {name:"Revolut", region:"Europe & UK"},
   {name:"Monzo", region:"Europe & UK"},
+  {name:"Wise", region:"Europe & UK"},
   {name:"Deutsche Bank", region:"Europe & UK"},
+  {name:"Commerzbank", region:"Europe & UK"},
+  {name:"BNP Paribas", region:"Europe & UK"},
   {name:"Santander", region:"Europe & UK"},
+  {name:"BBVA", region:"Europe & UK"},
+  {name:"ING", region:"Europe & UK"},
+  {name:"N26", region:"Europe & UK"},
+  {name:"UniCredit", region:"Europe & UK"},
+
+  // Middle East
   {name:"Emirates NBD", region:"Middle East"},
+  {name:"First Abu Dhabi Bank (FAB)", region:"Middle East"},
+  {name:"Dubai Islamic Bank", region:"Middle East"},
   {name:"Al Rajhi Bank", region:"Middle East"},
-  {name:"HBL", region:"South Asia"},
+  {name:"Saudi National Bank (SNB)", region:"Middle East"},
+  {name:"Qatar National Bank (QNB)", region:"Middle East"},
+  {name:"Kuwait Finance House", region:"Middle East"},
+
+  // South Asia (Pakistan + India/Bangladesh/Sri Lanka)
+  {name:"Askari Bank", region:"South Asia"},
+  {name:"HBL (Habib Bank)", region:"South Asia"},
   {name:"Meezan Bank", region:"South Asia"},
+  {name:"UBL (United Bank Limited)", region:"South Asia"},
+  {name:"MCB Bank", region:"South Asia"},
+  {name:"Allied Bank (ABL)", region:"South Asia"},
+  {name:"Bank Alfalah", region:"South Asia"},
+  {name:"Faysal Bank", region:"South Asia"},
+  {name:"Bank Al Habib", region:"South Asia"},
+  {name:"Standard Chartered Pakistan", region:"South Asia"},
+  {name:"JS Bank", region:"South Asia"},
+  {name:"Soneri Bank", region:"South Asia"},
+  {name:"HabibMetro", region:"South Asia"},
+  {name:"SadaPay", region:"South Asia"},
+  {name:"NayaPay", region:"South Asia"},
+  {name:"JazzCash", region:"South Asia"},
+  {name:"Easypaisa", region:"South Asia"},
   {name:"HDFC Bank", region:"South Asia"},
+  {name:"ICICI Bank", region:"South Asia"},
+  {name:"State Bank of India (SBI)", region:"South Asia"},
+  {name:"Axis Bank", region:"South Asia"},
+  {name:"Kotak Mahindra", region:"South Asia"},
+  {name:"bKash", region:"South Asia"},
+  {name:"Dutch-Bangla Bank", region:"South Asia"},
+  {name:"Commercial Bank of Ceylon", region:"South Asia"},
+
+  // Asia-Pacific & Africa
   {name:"DBS Bank", region:"Asia-Pacific & Africa"},
-  {name:"M-Pesa / Equity Bank", region:"Asia-Pacific & Africa"},
-  {name:"Nubank", region:"Asia-Pacific & Africa"}
+  {name:"OCBC", region:"Asia-Pacific & Africa"},
+  {name:"Maybank", region:"Asia-Pacific & Africa"},
+  {name:"Bank Mandiri", region:"Asia-Pacific & Africa"},
+  {name:"GCash", region:"Asia-Pacific & Africa"},
+  {name:"M-Pesa", region:"Asia-Pacific & Africa"},
+  {name:"Equity Bank", region:"Asia-Pacific & Africa"},
+  {name:"GTBank", region:"Asia-Pacific & Africa"},
+  {name:"Access Bank", region:"Asia-Pacific & Africa"},
+  {name:"Standard Bank", region:"Asia-Pacific & Africa"},
+  {name:"Nubank", region:"Asia-Pacific & Africa"},
+  {name:"Itaú", region:"Asia-Pacific & Africa"}
 ];
 
 let currentRegion = "All";
@@ -252,15 +311,33 @@ let cardVisible = false;
 const rates = {USD:1, EUR:0.92, GBP:0.78, AED:3.67, SAR:3.75, PKR:278, INR:83.5, NGN:1550, JPY:149};
 
 function renderBanks() {
-  const search = document.getElementById('bankSearch').value.toLowerCase();
+  const search = document.getElementById('bankSearch').value.trim();
+  const searchLower = search.toLowerCase();
   const list = document.getElementById('bankList');
-  list.innerHTML = banks
-    .filter(b => (currentRegion === "All" || b.region === currentRegion) && b.name.toLowerCase().includes(search))
-    .map(b => `<button class="w-full text-left p-4 rounded-xl border border-border hover:border-emerald hover:bg-mint/50 transition flex justify-between items-center" data-bank="${b.name}">
+  
+  const filtered = banks.filter(b => 
+    (currentRegion === "All" || b.region === currentRegion) && 
+    b.name.toLowerCase().includes(searchLower)
+  );
+
+  let html = filtered.map(b => `
+    <button class="w-full text-left p-4 rounded-xl border border-border hover:border-emerald hover:bg-mint/50 transition flex justify-between items-center" data-bank="${b.name}">
       <span class="font-medium">${b.name}</span>
       <span class="text-xs text-slategray">${b.region}</span>
-    </button>`).join('');
-  
+    </button>
+  `).join('');
+
+  // Custom bank fallback
+  if (search.length > 2 && filtered.length === 0) {
+    html += `
+      <button class="w-full text-left p-4 rounded-xl border-2 border-dashed border-emerald text-emerald hover:bg-mint transition font-medium" data-bank="${search}">
+        + Connect '${search}' via Open Banking
+      </button>
+    `;
+  }
+
+  list.innerHTML = html || '<p class="text-center text-slategray py-8">No banks found. Try searching or use the custom connect option.</p>';
+
   list.querySelectorAll('button').forEach(btn => {
     btn.onclick = () => connectBank(btn.dataset.bank);
   });
