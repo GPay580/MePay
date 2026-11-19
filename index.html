@@ -38,42 +38,149 @@ tailwind.config = {
         <span class="text-2xl font-bold tracking-tight text-red">MePay</span>
       </div>
       <div class="hidden md:flex items-center space-x-8 text-sm font-medium">
-        <a href="#partners" class="text-slategray hover:text-red">Partners</a>
+        <a href="#finder" class="text-slategray hover:text-red">Smart Finder</a>
         <a href="#calculator" class="text-slategray hover:text-red">Savings Calculator</a>
       </div>
     </div>
   </div>
 </nav>
 
-<!-- Hero -->
-<section class="bg-offwhite py-16 lg:py-24">
+<!-- Hero + Smart Finder -->
+<section id="finder" class="bg-offwhite py-16 lg:py-20">
   <div class="max-w-4xl mx-auto px-4 text-center">
     <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-slate leading-tight">
       Your Global Virtual Visa & Mastercard.<br class="hidden sm:block"> Cheapest Worldwide Transfers.
     </h1>
     <p class="mt-6 text-lg sm:text-xl text-slategray max-w-2xl mx-auto">
-      Compare and connect directly to the best licensed platforms for virtual cards, multi-currency accounts, and local cash-outs — at zero extra cost.
+      Select your country and goal to instantly see the best virtual cards and transfer apps available to you.
     </p>
+
+    <div class="mt-10 bg-white rounded-2xl border border-border p-6 sm:p-8 shadow-sm text-left">
+      <div class="grid sm:grid-cols-2 gap-4 mb-6">
+        <div>
+          <label class="block text-sm font-medium text-slategray mb-1">Select Your Country</label>
+          <input id="countrySearch" type="text" placeholder="Search countries..." class="w-full px-4 py-3 border border-border rounded-xl focus:outline-none focus:ring-2 focus:ring-red/30 mb-2">
+          <select id="countrySelect" class="w-full px-4 py-3 border border-border rounded-xl bg-white focus:outline-none focus:ring-2 focus:ring-red/30" size="1">
+            <option value="All Countries / Global">All Countries / Global</option>
+            <option value="Pakistan" selected>Pakistan</option>
+            <option value="India">India</option>
+            <option value="Bangladesh">Bangladesh</option>
+            <option value="United Arab Emirates">United Arab Emirates</option>
+            <option value="Saudi Arabia">Saudi Arabia</option>
+            <option value="Qatar">Qatar</option>
+            <option value="United Kingdom">United Kingdom</option>
+            <option value="United States">United States</option>
+            <option value="Canada">Canada</option>
+            <option value="Germany">Germany</option>
+            <option value="France">France</option>
+            <option value="Nigeria">Nigeria</option>
+            <option value="Kenya">Kenya</option>
+            <option value="South Africa">South Africa</option>
+            <option value="Brazil">Brazil</option>
+            <option value="Philippines">Philippines</option>
+            <option value="Indonesia">Indonesia</option>
+            <option value="Turkey">Turkey</option>
+            <option value="Egypt">Egypt</option>
+            <option value="Australia">Australia</option>
+            <option value="Afghanistan">Afghanistan</option>
+            <option value="Albania">Albania</option>
+            <option value="Algeria">Algeria</option>
+            <option value="Andorra">Andorra</option>
+            <option value="Angola">Angola</option>
+            <option value="Argentina">Argentina</option>
+            <option value="Armenia">Armenia</option>
+            <option value="Austria">Austria</option>
+            <option value="Azerbaijan">Azerbaijan</option>
+            <option value="Bahrain">Bahrain</option>
+            <option value="Belgium">Belgium</option>
+            <option value="Bolivia">Bolivia</option>
+            <option value="Chile">Chile</option>
+            <option value="China">China</option>
+            <option value="Colombia">Colombia</option>
+            <option value="Costa Rica">Costa Rica</option>
+            <option value="Czech Republic">Czech Republic</option>
+            <option value="Denmark">Denmark</option>
+            <option value="Dominican Republic">Dominican Republic</option>
+            <option value="Ecuador">Ecuador</option>
+            <option value="Ethiopia">Ethiopia</option>
+            <option value="Finland">Finland</option>
+            <option value="Ghana">Ghana</option>
+            <option value="Greece">Greece</option>
+            <option value="Hungary">Hungary</option>
+            <option value="Iraq">Iraq</option>
+            <option value="Ireland">Ireland</option>
+            <option value="Israel">Israel</option>
+            <option value="Italy">Italy</option>
+            <option value="Japan">Japan</option>
+            <option value="Jordan">Jordan</option>
+            <option value="Kuwait">Kuwait</option>
+            <option value="Lebanon">Lebanon</option>
+            <option value="Malaysia">Malaysia</option>
+            <option value="Mexico">Mexico</option>
+            <option value="Morocco">Morocco</option>
+            <option value="Netherlands">Netherlands</option>
+            <option value="New Zealand">New Zealand</option>
+            <option value="Norway">Norway</option>
+            <option value="Oman">Oman</option>
+            <option value="Peru">Peru</option>
+            <option value="Poland">Poland</option>
+            <option value="Portugal">Portugal</option>
+            <option value="Romania">Romania</option>
+            <option value="Russia">Russia</option>
+            <option value="Singapore">Singapore</option>
+            <option value="South Korea">South Korea</option>
+            <option value="Spain">Spain</option>
+            <option value="Sri Lanka">Sri Lanka</option>
+            <option value="Sweden">Sweden</option>
+            <option value="Switzerland">Switzerland</option>
+            <option value="Thailand">Thailand</option>
+            <option value="Ukraine">Ukraine</option>
+            <option value="Vietnam">Vietnam</option>
+          </select>
+        </div>
+        <div>
+          <label class="block text-sm font-medium text-slategray mb-1">What do you need?</label>
+          <select id="goalSelect" class="w-full px-4 py-3 border border-border rounded-xl bg-white focus:outline-none focus:ring-2 focus:ring-red/30">
+            <option value="virtual">Virtual Visa/Mastercard for Online Shopping & AI</option>
+            <option value="ads">Run Facebook, TikTok & Google Ads</option>
+            <option value="transfer">Send & Receive USD/EUR Globally</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="flex items-center justify-between flex-wrap gap-3 mb-4">
+        <span id="availableBadge" class="inline-flex items-center bg-rose text-red text-sm font-semibold px-4 py-1.5 rounded-full border border-roseaccent">Available in Pakistan</span>
+      </div>
+
+      <div id="bestMatch" class="bg-rose border border-roseaccent rounded-2xl p-5">
+        <!-- Dynamically filled -->
+      </div>
+    </div>
   </div>
 </section>
 
 <!-- Partners -->
 <section id="partners" class="py-16 bg-white">
   <div class="max-w-6xl mx-auto px-4">
-    <h2 class="text-3xl font-bold text-center mb-12">Recommended Global Partners</h2>
-    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+    <h2 class="text-3xl font-bold text-center mb-12">All Recommended Partners</h2>
+    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+
+      <!-- Rizon -->
+      <div class="border border-border rounded-2xl p-6 hover:shadow-lg transition">
+        <h3 class="text-xl font-bold text-red">Rizon</h3>
+        <p class="text-sm text-slategray mt-2">Global virtual Visa & Mastercard</p>
+        <div class="mt-6 flex flex-col gap-2">
+          <a href="https://sng.link" target="_blank" rel="noopener noreferrer" class="block text-center bg-red text-white font-semibold py-2.5 rounded-xl hover:bg-redhover">Get Rizon</a>
+          <button data-code="44LF7JL" class="copy-btn border border-red text-red text-sm py-2 rounded-xl hover:bg-roseborder">Copy Code: 44LF7JL</button>
+        </div>
+      </div>
 
       <!-- RedotPay -->
       <div class="border border-border rounded-2xl p-6 hover:shadow-lg transition bg-rose">
         <h3 class="text-xl font-bold text-red">RedotPay</h3>
         <p class="text-sm text-slategray mt-2">Global Virtual Visa & Mastercard for Shopping, AI & Ads</p>
-        <ul class="mt-4 text-sm space-y-2 text-slate">
-          <li>• Instant Visa/Mastercard issuance</li>
-          <li>• Apple Pay & Google Pay ready</li>
-          <li>• High global spending limits</li>
-        </ul>
         <div class="mt-6 flex flex-col gap-2">
-          <a href="https://url.hk" target="_blank" rel="noopener" class="block text-center bg-red text-white font-semibold py-2.5 rounded-xl hover:bg-redhover">Get RedotPay Card</a>
+          <a href="https://url.hk" target="_blank" rel="noopener noreferrer" class="block text-center bg-red text-white font-semibold py-2.5 rounded-xl hover:bg-redhover">Get RedotPay Card</a>
           <button data-code="i61b4" class="copy-btn border border-red text-red text-sm py-2 rounded-xl hover:bg-roseborder">Copy Code: i61b4</button>
         </div>
       </div>
@@ -82,13 +189,8 @@ tailwind.config = {
       <div class="border border-border rounded-2xl p-6 hover:shadow-lg transition">
         <h3 class="text-xl font-bold text-red">Wise</h3>
         <p class="text-sm text-slategray mt-2">Cheapest Global Bank Transfers & Multi-Currency Account</p>
-        <ul class="mt-4 text-sm space-y-2 text-slate">
-          <li>• Real mid-market exchange rates</li>
-          <li>• 160+ countries & 40+ currencies</li>
-          <li>• Zero hidden markups</li>
-        </ul>
         <div class="mt-6">
-          <a href="https://wise.com" target="_blank" rel="noopener" class="block text-center bg-red text-white font-semibold py-2.5 rounded-xl hover:bg-redhover">Open Wise Account</a>
+          <a href="https://wise.com" target="_blank" rel="noopener noreferrer" class="block text-center bg-red text-white font-semibold py-2.5 rounded-xl hover:bg-redhover">Open Wise Account</a>
         </div>
       </div>
 
@@ -96,21 +198,11 @@ tailwind.config = {
       <div class="border border-border rounded-2xl p-6 hover:shadow-lg transition">
         <h3 class="text-xl font-bold text-red">AirTM</h3>
         <p class="text-sm text-slategray mt-2">Global Digital Dollar Vault & Local P2P Cash-Out</p>
-        <ul class="mt-4 text-sm space-y-2 text-slate">
-          <li>• Instant deposits & withdrawals</li>
-          <li>• 400+ local payment methods</li>
-          <li>• Banks worldwide supported</li>
-        </ul>
         <div class="mt-6">
-          <a href="https://airtm.com" target="_blank" rel="noopener" class="block text-center bg-red text-white font-semibold py-2.5 rounded-xl hover:bg-redhover">Join AirTM</a>
+          <a href="https://airtm.com" target="_blank" rel="noopener noreferrer" class="block text-center bg-red text-white font-semibold py-2.5 rounded-xl hover:bg-redhover">Join AirTM</a>
         </div>
       </div>
 
-    </div>
-
-    <!-- Extra code mention -->
-    <div class="mt-10 text-center text-sm text-slategray">
-      Additional referral: <button data-code="44LF7JL" class="copy-btn text-red font-medium hover:underline">Copy Code: 44LF7JL</button> · <a href="https://sng.link" target="_blank" class="text-red hover:underline">sng.link</a>
     </div>
   </div>
 </section>
@@ -154,8 +246,8 @@ tailwind.config = {
       </div>
 
       <div class="mt-6 flex flex-col sm:flex-row gap-3">
-        <a href="https://wise.com" target="_blank" rel="noopener" class="flex-1 text-center bg-red text-white font-semibold py-3 rounded-xl hover:bg-redhover">Send with Wise</a>
-        <a href="https://airtm.com" target="_blank" rel="noopener" class="flex-1 text-center border border-red text-red font-semibold py-3 rounded-xl hover:bg-rose">Use AirTM</a>
+        <a href="https://wise.com" target="_blank" rel="noopener noreferrer" class="flex-1 text-center bg-red text-white font-semibold py-3 rounded-xl hover:bg-redhover">Send with Wise</a>
+        <a href="https://airtm.com" target="_blank" rel="noopener noreferrer" class="flex-1 text-center border border-red text-red font-semibold py-3 rounded-xl hover:bg-rose">Use AirTM</a>
       </div>
     </div>
   </div>
@@ -172,21 +264,100 @@ tailwind.config = {
 
 <script>
 document.addEventListener('DOMContentLoaded', function () {
-  // Copy code buttons
-  document.querySelectorAll('.copy-btn').forEach(btn => {
-    btn.addEventListener('click', () => {
-      const code = btn.dataset.code;
-      navigator.clipboard.writeText(code).then(() => {
-        const original = btn.textContent;
-        btn.textContent = 'Copied!';
-        setTimeout(() => { btn.textContent = original; }, 1500);
-      }).catch(() => {
-        alert('Code: ' + code);
-      });
+  const southAsia = ['Pakistan', 'India', 'Bangladesh', 'Sri Lanka'];
+  const westGlobal = ['United States', 'United Kingdom', 'Canada', 'Germany', 'France', 'Australia', 'Netherlands', 'Sweden', 'Norway', 'Denmark', 'Ireland', 'Spain', 'Italy', 'Switzerland', 'Austria', 'Belgium', 'Portugal'];
+
+  function getRecommendation(country, goal) {
+    const isSouthAsia = southAsia.includes(country);
+    const isWest = westGlobal.includes(country) || country === 'All Countries / Global';
+
+    if (goal === 'virtual' || goal === 'ads') {
+      if (isSouthAsia) {
+        return {
+          title: 'RedotPay + Rizon',
+          desc: 'Best global virtual Visa & Mastercard for online shopping, AI tools, and ads. Instant issuance with Apple Pay / Google Pay support.',
+          primary: { name: 'RedotPay', url: 'https://url.hk', code: 'i61b4' },
+          secondary: { name: 'Rizon', url: 'https://sng.link', code: '44LF7JL' }
+        };
+      }
+      return {
+        title: 'Rizon',
+        desc: 'Instant global virtual Visa & Mastercard with high limits, perfect for shopping and running ads.',
+        primary: { name: 'Rizon', url: 'https://sng.link', code: '44LF7JL' },
+        secondary: { name: 'RedotPay', url: 'https://url.hk', code: 'i61b4' }
+      };
+    }
+
+    // transfer goal
+    if (isSouthAsia) {
+      return {
+        title: 'AirTM + Wise',
+        desc: 'Best for receiving USD and cashing out to local banks or JazzCash with the lowest fees.',
+        primary: { name: 'AirTM', url: 'https://airtm.com' },
+        secondary: { name: 'Wise', url: 'https://wise.com' }
+      };
+    }
+    return {
+      title: 'Wise',
+      desc: 'Real mid-market exchange rates across 160+ countries. Zero hidden markups.',
+      primary: { name: 'Wise', url: 'https://wise.com' },
+      secondary: { name: 'AirTM', url: 'https://airtm.com' }
+    };
+  }
+
+  function renderBestMatch() {
+    const country = document.getElementById('countrySelect').value;
+    const goal = document.getElementById('goalSelect').value;
+    const rec = getRecommendation(country, goal);
+
+    document.getElementById('availableBadge').textContent = 'Available in ' + country;
+
+    let html = `
+      <p class="text-xs font-semibold text-red uppercase tracking-wide">#1 Best Match</p>
+      <h3 class="text-xl font-bold mt-1">${rec.title}</h3>
+      <p class="text-sm text-slategray mt-2">${rec.desc}</p>
+      <div class="mt-4 flex flex-col sm:flex-row gap-2">
+        <a href="${rec.primary.url}" target="_blank" rel="noopener noreferrer" class="flex-1 text-center bg-red text-white font-semibold py-2.5 rounded-xl hover:bg-redhover">Get ${rec.primary.name}</a>
+        ${rec.primary.code ? `<button data-code="${rec.primary.code}" class="copy-btn flex-1 border border-red text-red text-sm py-2 rounded-xl hover:bg-roseborder">Copy Code: ${rec.primary.code}</button>` : ''}
+      </div>
+    `;
+    if (rec.secondary) {
+      html += `<div class="mt-3 text-sm"><a href="${rec.secondary.url}" target="_blank" rel="noopener noreferrer" class="text-red font-medium hover:underline">Also try ${rec.secondary.name}</a>${rec.secondary.code ? ` · <button data-code="${rec.secondary.code}" class="copy-btn text-red font-medium hover:underline">Copy ${rec.secondary.code}</button>` : ''}</div>`;
+    }
+    document.getElementById('bestMatch').innerHTML = html;
+
+    // Re-attach copy listeners for dynamically created buttons
+    document.querySelectorAll('.copy-btn').forEach(btn => {
+      btn.onclick = null;
+      btn.addEventListener('click', copyCode);
+    });
+  }
+
+  function copyCode(e) {
+    const code = e.currentTarget.dataset.code;
+    navigator.clipboard.writeText(code).then(() => {
+      const original = e.currentTarget.textContent;
+      e.currentTarget.textContent = 'Copied!';
+      setTimeout(() => { e.currentTarget.textContent = original; }, 1500);
+    }).catch(() => alert('Code: ' + code));
+  }
+
+  // Country search filter
+  document.getElementById('countrySearch').addEventListener('input', function () {
+    const q = this.value.toLowerCase();
+    const select = document.getElementById('countrySelect');
+    Array.from(select.options).forEach(opt => {
+      opt.hidden = q && !opt.text.toLowerCase().includes(q);
     });
   });
 
-  // Savings calculator
+  document.getElementById('countrySelect').addEventListener('change', renderBestMatch);
+  document.getElementById('goalSelect').addEventListener('change', renderBestMatch);
+
+  // Initial copy buttons
+  document.querySelectorAll('.copy-btn').forEach(btn => btn.addEventListener('click', copyCode));
+
+  // Calculator
   function updateCalc() {
     const amount = parseFloat(document.getElementById('calcAmount').value) || 0;
     const fee = amount * 0.045;
@@ -194,10 +365,11 @@ document.addEventListener('DOMContentLoaded', function () {
     document.getElementById('calcSave').textContent = '$' + fee.toFixed(2);
     document.getElementById('calcMore').textContent = '$' + fee.toFixed(2);
   }
-
   document.getElementById('calcAmount').addEventListener('input', updateCalc);
   document.getElementById('calcCurrency').addEventListener('change', updateCalc);
   updateCalc();
+
+  renderBestMatch();
 });
 </script>
 </body>
