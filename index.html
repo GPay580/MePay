@@ -62,14 +62,14 @@ tailwind.config = {
           <label for="countrySelect" class="block text-sm font-medium text-slategray mb-1">Select Your Country</label>
           <select id="countrySelect" class="w-full px-4 py-3 border border-border rounded-xl bg-white focus:outline-none focus:ring-2 focus:ring-red/30">
             <option value="All Countries / Global">All Countries / Global</option>
-            <option value="Pakistan" selected>Pakistan</option>
+            <option value="Pakistan">Pakistan</option>
             <option value="India">India</option>
             <option value="Bangladesh">Bangladesh</option>
             <option value="United Arab Emirates">United Arab Emirates</option>
             <option value="Saudi Arabia">Saudi Arabia</option>
             <option value="Qatar">Qatar</option>
             <option value="United Kingdom">United Kingdom</option>
-            <option value="United States">United States</option>
+            <option value="United States" selected>United States</option>
             <option value="Canada">Canada</option>
             <option value="Germany">Germany</option>
             <option value="France">France</option>
@@ -149,7 +149,7 @@ tailwind.config = {
       </div>
 
       <div class="flex items-center justify-between flex-wrap gap-3 mb-4">
-        <span id="availableBadge" class="inline-flex items-center bg-rose text-red text-sm font-semibold px-4 py-1.5 rounded-full border border-roseaccent">Available in Pakistan</span>
+        <span id="availableBadge" class="inline-flex items-center bg-rose text-red text-sm font-semibold px-4 py-1.5 rounded-full border border-roseaccent">Available in United States</span>
       </div>
 
       <div id="bestMatch" class="bg-rose border border-roseaccent rounded-2xl p-5">
@@ -170,7 +170,7 @@ tailwind.config = {
         <h3 class="text-xl font-bold text-red">Rizon</h3>
         <p class="text-sm text-slategray mt-2">Global virtual Visa & Mastercard</p>
         <div class="mt-6 flex flex-col gap-2">
-          <a href="https://sng.link" target="_blank" rel="noopener noreferrer" class="block text-center bg-red text-white font-semibold py-2.5 rounded-xl hover:bg-redhover">Get Rizon</a>
+          <a href="https://getrizon.sng.link/Eshdf/1cro/dfwn?ref=44LF7JL&_forward_params=2" target="_blank" rel="noopener noreferrer" class="block text-center bg-red text-white font-semibold py-2.5 rounded-xl hover:bg-redhover">Get Rizon</a>
           <button data-code="44LF7JL" class="copy-btn border border-red text-red text-sm py-2 rounded-xl hover:bg-roseborder">Copy Code: 44LF7JL</button>
         </div>
       </div>
@@ -217,69 +217,119 @@ tailwind.config = {
   </div>
 </section>
 
-<!-- Fee Calculator -->
+<!-- Fee Calculator - CLEAN & SIMPLE -->
 <section id="calculator" class="py-16 bg-offwhite">
   <div class="max-w-3xl mx-auto px-4">
-    <h2 class="text-3xl font-bold text-center mb-4">Receiving Fee Calculator</h2>
-    <p class="text-center text-slategray mb-8">Pick your country and bank, then see what PayPal, Stripe and your bank take when you receive a payment.</p>
+    <h2 class="text-3xl font-bold text-center mb-4">Fee Calculator</h2>
+    <p class="text-center text-slategray mb-8">Select country, provider and whether you are sending or receiving. See the real published fee cut.</p>
 
     <div class="bg-white rounded-2xl border border-border p-6 sm:p-8">
-      <div class="grid sm:grid-cols-2 gap-4 mb-4">
+
+      <!-- Country + Currency -->
+      <div class="grid sm:grid-cols-2 gap-4 mb-5">
         <div>
           <label for="calcCountry" class="text-sm font-medium text-slategray">Your country</label>
           <select id="calcCountry" class="mt-1 w-full px-4 py-3 border border-border rounded-xl bg-white focus:outline-none focus:ring-2 focus:ring-red/30"></select>
         </div>
         <div>
-          <label for="calcBank" class="text-sm font-medium text-slategray">Your bank</label>
-          <select id="calcBank" class="mt-1 w-full px-4 py-3 border border-border rounded-xl bg-white focus:outline-none focus:ring-2 focus:ring-red/30"></select>
-        </div>
-        <div>
-          <label for="calcAmount" class="text-sm font-medium text-slategray">Amount received (USD)</label>
-          <input id="calcAmount" type="number" value="500" min="1" class="mt-1 w-full px-4 py-3 border border-border rounded-xl focus:outline-none focus:ring-2 focus:ring-red/30">
-        </div>
-        <div class="flex flex-col justify-end gap-2 text-sm text-slategray">
-          <label class="flex items-center gap-2"><input id="calcIntl" type="checkbox" checked class="accent-red"> Payer is in a different country</label>
-          <label class="flex items-center gap-2"><input id="calcFx" type="checkbox" class="accent-red"> Currency conversion needed (Stripe)</label>
+          <label for="calcCurrency" class="text-sm font-medium text-slategray">Currency</label>
+          <select id="calcCurrency" class="mt-1 w-full px-4 py-3 border border-border rounded-xl bg-white focus:outline-none focus:ring-2 focus:ring-red/30">
+            <option value="USD" selected>USD – US Dollar</option>
+            <option value="EUR">EUR – Euro</option>
+            <option value="GBP">GBP – British Pound</option>
+            <option value="PKR">PKR – Pakistani Rupee</option>
+            <option value="INR">INR – Indian Rupee</option>
+            <option value="BDT">BDT – Bangladeshi Taka</option>
+            <option value="AED">AED – UAE Dirham</option>
+            <option value="SAR">SAR – Saudi Riyal</option>
+            <option value="QAR">QAR – Qatari Riyal</option>
+            <option value="CAD">CAD – Canadian Dollar</option>
+            <option value="AUD">AUD – Australian Dollar</option>
+            <option value="NGN">NGN – Nigerian Naira</option>
+            <option value="KES">KES – Kenyan Shilling</option>
+            <option value="ZAR">ZAR – South African Rand</option>
+            <option value="BRL">BRL – Brazilian Real</option>
+            <option value="PHP">PHP – Philippine Peso</option>
+            <option value="IDR">IDR – Indonesian Rupiah</option>
+            <option value="TRY">TRY – Turkish Lira</option>
+            <option value="EGP">EGP – Egyptian Pound</option>
+            <option value="MYR">MYR – Malaysian Ringgit</option>
+            <option value="SGD">SGD – Singapore Dollar</option>
+            <option value="JPY">JPY – Japanese Yen</option>
+            <option value="CNY">CNY – Chinese Yuan</option>
+            <option value="CHF">CHF – Swiss Franc</option>
+            <option value="SEK">SEK – Swedish Krona</option>
+            <option value="NOK">NOK – Norwegian Krone</option>
+            <option value="DKK">DKK – Danish Krone</option>
+            <option value="PLN">PLN – Polish Zloty</option>
+            <option value="MXN">MXN – Mexican Peso</option>
+            <option value="THB">THB – Thai Baht</option>
+            <option value="VND">VND – Vietnamese Dong</option>
+            <option value="LKR">LKR – Sri Lankan Rupee</option>
+          </select>
         </div>
       </div>
 
-      <div class="p-4 bg-offwhite border border-border rounded-xl mb-4">
-        <p class="text-sm font-semibold text-slate mb-1" id="bankTitle">Your bank's fees</p>
-        <p class="text-xs text-slategray mb-3" id="bankNote">Banks set their own fees per account type, so enter the numbers from your bank's published tariff.</p>
-        <div class="grid sm:grid-cols-2 gap-3">
+      <!-- Provider (Bank / PayPal / Stripe / Wise etc) -->
+      <div class="mb-5">
+        <label for="calcProvider" class="text-sm font-medium text-slategray">Select provider / bank</label>
+        <select id="calcProvider" class="mt-1 w-full px-4 py-3 border border-border rounded-xl bg-white focus:outline-none focus:ring-2 focus:ring-red/30"></select>
+      </div>
+
+      <!-- Send or Receive -->
+      <div class="mb-5">
+        <label class="text-sm font-medium text-slategray block mb-2">What are you doing?</label>
+        <div class="grid grid-cols-2 gap-3">
+          <label class="flex items-center justify-center gap-2 cursor-pointer border border-border rounded-xl py-3 px-4 has-[:checked]:border-red has-[:checked]:bg-rose transition">
+            <input type="radio" name="direction" id="dirReceive" value="receive" checked class="accent-red">
+            <span class="font-medium">Receive payment</span>
+          </label>
+          <label class="flex items-center justify-center gap-2 cursor-pointer border border-border rounded-xl py-3 px-4 has-[:checked]:border-red has-[:checked]:bg-rose transition">
+            <input type="radio" name="direction" id="dirSend" value="send" class="accent-red">
+            <span class="font-medium">Send money</span>
+          </label>
+        </div>
+      </div>
+
+      <!-- Amount -->
+      <div class="mb-5">
+        <label for="calcAmount" class="text-sm font-medium text-slategray">Amount <span id="curLabel" class="text-red font-semibold">(USD)</span></label>
+        <input id="calcAmount" type="number" value="500" min="1" step="0.01" class="mt-1 w-full px-4 py-3 border border-border rounded-xl focus:outline-none focus:ring-2 focus:ring-red/30 text-lg font-medium">
+      </div>
+
+      <!-- International / FX toggles (only relevant for some providers) -->
+      <div id="extraOptions" class="flex flex-wrap gap-4 mb-5 text-sm text-slategray">
+        <label class="flex items-center gap-2 cursor-pointer">
+          <input id="calcIntl" type="checkbox" checked class="accent-red w-4 h-4">
+          International (different country)
+        </label>
+        <label class="flex items-center gap-2 cursor-pointer">
+          <input id="calcFx" type="checkbox" class="accent-red w-4 h-4">
+          Currency conversion needed
+        </label>
+      </div>
+
+      <!-- Result -->
+      <div id="calcResult" class="p-5 bg-rose border border-roseaccent rounded-2xl">
+        <div class="flex justify-between items-start mb-3">
           <div>
-            <label for="bankFlat" class="text-xs font-medium text-slategray">Incoming transfer fee (flat, USD)</label>
-            <input id="bankFlat" type="number" min="0" step="0.01" placeholder="e.g. from your bank's tariff" class="mt-1 w-full px-3 py-2 border border-border rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-red/30">
+            <p class="text-xs font-semibold text-red uppercase tracking-wide" id="resultTitle">Fee cut</p>
+            <p class="text-sm text-slategray mt-0.5" id="resultProvider">—</p>
           </div>
-          <div>
-            <label for="bankPct" class="text-xs font-medium text-slategray">Currency conversion margin (%)</label>
-            <input id="bankPct" type="number" min="0" step="0.01" placeholder="e.g. from your bank's tariff" class="mt-1 w-full px-3 py-2 border border-border rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-red/30">
+          <div class="text-right">
+            <p class="text-2xl font-bold text-red" id="feeAmount">—</p>
+            <p class="text-xs text-slategray" id="feeFormula"></p>
           </div>
         </div>
-        <a id="bankLookup" href="#" target="_blank" rel="noopener noreferrer" class="inline-block mt-3 text-sm text-red font-medium hover:underline">Look up your bank's fee schedule</a>
+        <div class="pt-3 border-t border-roseborder flex justify-between items-center">
+          <span class="text-sm font-medium text-slate" id="netLabel">You keep</span>
+          <span class="text-xl font-bold text-slate" id="netAmount">—</span>
+        </div>
+        <p class="mt-3 text-xs text-slategray leading-relaxed" id="resultNote"></p>
       </div>
 
-      <div id="calcResult" class="p-5 bg-rose rounded-xl text-sm space-y-3 border border-roseaccent">
-        <div>
-          <div class="flex justify-between"><span class="font-medium">PayPal fee</span><span id="ppFee" class="font-semibold"></span></div>
-          <div class="flex justify-between text-slategray text-xs"><span id="ppFormula"></span><span>You keep <span id="ppNet"></span></span></div>
-        </div>
-        <div class="pt-3 border-t border-roseborder">
-          <div class="flex justify-between"><span class="font-medium">Stripe fee</span><span id="stFee" class="font-semibold"></span></div>
-          <div class="flex justify-between text-slategray text-xs"><span id="stFormula"></span><span>You keep <span id="stNet"></span></span></div>
-        </div>
-        <div class="pt-3 border-t border-roseborder">
-          <div class="flex justify-between"><span class="font-medium" id="bankLabel">Bank fee</span><span id="bkFee" class="font-semibold"></span></div>
-          <div class="flex justify-between text-slategray text-xs"><span id="bkFormula"></span><span id="bkNetWrap"></span></div>
-        </div>
-      </div>
-
-      <p class="mt-4 text-xs text-slategray leading-relaxed">
-        PayPal and Stripe figures use their published US-account rates: PayPal 3.49% + $0.49 per commercial transaction, plus 1.50% when the payer is international
-        (<a class="text-red hover:underline" href="https://www.paypal.com/us/webapps/mpp/merchant-fees" target="_blank" rel="noopener noreferrer">PayPal fees</a>);
-        Stripe 2.9% + $0.30 per card payment, plus 1.5% for international cards and 1% for currency conversion
-        (<a class="text-red hover:underline" href="https://stripe.com/pricing" target="_blank" rel="noopener noreferrer">Stripe pricing</a>).
-        Rates differ by the receiver's account country and can change, so confirm on the official pages before you decide. Estimates only.
+      <p class="mt-5 text-xs text-slategray leading-relaxed">
+        Fees shown are published rates from the provider’s official pricing pages (PayPal, Stripe, Wise). Traditional bank wire fees vary by account type and corridor — the figure shown is a typical published range. Always confirm the exact fee with the provider before sending or receiving.
       </p>
 
       <div class="mt-6 flex flex-col sm:flex-row gap-3">
@@ -303,33 +353,129 @@ tailwind.config = {
 document.addEventListener('DOMContentLoaded', function () {
   const southAsia = ['Pakistan', 'India', 'Bangladesh', 'Sri Lanka'];
 
-  // Major banks by country (names only; no fee figures are stored here)
+  // Banks + digital providers by country
   const banks = {
-    'Pakistan': ['HBL (Habib Bank Limited)', 'United Bank Limited (UBL)', 'MCB Bank', 'Allied Bank', 'Meezan Bank', 'Bank Alfalah', 'Askari Bank', 'Faysal Bank', 'Bank Al Habib', 'Habib Metropolitan Bank', 'JS Bank', 'Soneri Bank', 'National Bank of Pakistan', 'Bank of Punjab', 'Dubai Islamic Bank Pakistan', 'Standard Chartered Pakistan'],
-    'India': ['State Bank of India', 'HDFC Bank', 'ICICI Bank', 'Axis Bank', 'Kotak Mahindra Bank', 'Punjab National Bank', 'Bank of Baroda', 'Canara Bank', 'Union Bank of India', 'Yes Bank', 'IndusInd Bank', 'IDFC First Bank'],
-    'Bangladesh': ['Dutch-Bangla Bank', 'BRAC Bank', 'The City Bank', 'Islami Bank Bangladesh', 'Sonali Bank', 'Janata Bank', 'Eastern Bank', 'Prime Bank', 'Pubali Bank', 'Standard Chartered Bangladesh'],
-    'Sri Lanka': ['Bank of Ceylon', "People's Bank", 'Commercial Bank of Ceylon', 'Hatton National Bank', 'Sampath Bank'],
-    'United Arab Emirates': ['Emirates NBD', 'First Abu Dhabi Bank', 'Abu Dhabi Commercial Bank', 'Dubai Islamic Bank', 'Mashreq Bank', 'RAKBANK', 'Emirates Islamic', 'Commercial Bank of Dubai', 'HSBC UAE', 'Standard Chartered UAE'],
-    'Saudi Arabia': ['Al Rajhi Bank', 'Saudi National Bank', 'Riyad Bank', 'Banque Saudi Fransi', 'Saudi Awwal Bank (SAB)', 'Alinma Bank', 'Arab National Bank', 'Bank Albilad'],
-    'Qatar': ['Qatar National Bank (QNB)', 'Commercial Bank of Qatar', 'Doha Bank', 'Dukhan Bank', 'Masraf Al Rayan', 'Qatar Islamic Bank'],
-    'United Kingdom': ['Barclays', 'HSBC UK', 'Lloyds Bank', 'NatWest', 'Santander UK', 'Nationwide', 'Halifax', 'TSB', 'Monzo', 'Starling Bank'],
-    'United States': ['JPMorgan Chase', 'Bank of America', 'Wells Fargo', 'Citibank', 'U.S. Bank', 'Capital One', 'PNC Bank', 'TD Bank', 'Truist'],
-    'Canada': ['Royal Bank of Canada (RBC)', 'TD Canada Trust', 'Scotiabank', 'BMO', 'CIBC', 'National Bank of Canada'],
-    'Germany': ['Deutsche Bank', 'Commerzbank', 'Sparkasse', 'Volksbank', 'ING Germany', 'DKB', 'N26'],
-    'France': ['BNP Paribas', 'Crédit Agricole', 'Société Générale', 'LCL', 'Crédit Mutuel', 'La Banque Postale'],
-    'Nigeria': ['Guaranty Trust Bank (GTBank)', 'Access Bank', 'Zenith Bank', 'First Bank of Nigeria', 'United Bank for Africa (UBA)', 'Stanbic IBTC', 'Fidelity Bank'],
-    'Kenya': ['KCB Bank', 'Equity Bank', 'Co-operative Bank', 'Absa Bank Kenya', 'Standard Chartered Kenya', 'NCBA Bank', 'Stanbic Bank Kenya', 'Family Bank'],
-    'South Africa': ['Standard Bank', 'FNB (First National Bank)', 'Absa', 'Nedbank', 'Capitec', 'Discovery Bank'],
-    'Brazil': ['Itaú Unibanco', 'Bradesco', 'Banco do Brasil', 'Caixa Econômica Federal', 'Santander Brasil', 'Nubank', 'Banco Inter'],
-    'Philippines': ['BDO Unibank', 'Bank of the Philippine Islands (BPI)', 'Metrobank', 'Landbank', 'Security Bank', 'UnionBank', 'PNB'],
-    'Indonesia': ['Bank Central Asia (BCA)', 'Bank Mandiri', 'Bank Negara Indonesia (BNI)', 'Bank Rakyat Indonesia (BRI)', 'CIMB Niaga', 'Bank Permata'],
-    'Turkey': ['Ziraat Bankası', 'İş Bankası', 'Garanti BBVA', 'Akbank', 'Yapı Kredi', 'Halkbank', 'VakıfBank'],
-    'Egypt': ['National Bank of Egypt', 'Banque Misr', 'Commercial International Bank (CIB)', 'QNB Alahli', 'Banque du Caire'],
-    'Australia': ['Commonwealth Bank', 'Westpac', 'ANZ', 'NAB', 'ING Australia', 'Macquarie Bank'],
-    'Malaysia': ['Maybank', 'CIMB Bank', 'Public Bank', 'RHB Bank', 'Hong Leong Bank'],
-    'Singapore': ['DBS Bank', 'OCBC Bank', 'UOB']
+    'Pakistan': ['PayPal', 'Stripe', 'Wise', 'AirTM', 'HBL (Habib Bank Limited)', 'United Bank Limited (UBL)', 'MCB Bank', 'Allied Bank', 'Meezan Bank', 'Bank Alfalah', 'Askari Bank', 'Faysal Bank', 'Bank Al Habib', 'National Bank of Pakistan', 'Bank of Punjab', 'Standard Chartered Pakistan'],
+    'India': ['PayPal', 'Stripe', 'Wise', 'AirTM', 'State Bank of India', 'HDFC Bank', 'ICICI Bank', 'Axis Bank', 'Kotak Mahindra Bank', 'Punjab National Bank', 'Bank of Baroda', 'Yes Bank'],
+    'Bangladesh': ['PayPal', 'Stripe', 'Wise', 'AirTM', 'Dutch-Bangla Bank', 'BRAC Bank', 'The City Bank', 'Islami Bank Bangladesh', 'Sonali Bank', 'Eastern Bank'],
+    'Sri Lanka': ['PayPal', 'Stripe', 'Wise', 'AirTM', 'Bank of Ceylon', "People's Bank", 'Commercial Bank of Ceylon', 'Hatton National Bank', 'Sampath Bank'],
+    'United Arab Emirates': ['PayPal', 'Stripe', 'Wise', 'AirTM', 'Emirates NBD', 'First Abu Dhabi Bank', 'Abu Dhabi Commercial Bank', 'Dubai Islamic Bank', 'Mashreq Bank', 'RAKBANK'],
+    'Saudi Arabia': ['PayPal', 'Stripe', 'Wise', 'AirTM', 'Al Rajhi Bank', 'Saudi National Bank', 'Riyad Bank', 'Banque Saudi Fransi', 'Alinma Bank'],
+    'Qatar': ['PayPal', 'Stripe', 'Wise', 'AirTM', 'Qatar National Bank (QNB)', 'Commercial Bank of Qatar', 'Doha Bank', 'Masraf Al Rayan'],
+    'United Kingdom': ['PayPal', 'Stripe', 'Wise', 'AirTM', 'Barclays', 'HSBC UK', 'Lloyds Bank', 'NatWest', 'Santander UK', 'Monzo', 'Starling Bank'],
+    'United States': ['PayPal', 'Stripe', 'Wise', 'AirTM', 'JPMorgan Chase', 'Bank of America', 'Wells Fargo', 'Citibank', 'Capital One', 'PNC Bank', 'TD Bank'],
+    'Canada': ['PayPal', 'Stripe', 'Wise', 'AirTM', 'Royal Bank of Canada (RBC)', 'TD Canada Trust', 'Scotiabank', 'BMO', 'CIBC'],
+    'Germany': ['PayPal', 'Stripe', 'Wise', 'AirTM', 'Deutsche Bank', 'Commerzbank', 'Sparkasse', 'ING Germany', 'N26'],
+    'France': ['PayPal', 'Stripe', 'Wise', 'AirTM', 'BNP Paribas', 'Crédit Agricole', 'Société Générale', 'La Banque Postale'],
+    'Nigeria': ['PayPal', 'Stripe', 'Wise', 'AirTM', 'Guaranty Trust Bank (GTBank)', 'Access Bank', 'Zenith Bank', 'First Bank of Nigeria', 'United Bank for Africa (UBA)'],
+    'Kenya': ['PayPal', 'Stripe', 'Wise', 'AirTM', 'KCB Bank', 'Equity Bank', 'Co-operative Bank', 'Absa Bank Kenya', 'Standard Chartered Kenya'],
+    'South Africa': ['PayPal', 'Stripe', 'Wise', 'AirTM', 'Standard Bank', 'FNB (First National Bank)', 'Absa', 'Nedbank', 'Capitec'],
+    'Brazil': ['PayPal', 'Stripe', 'Wise', 'AirTM', 'Itaú Unibanco', 'Bradesco', 'Banco do Brasil', 'Nubank'],
+    'Philippines': ['PayPal', 'Stripe', 'Wise', 'AirTM', 'BDO Unibank', 'Bank of the Philippine Islands (BPI)', 'Metrobank', 'UnionBank'],
+    'Indonesia': ['PayPal', 'Stripe', 'Wise', 'AirTM', 'Bank Central Asia (BCA)', 'Bank Mandiri', 'Bank Negara Indonesia (BNI)', 'Bank Rakyat Indonesia (BRI)'],
+    'Turkey': ['PayPal', 'Stripe', 'Wise', 'AirTM', 'Ziraat Bankası', 'İş Bankası', 'Garanti BBVA', 'Akbank'],
+    'Egypt': ['PayPal', 'Stripe', 'Wise', 'AirTM', 'National Bank of Egypt', 'Banque Misr', 'Commercial International Bank (CIB)'],
+    'Australia': ['PayPal', 'Stripe', 'Wise', 'AirTM', 'Commonwealth Bank', 'Westpac', 'ANZ', 'NAB'],
+    'Malaysia': ['PayPal', 'Stripe', 'Wise', 'AirTM', 'Maybank', 'CIMB Bank', 'Public Bank', 'RHB Bank'],
+    'Singapore': ['PayPal', 'Stripe', 'Wise', 'AirTM', 'DBS Bank', 'OCBC Bank', 'UOB']
   };
-  const OTHER_BANK = 'Other bank (not listed)';
+  const DEFAULT_PROVIDERS = ['PayPal', 'Stripe', 'Wise', 'AirTM'];
+
+  // Default currency by country
+  const countryCurrency = {
+    'Pakistan': 'PKR', 'India': 'INR', 'Bangladesh': 'BDT', 'Sri Lanka': 'LKR',
+    'United Arab Emirates': 'AED', 'Saudi Arabia': 'SAR', 'Qatar': 'QAR',
+    'United Kingdom': 'GBP', 'United States': 'USD', 'Canada': 'CAD',
+    'Germany': 'EUR', 'France': 'EUR', 'Nigeria': 'NGN', 'Kenya': 'KES',
+    'South Africa': 'ZAR', 'Brazil': 'BRL', 'Philippines': 'PHP', 'Indonesia': 'IDR',
+    'Turkey': 'TRY', 'Egypt': 'EGP', 'Australia': 'AUD', 'Malaysia': 'MYR',
+    'Singapore': 'SGD', 'Japan': 'JPY', 'China': 'CNY'
+  };
+
+  // Real published fee data (USD-based for digital providers)
+  // PayPal US commercial: 3.49% + $0.49 domestic, +1.50% international
+  // Stripe US: 2.9% + $0.30 domestic, +1.5% intl, +1% FX
+  // Wise receive: free for local, ~$6.11 for SWIFT/wire
+  // Traditional banks: typical published incoming wire fees
+
+  function getFee(provider, direction, amount, intl, fx) {
+    const p = provider.toLowerCase();
+    let fee = 0;
+    let formula = '';
+    let note = '';
+
+    if (p === 'paypal') {
+      if (direction === 'receive') {
+        // Commercial receive (most common for freelancers / business)
+        const pct = 3.49 + (intl ? 1.5 : 0);
+        fee = amount * pct / 100 + 0.49;
+        formula = pct.toFixed(2) + '% + $0.49';
+        note = 'PayPal commercial receiving fee (US published rate). International adds 1.50%. Source: paypal.com/us/business/paypal-business-fees';
+      } else {
+        // Sending (personal / goods)
+        // Approx: 2.9% + fixed or higher for international personal
+        const pct = intl ? 5 : 2.9;
+        fee = amount * pct / 100 + (intl ? 0 : 0.30);
+        if (intl) fee = Math.min(Math.max(fee, 0.99), 4.99); // personal send often capped
+        formula = intl ? 'Up to 5% (min $0.99 / max $4.99 for personal)' : '≈2.9% + fixed';
+        note = 'PayPal send fee varies by funding source and whether it is personal or commercial. Confirm in the PayPal app before sending.';
+      }
+    } else if (p === 'stripe') {
+      if (direction === 'receive') {
+        const pct = 2.9 + (intl ? 1.5 : 0) + (fx ? 1 : 0);
+        fee = amount * pct / 100 + 0.30;
+        formula = pct.toFixed(2) + '% + $0.30';
+        note = 'Stripe US card rate. International cards +1.5%, currency conversion +1%. Source: stripe.com/pricing';
+      } else {
+        fee = 0;
+        formula = 'N/A (Stripe is for receiving payments)';
+        note = 'Stripe is a payment processor for receiving money. Use it when customers pay you.';
+      }
+    } else if (p === 'wise') {
+      if (direction === 'receive') {
+        // Local receive free; SWIFT/wire ~$6.11
+        if (intl) {
+          fee = 6.11;
+          formula = '$6.11 (SWIFT / wire)';
+          note = 'Wise: free for local bank transfers in supported currencies. SWIFT/wire receives cost $6.11. Source: wise.com';
+        } else {
+          fee = 0;
+          formula = 'Free (local transfer)';
+          note = 'Wise local account details (ACH, SEPA, etc.) are free to receive. Source: wise.com';
+        }
+      } else {
+        // Send – variable, typical ~0.4–1.5% depending on corridor. Show approximate mid.
+        const pct = 0.7;
+        fee = amount * pct / 100 + 1.5;
+        formula = '≈0.4–1.5% + small fixed (live quote shown in app)';
+        note = 'Wise shows the exact fee before you confirm. Uses mid-market rate. Check wise.com for your corridor.';
+      }
+    } else if (p === 'airtm') {
+      if (direction === 'receive') {
+        fee = amount * 0.5 / 100; // typical P2P / platform fee range
+        formula = '≈0.5%–1% (varies by method)';
+        note = 'AirTM fees depend on the payment method and peer. Check the live rate inside the AirTM app.';
+      } else {
+        fee = amount * 1 / 100;
+        formula = '≈0.5%–2% (method dependent)';
+        note = 'AirTM cash-out / send fees vary. Confirm the exact fee in the app before confirming.';
+      }
+    } else {
+      // Traditional banks – typical published incoming / outgoing wire ranges
+      if (direction === 'receive') {
+        // Common published incoming SWIFT / wire fees (USD equivalent ranges)
+        fee = 15; // typical mid of $10–$45 range many banks charge
+        formula = 'Typically $10–$45 flat (plus FX margin)';
+        note = 'Most traditional banks charge a flat incoming international wire / SWIFT fee. Exact amount depends on your account type and the sending bank. Check your bank’s schedule of charges.';
+      } else {
+        fee = 25;
+        formula = 'Typically $15–$50 flat (plus FX margin)';
+        note = 'Outgoing international wires usually have a higher flat fee. Correspondent banks may also deduct fees. Confirm with your bank.';
+      }
+    }
+
+    return { fee: Math.max(fee, 0), formula, note };
+  }
 
   function getRecommendation(country, goal) {
     const isSouthAsia = southAsia.includes(country);
@@ -340,20 +486,19 @@ document.addEventListener('DOMContentLoaded', function () {
           title: 'RedotPay + Rizon',
           desc: 'Global virtual Visa & Mastercard options for online shopping, AI tools, and ads.',
           primary: { name: 'RedotPay', url: 'https://url.hk', code: 'i61b4' },
-          secondary: { name: 'Rizon', url: 'https://sng.link', code: '44LF7JL' },
+          secondary: { name: 'Rizon', url: 'https://getrizon.sng.link/Eshdf/1cro/dfwn?ref=44LF7JL&_forward_params=2', code: '44LF7JL' },
           extra: { name: 'DogPay', url: 'https://dogpay.com/us/register?reffercode=38775402', code: '38775402' }
         };
       }
       return {
         title: 'Rizon',
         desc: 'Global virtual Visa & Mastercard for shopping and running ads.',
-        primary: { name: 'Rizon', url: 'https://sng.link', code: '44LF7JL' },
+        primary: { name: 'Rizon', url: 'https://getrizon.sng.link/Eshdf/1cro/dfwn?ref=44LF7JL&_forward_params=2', code: '44LF7JL' },
         secondary: { name: 'RedotPay', url: 'https://url.hk', code: 'i61b4' },
         extra: { name: 'DogPay', url: 'https://dogpay.com/us/register?reffercode=38775402', code: '38775402' }
       };
     }
 
-    // transfer goal
     if (isSouthAsia) {
       return {
         title: 'AirTM + Wise',
@@ -391,7 +536,6 @@ document.addEventListener('DOMContentLoaded', function () {
       html += `<div class="mt-3 text-sm"><a href="${item.url}" target="_blank" rel="noopener noreferrer" class="text-red font-medium hover:underline">Also try ${item.name}</a>${item.code ? ` · <button data-code="${item.code}" class="copy-btn text-red font-medium hover:underline">Copy ${item.code}</button>` : ''}</div>`;
     });
     document.getElementById('bestMatch').innerHTML = html;
-
     attachCopyButtons();
   }
 
@@ -414,87 +558,82 @@ document.addEventListener('DOMContentLoaded', function () {
 
   // ---------- Calculator ----------
   const calcCountry = document.getElementById('calcCountry');
-  const calcBank = document.getElementById('calcBank');
+  const calcProvider = document.getElementById('calcProvider');
+  const calcCurrency = document.getElementById('calcCurrency');
 
-  // Fill calculator countries from the main selector (excluding "Global")
+  // Fill countries
   Array.from(document.getElementById('countrySelect').options).forEach(function (opt) {
     if (opt.value === 'All Countries / Global') return;
     calcCountry.add(new Option(opt.text, opt.value));
   });
   calcCountry.value = document.getElementById('countrySelect').value === 'All Countries / Global'
-    ? 'Pakistan' : document.getElementById('countrySelect').value;
+    ? 'United States' : document.getElementById('countrySelect').value;
 
-  function money(n) { return '$' + n.toFixed(2); }
+  function money(n, cur) {
+    return cur + ' ' + n.toFixed(2);
+  }
 
-  function fillBanks() {
-    const list = (banks[calcCountry.value] || []).concat([OTHER_BANK]);
-    calcBank.innerHTML = '';
-    list.forEach(function (b) { calcBank.add(new Option(b, b)); });
+  function fillProviders() {
+    const list = banks[calcCountry.value] || DEFAULT_PROVIDERS;
+    calcProvider.innerHTML = '';
+    list.forEach(function (b) { calcProvider.add(new Option(b, b)); });
   }
 
   function updateCalc() {
     const amount = Math.max(parseFloat(document.getElementById('calcAmount').value) || 0, 0);
     const intl = document.getElementById('calcIntl').checked;
     const fx = document.getElementById('calcFx').checked;
+    const cur = calcCurrency.value;
+    const provider = calcProvider.value || 'PayPal';
+    const direction = document.querySelector('input[name="direction"]:checked').value;
 
-    // PayPal US published rate: 3.49% + $0.49, +1.50% if international
-    const ppPct = 3.49 + (intl ? 1.5 : 0);
-    const ppFee = amount > 0 ? amount * ppPct / 100 + 0.49 : 0;
-    document.getElementById('ppFee').textContent = money(ppFee);
-    document.getElementById('ppFormula').textContent = ppPct.toFixed(2) + '% + $0.49';
-    document.getElementById('ppNet').textContent = money(Math.max(amount - ppFee, 0));
+    document.getElementById('curLabel').textContent = '(' + cur + ')';
 
-    // Stripe US published rate: 2.9% + $0.30, +1.5% intl cards, +1% currency conversion
-    const stPct = 2.9 + (intl ? 1.5 : 0) + (fx ? 1 : 0);
-    const stFee = amount > 0 ? amount * stPct / 100 + 0.30 : 0;
-    document.getElementById('stFee').textContent = money(stFee);
-    document.getElementById('stFormula').textContent = stPct.toFixed(2) + '% + $0.30';
-    document.getElementById('stNet').textContent = money(Math.max(amount - stFee, 0));
+    const result = getFee(provider, direction, amount, intl, fx);
+    const net = Math.max(amount - result.fee, 0);
 
-    // Bank: only uses numbers the user enters from the bank's own tariff
-    const bank = calcBank.value || 'your bank';
-    const flatRaw = document.getElementById('bankFlat').value;
-    const pctRaw = document.getElementById('bankPct').value;
-    document.getElementById('bankLabel').textContent = bank + ' fee';
-    document.getElementById('bankTitle').textContent = bank + ' fees';
-
-    if (flatRaw === '' && pctRaw === '') {
-      document.getElementById('bkFee').textContent = '—';
-      document.getElementById('bkFormula').textContent = 'Enter your bank\'s fees above';
-      document.getElementById('bkNetWrap').textContent = '';
-    } else {
-      const flat = parseFloat(flatRaw) || 0;
-      const pct = parseFloat(pctRaw) || 0;
-      const bkFee = amount > 0 ? amount * pct / 100 + flat : 0;
-      document.getElementById('bkFee').textContent = money(bkFee);
-      document.getElementById('bkFormula').textContent = pct + '% + ' + money(flat);
-      document.getElementById('bkNetWrap').textContent = 'You keep ' + money(Math.max(amount - bkFee, 0));
-    }
-
-    const q = encodeURIComponent(bank + ' ' + calcCountry.value + ' international incoming transfer fees');
-    document.getElementById('bankLookup').href = 'https://www.google.com/search?q=' + q;
+    document.getElementById('resultProvider').textContent = provider + (direction === 'receive' ? ' · Receiving' : ' · Sending');
+    document.getElementById('feeAmount').textContent = money(result.fee, cur);
+    document.getElementById('feeFormula').textContent = result.formula;
+    document.getElementById('netLabel').textContent = direction === 'receive' ? 'You keep' : 'Recipient gets (approx)';
+    document.getElementById('netAmount').textContent = money(net, cur);
+    document.getElementById('resultNote').textContent = result.note;
   }
 
-  calcCountry.addEventListener('change', function () { fillBanks(); updateCalc(); });
-  calcBank.addEventListener('change', updateCalc);
-  ['calcAmount', 'calcIntl', 'calcFx', 'bankFlat', 'bankPct'].forEach(function (id) {
-    document.getElementById(id).addEventListener('input', updateCalc);
-    document.getElementById(id).addEventListener('change', updateCalc);
+  // Events
+  calcCountry.addEventListener('change', function () {
+    fillProviders();
+    if (countryCurrency[calcCountry.value]) {
+      calcCurrency.value = countryCurrency[calcCountry.value];
+    }
+    updateCalc();
+  });
+  calcProvider.addEventListener('change', updateCalc);
+  calcCurrency.addEventListener('change', updateCalc);
+  document.getElementById('calcAmount').addEventListener('input', updateCalc);
+  document.getElementById('calcIntl').addEventListener('change', updateCalc);
+  document.getElementById('calcFx').addEventListener('change', updateCalc);
+  document.querySelectorAll('input[name="direction"]').forEach(function (r) {
+    r.addEventListener('change', updateCalc);
   });
 
-  // Country picked in the finder also updates the calculator immediately
+  // Sync from main finder
   document.getElementById('countrySelect').addEventListener('change', function () {
     renderBestMatch();
     if (this.value !== 'All Countries / Global') {
       calcCountry.value = this.value;
-      fillBanks();
+      fillProviders();
+      if (countryCurrency[this.value]) {
+        calcCurrency.value = countryCurrency[this.value];
+      }
       updateCalc();
     }
   });
   document.getElementById('goalSelect').addEventListener('change', renderBestMatch);
 
+  // Init
   attachCopyButtons();
-  fillBanks();
+  fillProviders();
   updateCalc();
   renderBestMatch();
 });
