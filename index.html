@@ -39,7 +39,8 @@ tailwind.config = {
       </div>
       <div class="hidden md:flex items-center space-x-8 text-sm font-medium">
         <a href="#finder" class="text-slategray hover:text-red">Smart Finder</a>
-        <a href="#calculator" class="text-slategray hover:text-red">Savings Calculator</a>
+        <a href="#partners" class="text-slategray hover:text-red">Partners</a>
+        <a href="#calculator" class="text-slategray hover:text-red">Fee Calculator</a>
       </div>
     </div>
   </div>
@@ -58,9 +59,8 @@ tailwind.config = {
     <div class="mt-10 bg-white rounded-2xl border border-border p-6 sm:p-8 shadow-sm text-left">
       <div class="grid sm:grid-cols-2 gap-4 mb-6">
         <div>
-          <label class="block text-sm font-medium text-slategray mb-1">Select Your Country</label>
-          <input id="countrySearch" type="text" placeholder="Search countries..." class="w-full px-4 py-3 border border-border rounded-xl focus:outline-none focus:ring-2 focus:ring-red/30 mb-2">
-          <select id="countrySelect" class="w-full px-4 py-3 border border-border rounded-xl bg-white focus:outline-none focus:ring-2 focus:ring-red/30" size="1">
+          <label for="countrySelect" class="block text-sm font-medium text-slategray mb-1">Select Your Country</label>
+          <select id="countrySelect" class="w-full px-4 py-3 border border-border rounded-xl bg-white focus:outline-none focus:ring-2 focus:ring-red/30">
             <option value="All Countries / Global">All Countries / Global</option>
             <option value="Pakistan" selected>Pakistan</option>
             <option value="India">India</option>
@@ -139,7 +139,7 @@ tailwind.config = {
           </select>
         </div>
         <div>
-          <label class="block text-sm font-medium text-slategray mb-1">What do you need?</label>
+          <label for="goalSelect" class="block text-sm font-medium text-slategray mb-1">What do you need?</label>
           <select id="goalSelect" class="w-full px-4 py-3 border border-border rounded-xl bg-white focus:outline-none focus:ring-2 focus:ring-red/30">
             <option value="virtual">Virtual Visa/Mastercard for Online Shopping & AI</option>
             <option value="ads">Run Facebook, TikTok & Google Ads</option>
@@ -163,7 +163,7 @@ tailwind.config = {
 <section id="partners" class="py-16 bg-white">
   <div class="max-w-6xl mx-auto px-4">
     <h2 class="text-3xl font-bold text-center mb-12">All Recommended Partners</h2>
-    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
 
       <!-- Rizon -->
       <div class="border border-border rounded-2xl p-6 hover:shadow-lg transition">
@@ -182,6 +182,16 @@ tailwind.config = {
         <div class="mt-6 flex flex-col gap-2">
           <a href="https://url.hk" target="_blank" rel="noopener noreferrer" class="block text-center bg-red text-white font-semibold py-2.5 rounded-xl hover:bg-redhover">Get RedotPay Card</a>
           <button data-code="i61b4" class="copy-btn border border-red text-red text-sm py-2 rounded-xl hover:bg-roseborder">Copy Code: i61b4</button>
+        </div>
+      </div>
+
+      <!-- DogPay -->
+      <div class="border border-border rounded-2xl p-6 hover:shadow-lg transition">
+        <h3 class="text-xl font-bold text-red">DogPay</h3>
+        <p class="text-sm text-slategray mt-2">Virtual card & global payments platform</p>
+        <div class="mt-6 flex flex-col gap-2">
+          <a href="https://dogpay.com/us/register?reffercode=38775402" target="_blank" rel="noopener noreferrer" class="block text-center bg-red text-white font-semibold py-2.5 rounded-xl hover:bg-redhover">Get DogPay</a>
+          <button data-code="38775402" class="copy-btn border border-red text-red text-sm py-2 rounded-xl hover:bg-roseborder">Copy Code: 38775402</button>
         </div>
       </div>
 
@@ -207,46 +217,73 @@ tailwind.config = {
   </div>
 </section>
 
-<!-- Savings Calculator -->
+<!-- Fee Calculator -->
 <section id="calculator" class="py-16 bg-offwhite">
   <div class="max-w-3xl mx-auto px-4">
-    <h2 class="text-3xl font-bold text-center mb-4">Worldwide Savings Calculator</h2>
-    <p class="text-center text-slategray mb-8">See how much you save with mid-market rates vs typical ~4.5% PayPal / bank fees.</p>
+    <h2 class="text-3xl font-bold text-center mb-4">Receiving Fee Calculator</h2>
+    <p class="text-center text-slategray mb-8">Pick your country and bank, then see what PayPal, Stripe and your bank take when you receive a payment.</p>
 
     <div class="bg-white rounded-2xl border border-border p-6 sm:p-8">
-      <div class="grid sm:grid-cols-2 gap-4 mb-6">
+      <div class="grid sm:grid-cols-2 gap-4 mb-4">
         <div>
-          <label class="text-sm font-medium text-slategray">Amount to send</label>
+          <label for="calcCountry" class="text-sm font-medium text-slategray">Your country</label>
+          <select id="calcCountry" class="mt-1 w-full px-4 py-3 border border-border rounded-xl bg-white focus:outline-none focus:ring-2 focus:ring-red/30"></select>
+        </div>
+        <div>
+          <label for="calcBank" class="text-sm font-medium text-slategray">Your bank</label>
+          <select id="calcBank" class="mt-1 w-full px-4 py-3 border border-border rounded-xl bg-white focus:outline-none focus:ring-2 focus:ring-red/30"></select>
+        </div>
+        <div>
+          <label for="calcAmount" class="text-sm font-medium text-slategray">Amount received (USD)</label>
           <input id="calcAmount" type="number" value="500" min="1" class="mt-1 w-full px-4 py-3 border border-border rounded-xl focus:outline-none focus:ring-2 focus:ring-red/30">
         </div>
-        <div>
-          <label class="text-sm font-medium text-slategray">Currency</label>
-          <select id="calcCurrency" class="mt-1 w-full px-4 py-3 border border-border rounded-xl bg-white focus:outline-none focus:ring-2 focus:ring-red/30">
-            <option value="USD">USD</option>
-            <option value="EUR">EUR</option>
-            <option value="GBP">GBP</option>
-            <option value="PKR">PKR</option>
-            <option value="INR">INR</option>
-            <option value="AED">AED</option>
-            <option value="SAR">SAR</option>
-            <option value="NGN">NGN</option>
-            <option value="BRL">BRL</option>
-            <option value="PHP">PHP</option>
-            <option value="JPY">JPY</option>
-            <option value="CAD">CAD</option>
-            <option value="AUD">AUD</option>
-          </select>
+        <div class="flex flex-col justify-end gap-2 text-sm text-slategray">
+          <label class="flex items-center gap-2"><input id="calcIntl" type="checkbox" checked class="accent-red"> Payer is in a different country</label>
+          <label class="flex items-center gap-2"><input id="calcFx" type="checkbox" class="accent-red"> Currency conversion needed (Stripe)</label>
         </div>
       </div>
 
-      <div id="calcResult" class="p-5 bg-rose rounded-xl text-sm space-y-2 border border-roseaccent">
-        <div class="flex justify-between"><span>Typical PayPal / Bank fee (~4.5%)</span><span id="calcFee" class="font-semibold">$22.50</span></div>
-        <div class="flex justify-between text-red font-semibold"><span>You save with Wise / AirTM</span><span id="calcSave">$22.50</span></div>
-        <div class="flex justify-between pt-2 border-t border-roseborder font-bold"><span>Recipient gets more</span><span id="calcMore">$22.50</span></div>
+      <div class="p-4 bg-offwhite border border-border rounded-xl mb-4">
+        <p class="text-sm font-semibold text-slate mb-1" id="bankTitle">Your bank's fees</p>
+        <p class="text-xs text-slategray mb-3" id="bankNote">Banks set their own fees per account type, so enter the numbers from your bank's published tariff.</p>
+        <div class="grid sm:grid-cols-2 gap-3">
+          <div>
+            <label for="bankFlat" class="text-xs font-medium text-slategray">Incoming transfer fee (flat, USD)</label>
+            <input id="bankFlat" type="number" min="0" step="0.01" placeholder="e.g. from your bank's tariff" class="mt-1 w-full px-3 py-2 border border-border rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-red/30">
+          </div>
+          <div>
+            <label for="bankPct" class="text-xs font-medium text-slategray">Currency conversion margin (%)</label>
+            <input id="bankPct" type="number" min="0" step="0.01" placeholder="e.g. from your bank's tariff" class="mt-1 w-full px-3 py-2 border border-border rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-red/30">
+          </div>
+        </div>
+        <a id="bankLookup" href="#" target="_blank" rel="noopener noreferrer" class="inline-block mt-3 text-sm text-red font-medium hover:underline">Look up your bank's fee schedule</a>
       </div>
 
+      <div id="calcResult" class="p-5 bg-rose rounded-xl text-sm space-y-3 border border-roseaccent">
+        <div>
+          <div class="flex justify-between"><span class="font-medium">PayPal fee</span><span id="ppFee" class="font-semibold"></span></div>
+          <div class="flex justify-between text-slategray text-xs"><span id="ppFormula"></span><span>You keep <span id="ppNet"></span></span></div>
+        </div>
+        <div class="pt-3 border-t border-roseborder">
+          <div class="flex justify-between"><span class="font-medium">Stripe fee</span><span id="stFee" class="font-semibold"></span></div>
+          <div class="flex justify-between text-slategray text-xs"><span id="stFormula"></span><span>You keep <span id="stNet"></span></span></div>
+        </div>
+        <div class="pt-3 border-t border-roseborder">
+          <div class="flex justify-between"><span class="font-medium" id="bankLabel">Bank fee</span><span id="bkFee" class="font-semibold"></span></div>
+          <div class="flex justify-between text-slategray text-xs"><span id="bkFormula"></span><span id="bkNetWrap"></span></div>
+        </div>
+      </div>
+
+      <p class="mt-4 text-xs text-slategray leading-relaxed">
+        PayPal and Stripe figures use their published US-account rates: PayPal 3.49% + $0.49 per commercial transaction, plus 1.50% when the payer is international
+        (<a class="text-red hover:underline" href="https://www.paypal.com/us/webapps/mpp/merchant-fees" target="_blank" rel="noopener noreferrer">PayPal fees</a>);
+        Stripe 2.9% + $0.30 per card payment, plus 1.5% for international cards and 1% for currency conversion
+        (<a class="text-red hover:underline" href="https://stripe.com/pricing" target="_blank" rel="noopener noreferrer">Stripe pricing</a>).
+        Rates differ by the receiver's account country and can change, so confirm on the official pages before you decide. Estimates only.
+      </p>
+
       <div class="mt-6 flex flex-col sm:flex-row gap-3">
-        <a href="https://wise.com" target="_blank" rel="noopener noreferrer" class="flex-1 text-center bg-red text-white font-semibold py-3 rounded-xl hover:bg-redhover">Send with Wise</a>
+        <a href="https://wise.com" target="_blank" rel="noopener noreferrer" class="flex-1 text-center bg-red text-white font-semibold py-3 rounded-xl hover:bg-redhover">Get a live quote on Wise</a>
         <a href="https://airtm.com" target="_blank" rel="noopener noreferrer" class="flex-1 text-center border border-red text-red font-semibold py-3 rounded-xl hover:bg-rose">Use AirTM</a>
       </div>
     </div>
@@ -265,26 +302,54 @@ tailwind.config = {
 <script>
 document.addEventListener('DOMContentLoaded', function () {
   const southAsia = ['Pakistan', 'India', 'Bangladesh', 'Sri Lanka'];
-  const westGlobal = ['United States', 'United Kingdom', 'Canada', 'Germany', 'France', 'Australia', 'Netherlands', 'Sweden', 'Norway', 'Denmark', 'Ireland', 'Spain', 'Italy', 'Switzerland', 'Austria', 'Belgium', 'Portugal'];
+
+  // Major banks by country (names only; no fee figures are stored here)
+  const banks = {
+    'Pakistan': ['HBL (Habib Bank Limited)', 'United Bank Limited (UBL)', 'MCB Bank', 'Allied Bank', 'Meezan Bank', 'Bank Alfalah', 'Askari Bank', 'Faysal Bank', 'Bank Al Habib', 'Habib Metropolitan Bank', 'JS Bank', 'Soneri Bank', 'National Bank of Pakistan', 'Bank of Punjab', 'Dubai Islamic Bank Pakistan', 'Standard Chartered Pakistan'],
+    'India': ['State Bank of India', 'HDFC Bank', 'ICICI Bank', 'Axis Bank', 'Kotak Mahindra Bank', 'Punjab National Bank', 'Bank of Baroda', 'Canara Bank', 'Union Bank of India', 'Yes Bank', 'IndusInd Bank', 'IDFC First Bank'],
+    'Bangladesh': ['Dutch-Bangla Bank', 'BRAC Bank', 'The City Bank', 'Islami Bank Bangladesh', 'Sonali Bank', 'Janata Bank', 'Eastern Bank', 'Prime Bank', 'Pubali Bank', 'Standard Chartered Bangladesh'],
+    'Sri Lanka': ['Bank of Ceylon', "People's Bank", 'Commercial Bank of Ceylon', 'Hatton National Bank', 'Sampath Bank'],
+    'United Arab Emirates': ['Emirates NBD', 'First Abu Dhabi Bank', 'Abu Dhabi Commercial Bank', 'Dubai Islamic Bank', 'Mashreq Bank', 'RAKBANK', 'Emirates Islamic', 'Commercial Bank of Dubai', 'HSBC UAE', 'Standard Chartered UAE'],
+    'Saudi Arabia': ['Al Rajhi Bank', 'Saudi National Bank', 'Riyad Bank', 'Banque Saudi Fransi', 'Saudi Awwal Bank (SAB)', 'Alinma Bank', 'Arab National Bank', 'Bank Albilad'],
+    'Qatar': ['Qatar National Bank (QNB)', 'Commercial Bank of Qatar', 'Doha Bank', 'Dukhan Bank', 'Masraf Al Rayan', 'Qatar Islamic Bank'],
+    'United Kingdom': ['Barclays', 'HSBC UK', 'Lloyds Bank', 'NatWest', 'Santander UK', 'Nationwide', 'Halifax', 'TSB', 'Monzo', 'Starling Bank'],
+    'United States': ['JPMorgan Chase', 'Bank of America', 'Wells Fargo', 'Citibank', 'U.S. Bank', 'Capital One', 'PNC Bank', 'TD Bank', 'Truist'],
+    'Canada': ['Royal Bank of Canada (RBC)', 'TD Canada Trust', 'Scotiabank', 'BMO', 'CIBC', 'National Bank of Canada'],
+    'Germany': ['Deutsche Bank', 'Commerzbank', 'Sparkasse', 'Volksbank', 'ING Germany', 'DKB', 'N26'],
+    'France': ['BNP Paribas', 'Crédit Agricole', 'Société Générale', 'LCL', 'Crédit Mutuel', 'La Banque Postale'],
+    'Nigeria': ['Guaranty Trust Bank (GTBank)', 'Access Bank', 'Zenith Bank', 'First Bank of Nigeria', 'United Bank for Africa (UBA)', 'Stanbic IBTC', 'Fidelity Bank'],
+    'Kenya': ['KCB Bank', 'Equity Bank', 'Co-operative Bank', 'Absa Bank Kenya', 'Standard Chartered Kenya', 'NCBA Bank', 'Stanbic Bank Kenya', 'Family Bank'],
+    'South Africa': ['Standard Bank', 'FNB (First National Bank)', 'Absa', 'Nedbank', 'Capitec', 'Discovery Bank'],
+    'Brazil': ['Itaú Unibanco', 'Bradesco', 'Banco do Brasil', 'Caixa Econômica Federal', 'Santander Brasil', 'Nubank', 'Banco Inter'],
+    'Philippines': ['BDO Unibank', 'Bank of the Philippine Islands (BPI)', 'Metrobank', 'Landbank', 'Security Bank', 'UnionBank', 'PNB'],
+    'Indonesia': ['Bank Central Asia (BCA)', 'Bank Mandiri', 'Bank Negara Indonesia (BNI)', 'Bank Rakyat Indonesia (BRI)', 'CIMB Niaga', 'Bank Permata'],
+    'Turkey': ['Ziraat Bankası', 'İş Bankası', 'Garanti BBVA', 'Akbank', 'Yapı Kredi', 'Halkbank', 'VakıfBank'],
+    'Egypt': ['National Bank of Egypt', 'Banque Misr', 'Commercial International Bank (CIB)', 'QNB Alahli', 'Banque du Caire'],
+    'Australia': ['Commonwealth Bank', 'Westpac', 'ANZ', 'NAB', 'ING Australia', 'Macquarie Bank'],
+    'Malaysia': ['Maybank', 'CIMB Bank', 'Public Bank', 'RHB Bank', 'Hong Leong Bank'],
+    'Singapore': ['DBS Bank', 'OCBC Bank', 'UOB']
+  };
+  const OTHER_BANK = 'Other bank (not listed)';
 
   function getRecommendation(country, goal) {
     const isSouthAsia = southAsia.includes(country);
-    const isWest = westGlobal.includes(country) || country === 'All Countries / Global';
 
     if (goal === 'virtual' || goal === 'ads') {
       if (isSouthAsia) {
         return {
           title: 'RedotPay + Rizon',
-          desc: 'Best global virtual Visa & Mastercard for online shopping, AI tools, and ads. Instant issuance with Apple Pay / Google Pay support.',
+          desc: 'Global virtual Visa & Mastercard options for online shopping, AI tools, and ads.',
           primary: { name: 'RedotPay', url: 'https://url.hk', code: 'i61b4' },
-          secondary: { name: 'Rizon', url: 'https://sng.link', code: '44LF7JL' }
+          secondary: { name: 'Rizon', url: 'https://sng.link', code: '44LF7JL' },
+          extra: { name: 'DogPay', url: 'https://dogpay.com/us/register?reffercode=38775402', code: '38775402' }
         };
       }
       return {
         title: 'Rizon',
-        desc: 'Instant global virtual Visa & Mastercard with high limits, perfect for shopping and running ads.',
+        desc: 'Global virtual Visa & Mastercard for shopping and running ads.',
         primary: { name: 'Rizon', url: 'https://sng.link', code: '44LF7JL' },
-        secondary: { name: 'RedotPay', url: 'https://url.hk', code: 'i61b4' }
+        secondary: { name: 'RedotPay', url: 'https://url.hk', code: 'i61b4' },
+        extra: { name: 'DogPay', url: 'https://dogpay.com/us/register?reffercode=38775402', code: '38775402' }
       };
     }
 
@@ -292,14 +357,14 @@ document.addEventListener('DOMContentLoaded', function () {
     if (isSouthAsia) {
       return {
         title: 'AirTM + Wise',
-        desc: 'Best for receiving USD and cashing out to local banks or JazzCash with the lowest fees.',
+        desc: 'Receive USD and cash out to local banks or wallets. Compare live quotes before sending.',
         primary: { name: 'AirTM', url: 'https://airtm.com' },
         secondary: { name: 'Wise', url: 'https://wise.com' }
       };
     }
     return {
       title: 'Wise',
-      desc: 'Real mid-market exchange rates across 160+ countries. Zero hidden markups.',
+      desc: 'International transfers at the mid-market exchange rate with a transparent fee shown before you send.',
       primary: { name: 'Wise', url: 'https://wise.com' },
       secondary: { name: 'AirTM', url: 'https://airtm.com' }
     };
@@ -321,54 +386,116 @@ document.addEventListener('DOMContentLoaded', function () {
         ${rec.primary.code ? `<button data-code="${rec.primary.code}" class="copy-btn flex-1 border border-red text-red text-sm py-2 rounded-xl hover:bg-roseborder">Copy Code: ${rec.primary.code}</button>` : ''}
       </div>
     `;
-    if (rec.secondary) {
-      html += `<div class="mt-3 text-sm"><a href="${rec.secondary.url}" target="_blank" rel="noopener noreferrer" class="text-red font-medium hover:underline">Also try ${rec.secondary.name}</a>${rec.secondary.code ? ` · <button data-code="${rec.secondary.code}" class="copy-btn text-red font-medium hover:underline">Copy ${rec.secondary.code}</button>` : ''}</div>`;
-    }
+    [rec.secondary, rec.extra].forEach(function (item) {
+      if (!item) return;
+      html += `<div class="mt-3 text-sm"><a href="${item.url}" target="_blank" rel="noopener noreferrer" class="text-red font-medium hover:underline">Also try ${item.name}</a>${item.code ? ` · <button data-code="${item.code}" class="copy-btn text-red font-medium hover:underline">Copy ${item.code}</button>` : ''}</div>`;
+    });
     document.getElementById('bestMatch').innerHTML = html;
 
-    // Re-attach copy listeners for dynamically created buttons
-    document.querySelectorAll('.copy-btn').forEach(btn => {
-      btn.onclick = null;
+    attachCopyButtons();
+  }
+
+  function attachCopyButtons() {
+    document.querySelectorAll('.copy-btn').forEach(function (btn) {
+      btn.removeEventListener('click', copyCode);
       btn.addEventListener('click', copyCode);
     });
   }
 
   function copyCode(e) {
-    const code = e.currentTarget.dataset.code;
-    navigator.clipboard.writeText(code).then(() => {
-      const original = e.currentTarget.textContent;
-      e.currentTarget.textContent = 'Copied!';
-      setTimeout(() => { e.currentTarget.textContent = original; }, 1500);
-    }).catch(() => alert('Code: ' + code));
+    const btn = e.currentTarget;
+    const code = btn.dataset.code;
+    const original = btn.textContent;
+    navigator.clipboard.writeText(code).then(function () {
+      btn.textContent = 'Copied!';
+      setTimeout(function () { btn.textContent = original; }, 1500);
+    }).catch(function () { alert('Code: ' + code); });
   }
 
-  // Country search filter
-  document.getElementById('countrySearch').addEventListener('input', function () {
-    const q = this.value.toLowerCase();
-    const select = document.getElementById('countrySelect');
-    Array.from(select.options).forEach(opt => {
-      opt.hidden = q && !opt.text.toLowerCase().includes(q);
-    });
+  // ---------- Calculator ----------
+  const calcCountry = document.getElementById('calcCountry');
+  const calcBank = document.getElementById('calcBank');
+
+  // Fill calculator countries from the main selector (excluding "Global")
+  Array.from(document.getElementById('countrySelect').options).forEach(function (opt) {
+    if (opt.value === 'All Countries / Global') return;
+    calcCountry.add(new Option(opt.text, opt.value));
+  });
+  calcCountry.value = document.getElementById('countrySelect').value === 'All Countries / Global'
+    ? 'Pakistan' : document.getElementById('countrySelect').value;
+
+  function money(n) { return '$' + n.toFixed(2); }
+
+  function fillBanks() {
+    const list = (banks[calcCountry.value] || []).concat([OTHER_BANK]);
+    calcBank.innerHTML = '';
+    list.forEach(function (b) { calcBank.add(new Option(b, b)); });
+  }
+
+  function updateCalc() {
+    const amount = Math.max(parseFloat(document.getElementById('calcAmount').value) || 0, 0);
+    const intl = document.getElementById('calcIntl').checked;
+    const fx = document.getElementById('calcFx').checked;
+
+    // PayPal US published rate: 3.49% + $0.49, +1.50% if international
+    const ppPct = 3.49 + (intl ? 1.5 : 0);
+    const ppFee = amount > 0 ? amount * ppPct / 100 + 0.49 : 0;
+    document.getElementById('ppFee').textContent = money(ppFee);
+    document.getElementById('ppFormula').textContent = ppPct.toFixed(2) + '% + $0.49';
+    document.getElementById('ppNet').textContent = money(Math.max(amount - ppFee, 0));
+
+    // Stripe US published rate: 2.9% + $0.30, +1.5% intl cards, +1% currency conversion
+    const stPct = 2.9 + (intl ? 1.5 : 0) + (fx ? 1 : 0);
+    const stFee = amount > 0 ? amount * stPct / 100 + 0.30 : 0;
+    document.getElementById('stFee').textContent = money(stFee);
+    document.getElementById('stFormula').textContent = stPct.toFixed(2) + '% + $0.30';
+    document.getElementById('stNet').textContent = money(Math.max(amount - stFee, 0));
+
+    // Bank: only uses numbers the user enters from the bank's own tariff
+    const bank = calcBank.value || 'your bank';
+    const flatRaw = document.getElementById('bankFlat').value;
+    const pctRaw = document.getElementById('bankPct').value;
+    document.getElementById('bankLabel').textContent = bank + ' fee';
+    document.getElementById('bankTitle').textContent = bank + ' fees';
+
+    if (flatRaw === '' && pctRaw === '') {
+      document.getElementById('bkFee').textContent = '—';
+      document.getElementById('bkFormula').textContent = 'Enter your bank\'s fees above';
+      document.getElementById('bkNetWrap').textContent = '';
+    } else {
+      const flat = parseFloat(flatRaw) || 0;
+      const pct = parseFloat(pctRaw) || 0;
+      const bkFee = amount > 0 ? amount * pct / 100 + flat : 0;
+      document.getElementById('bkFee').textContent = money(bkFee);
+      document.getElementById('bkFormula').textContent = pct + '% + ' + money(flat);
+      document.getElementById('bkNetWrap').textContent = 'You keep ' + money(Math.max(amount - bkFee, 0));
+    }
+
+    const q = encodeURIComponent(bank + ' ' + calcCountry.value + ' international incoming transfer fees');
+    document.getElementById('bankLookup').href = 'https://www.google.com/search?q=' + q;
+  }
+
+  calcCountry.addEventListener('change', function () { fillBanks(); updateCalc(); });
+  calcBank.addEventListener('change', updateCalc);
+  ['calcAmount', 'calcIntl', 'calcFx', 'bankFlat', 'bankPct'].forEach(function (id) {
+    document.getElementById(id).addEventListener('input', updateCalc);
+    document.getElementById(id).addEventListener('change', updateCalc);
   });
 
-  document.getElementById('countrySelect').addEventListener('change', renderBestMatch);
+  // Country picked in the finder also updates the calculator immediately
+  document.getElementById('countrySelect').addEventListener('change', function () {
+    renderBestMatch();
+    if (this.value !== 'All Countries / Global') {
+      calcCountry.value = this.value;
+      fillBanks();
+      updateCalc();
+    }
+  });
   document.getElementById('goalSelect').addEventListener('change', renderBestMatch);
 
-  // Initial copy buttons
-  document.querySelectorAll('.copy-btn').forEach(btn => btn.addEventListener('click', copyCode));
-
-  // Calculator
-  function updateCalc() {
-    const amount = parseFloat(document.getElementById('calcAmount').value) || 0;
-    const fee = amount * 0.045;
-    document.getElementById('calcFee').textContent = '$' + fee.toFixed(2);
-    document.getElementById('calcSave').textContent = '$' + fee.toFixed(2);
-    document.getElementById('calcMore').textContent = '$' + fee.toFixed(2);
-  }
-  document.getElementById('calcAmount').addEventListener('input', updateCalc);
-  document.getElementById('calcCurrency').addEventListener('change', updateCalc);
+  attachCopyButtons();
+  fillBanks();
   updateCalc();
-
   renderBestMatch();
 });
 </script>
