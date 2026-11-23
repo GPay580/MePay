@@ -3,7 +3,18 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>MePay – Global Virtual Cards & Cheapest Transfers</title>
+<title>MePay – Card Declined? Find a Virtual Card & Cheaper Transfers for Your Country</title>
+<meta name="description" content="Free comparison tool: see which global virtual Visa/Mastercard and money transfer apps people use in your country, and what banks and PayPal fees really cost. No sign-up needed.">
+<meta name="robots" content="index, follow">
+<meta name="theme-color" content="#DC2626">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="MePay">
+<meta property="og:title" content="MePay – Card declined? Find one that works in your country">
+<meta property="og:description" content="Compare global virtual cards and transfer apps for your country and see the real fee cut from banks and PayPal. Free, no sign-up.">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="MePay – Card declined? Find one that works in your country">
+<meta name="twitter:description" content="Compare global virtual cards and transfer apps for your country and see the real fee cut from banks and PayPal. Free, no sign-up.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23DC2626'/%3E%3Ctext x='16' y='23' font-size='19' font-family='Arial' font-weight='bold' text-anchor='middle' fill='white'%3EM%3C/text%3E%3C/svg%3E">
 <script src="https://cdn.tailwindcss.com"></script>
 <script>
 tailwind.config = {
@@ -27,134 +38,65 @@ tailwind.config = {
 </head>
 <body class="bg-white text-slate antialiased">
 
+<!-- Affiliate disclosure bar -->
+<div class="bg-slate text-white text-xs sm:text-sm text-center px-4 py-2">
+  Disclosure: MePay earns a commission when you sign up through our links, at no extra cost to you.
+  <a href="#how" class="underline font-medium">How we choose</a>
+</div>
+
 <!-- Navigation -->
 <nav class="bg-white border-b border-border sticky top-0 z-40">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="flex justify-between items-center h-16">
-      <div class="flex items-center space-x-2">
+      <a href="#finder" class="flex items-center space-x-2">
         <div class="w-8 h-8 bg-red rounded-lg flex items-center justify-center">
           <span class="text-white font-bold text-sm">M</span>
         </div>
         <span class="text-2xl font-bold tracking-tight text-red">MePay</span>
-      </div>
-      <div class="hidden md:flex items-center space-x-8 text-sm font-medium">
-        <a href="#finder" class="text-slategray hover:text-red">Smart Finder</a>
+      </a>
+      <div class="flex items-center space-x-4 sm:space-x-8 text-xs sm:text-sm font-medium">
+        <a href="#finder" class="text-slategray hover:text-red">Finder</a>
         <a href="#partners" class="text-slategray hover:text-red">Partners</a>
         <a href="#calculator" class="text-slategray hover:text-red">Fee Calculator</a>
+        <a href="#faq" class="hidden sm:inline text-slategray hover:text-red">FAQ</a>
       </div>
     </div>
   </div>
 </nav>
 
+<div id="home">
 <!-- Hero + Smart Finder -->
-<section id="finder" class="bg-offwhite py-16 lg:py-20">
+<section id="finder" class="bg-offwhite py-14 lg:py-20">
   <div class="max-w-4xl mx-auto px-4 text-center">
-    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-slate leading-tight">
-      Your Global Virtual Visa & Mastercard.<br class="hidden sm:block"> Cheapest Worldwide Transfers.
+    <h1 class="text-3xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-slate leading-tight">
+      Card declined?<br class="hidden sm:block"> Find one that works in your country.
     </h1>
     <p class="mt-6 text-lg sm:text-xl text-slategray max-w-2xl mx-auto">
-      Select your country and goal to instantly see the best virtual cards and transfer apps available to you.
+      Pick your country and goal. See the global virtual cards and transfer apps people in your region commonly use, and what banks and PayPal really take in fees. Free, no sign-up.
     </p>
 
     <div class="mt-10 bg-white rounded-2xl border border-border p-6 sm:p-8 shadow-sm text-left">
       <div class="grid sm:grid-cols-2 gap-4 mb-6">
         <div>
-          <label for="countrySelect" class="block text-sm font-medium text-slategray mb-1">Select Your Country</label>
-          <select id="countrySelect" class="w-full px-4 py-3 border border-border rounded-xl bg-white focus:outline-none focus:ring-2 focus:ring-red/30">
-            <option value="All Countries / Global">All Countries / Global</option>
-            <option value="Pakistan">Pakistan</option>
-            <option value="India">India</option>
-            <option value="Bangladesh">Bangladesh</option>
-            <option value="United Arab Emirates">United Arab Emirates</option>
-            <option value="Saudi Arabia">Saudi Arabia</option>
-            <option value="Qatar">Qatar</option>
-            <option value="United Kingdom">United Kingdom</option>
-            <option value="United States" selected>United States</option>
-            <option value="Canada">Canada</option>
-            <option value="Germany">Germany</option>
-            <option value="France">France</option>
-            <option value="Nigeria">Nigeria</option>
-            <option value="Kenya">Kenya</option>
-            <option value="South Africa">South Africa</option>
-            <option value="Brazil">Brazil</option>
-            <option value="Philippines">Philippines</option>
-            <option value="Indonesia">Indonesia</option>
-            <option value="Turkey">Turkey</option>
-            <option value="Egypt">Egypt</option>
-            <option value="Australia">Australia</option>
-            <option value="Afghanistan">Afghanistan</option>
-            <option value="Albania">Albania</option>
-            <option value="Algeria">Algeria</option>
-            <option value="Andorra">Andorra</option>
-            <option value="Angola">Angola</option>
-            <option value="Argentina">Argentina</option>
-            <option value="Armenia">Armenia</option>
-            <option value="Austria">Austria</option>
-            <option value="Azerbaijan">Azerbaijan</option>
-            <option value="Bahrain">Bahrain</option>
-            <option value="Belgium">Belgium</option>
-            <option value="Bolivia">Bolivia</option>
-            <option value="Chile">Chile</option>
-            <option value="China">China</option>
-            <option value="Colombia">Colombia</option>
-            <option value="Costa Rica">Costa Rica</option>
-            <option value="Czech Republic">Czech Republic</option>
-            <option value="Denmark">Denmark</option>
-            <option value="Dominican Republic">Dominican Republic</option>
-            <option value="Ecuador">Ecuador</option>
-            <option value="Ethiopia">Ethiopia</option>
-            <option value="Finland">Finland</option>
-            <option value="Ghana">Ghana</option>
-            <option value="Greece">Greece</option>
-            <option value="Hungary">Hungary</option>
-            <option value="Iraq">Iraq</option>
-            <option value="Ireland">Ireland</option>
-            <option value="Israel">Israel</option>
-            <option value="Italy">Italy</option>
-            <option value="Japan">Japan</option>
-            <option value="Jordan">Jordan</option>
-            <option value="Kuwait">Kuwait</option>
-            <option value="Lebanon">Lebanon</option>
-            <option value="Malaysia">Malaysia</option>
-            <option value="Mexico">Mexico</option>
-            <option value="Morocco">Morocco</option>
-            <option value="Netherlands">Netherlands</option>
-            <option value="New Zealand">New Zealand</option>
-            <option value="Norway">Norway</option>
-            <option value="Oman">Oman</option>
-            <option value="Peru">Peru</option>
-            <option value="Poland">Poland</option>
-            <option value="Portugal">Portugal</option>
-            <option value="Romania">Romania</option>
-            <option value="Russia">Russia</option>
-            <option value="Singapore">Singapore</option>
-            <option value="South Korea">South Korea</option>
-            <option value="Spain">Spain</option>
-            <option value="Sri Lanka">Sri Lanka</option>
-            <option value="Sweden">Sweden</option>
-            <option value="Switzerland">Switzerland</option>
-            <option value="Thailand">Thailand</option>
-            <option value="Ukraine">Ukraine</option>
-            <option value="Vietnam">Vietnam</option>
-          </select>
+          <label for="countrySelect" class="block text-sm font-medium text-slategray mb-1">Select your country</label>
+          <select id="countrySelect" class="w-full px-4 py-3 border border-border rounded-xl bg-white focus:outline-none focus:ring-2 focus:ring-red/30"></select>
         </div>
         <div>
           <label for="goalSelect" class="block text-sm font-medium text-slategray mb-1">What do you need?</label>
           <select id="goalSelect" class="w-full px-4 py-3 border border-border rounded-xl bg-white focus:outline-none focus:ring-2 focus:ring-red/30">
-            <option value="virtual">Virtual Visa/Mastercard for Online Shopping & AI</option>
-            <option value="ads">Run Facebook, TikTok & Google Ads</option>
-            <option value="transfer">Send & Receive USD/EUR Globally</option>
+            <option value="virtual">Virtual Visa/Mastercard for online shopping & AI tools</option>
+            <option value="ads">Virtual card for Facebook, TikTok & Google Ads</option>
+            <option value="transfer">Send & receive USD/EUR internationally</option>
           </select>
         </div>
       </div>
 
-      <div class="flex items-center justify-between flex-wrap gap-3 mb-4">
-        <span id="availableBadge" class="inline-flex items-center bg-rose text-red text-sm font-semibold px-4 py-1.5 rounded-full border border-roseaccent">Available in United States</span>
+      <div class="mb-4">
+        <span id="availableBadge" class="inline-flex items-center bg-rose text-red text-sm font-semibold px-4 py-1.5 rounded-full border border-roseaccent">Showing options for Pakistan</span>
+        <p class="mt-2 text-xs text-slategray">Availability and eligibility differ by country. Always confirm in each app before you sign up or top up.</p>
       </div>
 
-      <div id="bestMatch" class="bg-rose border border-roseaccent rounded-2xl p-5">
-        <!-- Dynamically filled -->
-      </div>
+      <div id="bestMatch" class="bg-rose border border-roseaccent rounded-2xl p-5"></div>
     </div>
   </div>
 </section>
@@ -162,123 +104,51 @@ tailwind.config = {
 <!-- Partners -->
 <section id="partners" class="py-16 bg-white">
   <div class="max-w-6xl mx-auto px-4">
-    <h2 class="text-3xl font-bold text-center mb-12">All Recommended Partners</h2>
-    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-
-      <!-- Rizon -->
-      <div class="border border-border rounded-2xl p-6 hover:shadow-lg transition">
-        <h3 class="text-xl font-bold text-red">Rizon</h3>
-        <p class="text-sm text-slategray mt-2">Global virtual Visa & Mastercard</p>
-        <div class="mt-6 flex flex-col gap-2">
-          <a href="https://getrizon.sng.link/Eshdf/1cro/dfwn?ref=44LF7JL&_forward_params=2" target="_blank" rel="noopener noreferrer" class="block text-center bg-red text-white font-semibold py-2.5 rounded-xl hover:bg-redhover">Get Rizon</a>
-          <button data-code="44LF7JL" class="copy-btn border border-red text-red text-sm py-2 rounded-xl hover:bg-roseborder">Copy Code: 44LF7JL</button>
-        </div>
-      </div>
-
-      <!-- RedotPay -->
-      <div class="border border-border rounded-2xl p-6 hover:shadow-lg transition bg-rose">
-        <h3 class="text-xl font-bold text-red">RedotPay</h3>
-        <p class="text-sm text-slategray mt-2">Global Virtual Visa & Mastercard for Shopping, AI & Ads</p>
-        <div class="mt-6 flex flex-col gap-2">
-          <a href="https://url.hk" target="_blank" rel="noopener noreferrer" class="block text-center bg-red text-white font-semibold py-2.5 rounded-xl hover:bg-redhover">Get RedotPay Card</a>
-          <button data-code="i61b4" class="copy-btn border border-red text-red text-sm py-2 rounded-xl hover:bg-roseborder">Copy Code: i61b4</button>
-        </div>
-      </div>
-
-      <!-- DogPay -->
-      <div class="border border-border rounded-2xl p-6 hover:shadow-lg transition">
-        <h3 class="text-xl font-bold text-red">DogPay</h3>
-        <p class="text-sm text-slategray mt-2">Virtual card & global payments platform</p>
-        <div class="mt-6 flex flex-col gap-2">
-          <a href="https://dogpay.com/us/register?reffercode=38775402" target="_blank" rel="noopener noreferrer" class="block text-center bg-red text-white font-semibold py-2.5 rounded-xl hover:bg-redhover">Get DogPay</a>
-          <button data-code="38775402" class="copy-btn border border-red text-red text-sm py-2 rounded-xl hover:bg-roseborder">Copy Code: 38775402</button>
-        </div>
-      </div>
-
-      <!-- Wise -->
-      <div class="border border-border rounded-2xl p-6 hover:shadow-lg transition">
-        <h3 class="text-xl font-bold text-red">Wise</h3>
-        <p class="text-sm text-slategray mt-2">Cheapest Global Bank Transfers & Multi-Currency Account</p>
-        <div class="mt-6">
-          <a href="https://wise.com" target="_blank" rel="noopener noreferrer" class="block text-center bg-red text-white font-semibold py-2.5 rounded-xl hover:bg-redhover">Open Wise Account</a>
-        </div>
-      </div>
-
-      <!-- AirTM -->
-      <div class="border border-border rounded-2xl p-6 hover:shadow-lg transition">
-        <h3 class="text-xl font-bold text-red">AirTM</h3>
-        <p class="text-sm text-slategray mt-2">Global Digital Dollar Vault & Local P2P Cash-Out</p>
-        <div class="mt-6">
-          <a href="https://airtm.com" target="_blank" rel="noopener noreferrer" class="block text-center bg-red text-white font-semibold py-2.5 rounded-xl hover:bg-redhover">Join AirTM</a>
-        </div>
-      </div>
-
-    </div>
+    <h2 class="text-3xl font-bold text-center mb-3">All Partners</h2>
+    <p class="text-center text-slategray mb-12 max-w-2xl mx-auto">Licensed global apps. MePay does not hold your money or issue cards. You sign up and pay directly with the provider.</p>
+    <div id="partnerGrid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-6"></div>
   </div>
 </section>
 
-<!-- Fee Calculator - CLEAN & SIMPLE -->
+<!-- How we choose -->
+<section id="how" class="py-14 bg-rose border-y border-roseborder">
+  <div class="max-w-3xl mx-auto px-4">
+    <h2 class="text-2xl font-bold text-center mb-6">How we choose and order options</h2>
+    <ul class="space-y-3 text-slategray text-sm sm:text-base">
+      <li><span class="font-semibold text-slate">We earn commission.</span> Every partner on this site pays MePay a referral commission or reward when you sign up through our links. You pay nothing extra.</li>
+      <li><span class="font-semibold text-slate">Order is a starting point.</span> We list first what people in your region commonly use for your goal. It is not a guarantee that it will work for you.</li>
+      <li><span class="font-semibold text-slate">We look at:</span> availability for your region, published fees, ease of sign-up, and how widely the card or app is used for your goal.</li>
+      <li><span class="font-semibold text-slate">Always verify.</span> Rules, fees, limits and promo codes change. Check the provider's own page before you rely on anything shown here.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- Fee Calculator -->
 <section id="calculator" class="py-16 bg-offwhite">
   <div class="max-w-3xl mx-auto px-4">
     <h2 class="text-3xl font-bold text-center mb-4">Fee Calculator</h2>
-    <p class="text-center text-slategray mb-8">Select country, provider and whether you are sending or receiving. See the real published fee cut.</p>
+    <p class="text-center text-slategray mb-8">See what your bank or PayPal takes in fees and hidden exchange-rate markup, side by side with Wise and AirTM.</p>
 
     <div class="bg-white rounded-2xl border border-border p-6 sm:p-8">
 
-      <!-- Country + Currency -->
       <div class="grid sm:grid-cols-2 gap-4 mb-5">
         <div>
           <label for="calcCountry" class="text-sm font-medium text-slategray">Your country</label>
           <select id="calcCountry" class="mt-1 w-full px-4 py-3 border border-border rounded-xl bg-white focus:outline-none focus:ring-2 focus:ring-red/30"></select>
         </div>
         <div>
-          <label for="calcCurrency" class="text-sm font-medium text-slategray">Currency</label>
-          <select id="calcCurrency" class="mt-1 w-full px-4 py-3 border border-border rounded-xl bg-white focus:outline-none focus:ring-2 focus:ring-red/30">
-            <option value="USD" selected>USD – US Dollar</option>
-            <option value="EUR">EUR – Euro</option>
-            <option value="GBP">GBP – British Pound</option>
-            <option value="PKR">PKR – Pakistani Rupee</option>
-            <option value="INR">INR – Indian Rupee</option>
-            <option value="BDT">BDT – Bangladeshi Taka</option>
-            <option value="AED">AED – UAE Dirham</option>
-            <option value="SAR">SAR – Saudi Riyal</option>
-            <option value="QAR">QAR – Qatari Riyal</option>
-            <option value="CAD">CAD – Canadian Dollar</option>
-            <option value="AUD">AUD – Australian Dollar</option>
-            <option value="NGN">NGN – Nigerian Naira</option>
-            <option value="KES">KES – Kenyan Shilling</option>
-            <option value="ZAR">ZAR – South African Rand</option>
-            <option value="BRL">BRL – Brazilian Real</option>
-            <option value="PHP">PHP – Philippine Peso</option>
-            <option value="IDR">IDR – Indonesian Rupiah</option>
-            <option value="TRY">TRY – Turkish Lira</option>
-            <option value="EGP">EGP – Egyptian Pound</option>
-            <option value="MYR">MYR – Malaysian Ringgit</option>
-            <option value="SGD">SGD – Singapore Dollar</option>
-            <option value="JPY">JPY – Japanese Yen</option>
-            <option value="CNY">CNY – Chinese Yuan</option>
-            <option value="CHF">CHF – Swiss Franc</option>
-            <option value="SEK">SEK – Swedish Krona</option>
-            <option value="NOK">NOK – Norwegian Krone</option>
-            <option value="DKK">DKK – Danish Krone</option>
-            <option value="PLN">PLN – Polish Zloty</option>
-            <option value="MXN">MXN – Mexican Peso</option>
-            <option value="THB">THB – Thai Baht</option>
-            <option value="VND">VND – Vietnamese Dong</option>
-            <option value="LKR">LKR – Sri Lankan Rupee</option>
-          </select>
+          <label for="calcCurrency" class="text-sm font-medium text-slategray">Currency of the amount</label>
+          <select id="calcCurrency" class="mt-1 w-full px-4 py-3 border border-border rounded-xl bg-white focus:outline-none focus:ring-2 focus:ring-red/30"></select>
         </div>
       </div>
 
-      <!-- Provider (Bank / PayPal / Stripe / Wise etc) -->
       <div class="mb-5">
-        <label for="calcProvider" class="text-sm font-medium text-slategray">Select provider / bank</label>
+        <label for="calcProvider" class="text-sm font-medium text-slategray">Your current provider / bank</label>
         <select id="calcProvider" class="mt-1 w-full px-4 py-3 border border-border rounded-xl bg-white focus:outline-none focus:ring-2 focus:ring-red/30"></select>
       </div>
 
-      <!-- Send or Receive -->
       <div class="mb-5">
-        <label class="text-sm font-medium text-slategray block mb-2">What are you doing?</label>
+        <span class="text-sm font-medium text-slategray block mb-2">What are you doing?</span>
         <div class="grid grid-cols-2 gap-3">
           <label class="flex items-center justify-center gap-2 cursor-pointer border border-border rounded-xl py-3 px-4 has-[:checked]:border-red has-[:checked]:bg-rose transition">
             <input type="radio" name="direction" id="dirReceive" value="receive" checked class="accent-red">
@@ -291,352 +161,619 @@ tailwind.config = {
         </div>
       </div>
 
-      <!-- Amount -->
       <div class="mb-5">
         <label for="calcAmount" class="text-sm font-medium text-slategray">Amount <span id="curLabel" class="text-red font-semibold">(USD)</span></label>
-        <input id="calcAmount" type="number" value="500" min="1" step="0.01" class="mt-1 w-full px-4 py-3 border border-border rounded-xl focus:outline-none focus:ring-2 focus:ring-red/30 text-lg font-medium">
+        <input id="calcAmount" type="number" value="500" min="1" step="0.01" inputmode="decimal" class="mt-1 w-full px-4 py-3 border border-border rounded-xl focus:outline-none focus:ring-2 focus:ring-red/30 text-lg font-medium">
       </div>
 
-      <!-- International / FX toggles (only relevant for some providers) -->
-      <div id="extraOptions" class="flex flex-wrap gap-4 mb-5 text-sm text-slategray">
+      <div class="flex flex-wrap gap-4 mb-5 text-sm text-slategray">
         <label class="flex items-center gap-2 cursor-pointer">
           <input id="calcIntl" type="checkbox" checked class="accent-red w-4 h-4">
           International (different country)
         </label>
         <label class="flex items-center gap-2 cursor-pointer">
-          <input id="calcFx" type="checkbox" class="accent-red w-4 h-4">
+          <input id="calcFx" type="checkbox" checked class="accent-red w-4 h-4">
           Currency conversion needed
         </label>
       </div>
 
-      <!-- Result -->
-      <div id="calcResult" class="p-5 bg-rose border border-roseaccent rounded-2xl">
-        <div class="flex justify-between items-start mb-3">
-          <div>
-            <p class="text-xs font-semibold text-red uppercase tracking-wide" id="resultTitle">Fee cut</p>
-            <p class="text-sm text-slategray mt-0.5" id="resultProvider">—</p>
-          </div>
-          <div class="text-right">
-            <p class="text-2xl font-bold text-red" id="feeAmount">—</p>
-            <p class="text-xs text-slategray" id="feeFormula"></p>
-          </div>
-        </div>
-        <div class="pt-3 border-t border-roseborder flex justify-between items-center">
-          <span class="text-sm font-medium text-slate" id="netLabel">You keep</span>
-          <span class="text-xl font-bold text-slate" id="netAmount">—</span>
-        </div>
-        <p class="mt-3 text-xs text-slategray leading-relaxed" id="resultNote"></p>
+      <div id="markupWrap" class="mb-5">
+        <label for="calcMarkup" class="text-sm font-medium text-slategray">Estimated hidden exchange-rate markup (%)</label>
+        <input id="calcMarkup" type="number" value="3" min="0" max="15" step="0.1" inputmode="decimal" class="mt-1 w-full px-4 py-3 border border-border rounded-xl focus:outline-none focus:ring-2 focus:ring-red/30">
+        <p class="mt-1 text-xs text-slategray">Banks and PayPal often convert at a rate worse than the real mid-market rate. This is an estimate (banks roughly 2–4%, PayPal roughly 3–4%). Change it to match your own bank.</p>
       </div>
+
+      <div id="calcResult" class="p-5 bg-rose border border-roseaccent rounded-2xl"></div>
 
       <p class="mt-5 text-xs text-slategray leading-relaxed">
-        Fees shown are published rates from the provider’s official pricing pages (PayPal, Stripe, Wise). Traditional bank wire fees vary by account type and corridor — the figure shown is a typical published range. Always confirm the exact fee with the provider before sending or receiving.
+        Estimates only. Fees come from provider pricing pages (PayPal, Stripe, Wise) as last checked by MePay, and bank wire fees are typical ranges because they vary by bank and account. Fixed fees in US dollars are converted at approximate rates. Always confirm the exact fee with the provider before you send or receive money.
       </p>
 
-      <div class="mt-6 flex flex-col sm:flex-row gap-3">
-        <a href="https://wise.com" target="_blank" rel="noopener noreferrer" class="flex-1 text-center bg-red text-white font-semibold py-3 rounded-xl hover:bg-redhover">Get a live quote on Wise</a>
-        <a href="https://airtm.com" target="_blank" rel="noopener noreferrer" class="flex-1 text-center border border-red text-red font-semibold py-3 rounded-xl hover:bg-rose">Use AirTM</a>
-      </div>
+      <div class="mt-6 flex flex-col sm:flex-row gap-3" id="calcCtas"></div>
     </div>
   </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq" class="py-16 bg-white">
+  <div class="max-w-3xl mx-auto px-4">
+    <h2 class="text-3xl font-bold text-center mb-8">Common questions</h2>
+    <div class="space-y-3">
+      <details class="border border-border rounded-xl p-4">
+        <summary class="font-semibold cursor-pointer">Is MePay free?</summary>
+        <p class="mt-2 text-sm text-slategray">Yes. There is no sign-up and no charge to use MePay. We earn a commission from the providers when you sign up through our links.</p>
+      </details>
+      <details class="border border-border rounded-xl p-4">
+        <summary class="font-semibold cursor-pointer">Is MePay a bank or a card issuer?</summary>
+        <p class="mt-2 text-sm text-slategray">No. MePay never holds or touches your money and does not issue cards. We are a comparison and discovery tool. You sign up and pay directly with the provider.</p>
+      </details>
+      <details class="border border-border rounded-xl p-4">
+        <summary class="font-semibold cursor-pointer">Will these cards and apps work in my country?</summary>
+        <p class="mt-2 text-sm text-slategray">We show what people in your region commonly use, but we cannot guarantee eligibility. Rules differ by country and change over time, so check inside each app before you sign up or add money.</p>
+      </details>
+      <details class="border border-border rounded-xl p-4">
+        <summary class="font-semibold cursor-pointer">What do the promo codes do?</summary>
+        <p class="mt-2 text-sm text-slategray">Some providers offer a discount or reward when you sign up with a referral code or link. Offers change, so confirm the current benefit inside the app.</p>
+      </details>
+      <details class="border border-border rounded-xl p-4">
+        <summary class="font-semibold cursor-pointer">Is this financial advice?</summary>
+        <p class="mt-2 text-sm text-slategray">No. MePay provides general information and estimates only. Compare options and read each provider's terms before you decide.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+</div>
+<!-- Legal pages -->
+<section id="page-privacy" class="hidden max-w-3xl mx-auto px-4 py-12">
+  <a href="#finder" class="inline-block mb-6 text-sm text-slategray hover:text-red">← Back to MePay</a>
+
+  <h1 class="text-3xl font-bold mb-2">Privacy Policy</h1>
+  <p class="text-sm text-slategray mb-8">Last updated: November 23, 2026</p>
+
+  <div class="space-y-6 text-slategray leading-relaxed">
+    <section>
+      <h2 class="text-xl font-semibold text-slate mb-2">Summary</h2>
+      <p>MePay is a free comparison tool. You do not need an account, and we do not ask you for your name, ID, bank details or card details on this site.</p>
+    </section>
+    <section>
+      <h2 class="text-xl font-semibold text-slate mb-2">Information we handle</h2>
+      <ul class="list-disc pl-5 space-y-1">
+        <li><span class="font-medium text-slate">Calculator and finder inputs</span> (country, goal, amount) are processed in your browser and are not sent to us.</li>
+        <li><span class="font-medium text-slate">Country suggestion:</span> we use your browser's time zone setting, on your device, to pre-select a country. It is not stored or sent anywhere.</li>
+        <li><span class="font-medium text-slate">Emails you send us:</span> if you contact us, we receive your email address and your message, and use them only to reply.</li>
+      </ul>
+    </section>
+    <section>
+      <h2 class="text-xl font-semibold text-slate mb-2">Analytics and cookies</h2>
+      <p>We may use a web analytics service such as Google Analytics to understand how many people visit, which pages they view and which buttons they click. Such tools may set cookies and collect technical information such as your approximate location, device and browser. You can block cookies in your browser settings. If we start using analytics, this page will stay accurate.</p>
+    </section>
+    <section>
+      <h2 class="text-xl font-semibold text-slate mb-2">Affiliate links and third parties</h2>
+      <p>Links to providers such as RedotPay, Rizon, DogPay, Wise and AirTM are affiliate links. When you click one, you leave MePay and the provider's own privacy policy and terms apply. The provider may use cookies or referral codes to know that you came from MePay, and we may earn a commission. We do not receive your account details or financial information from these providers.</p>
+    </section>
+    <section>
+      <h2 class="text-xl font-semibold text-slate mb-2">Sharing</h2>
+      <p>We do not sell your personal information. We share data only with service providers that help us run the site (for example hosting and analytics), or if required by law.</p>
+    </section>
+    <section>
+      <h2 class="text-xl font-semibold text-slate mb-2">Children</h2>
+      <p>MePay is not directed at children under 18.</p>
+    </section>
+    <section>
+      <h2 class="text-xl font-semibold text-slate mb-2">Changes</h2>
+      <p>We may update this policy from time to time. The date at the top shows when it was last changed.</p>
+    </section>
+    <section>
+      <h2 class="text-xl font-semibold text-slate mb-2">Contact</h2>
+      <p>Questions about this policy: <a href="mailto:fadhe.ai786@gmail.com" class="text-red underline">fadhe.ai786@gmail.com</a></p>
+    </section>
+  </div>
+
+</section>
+<section id="page-terms" class="hidden max-w-3xl mx-auto px-4 py-12">
+  <a href="#finder" class="inline-block mb-6 text-sm text-slategray hover:text-red">← Back to MePay</a>
+
+  <h1 class="text-3xl font-bold mb-2">Terms of Use</h1>
+  <p class="text-sm text-slategray mb-8">Last updated: November 23, 2026</p>
+
+  <div class="space-y-6 text-slategray leading-relaxed">
+    <section>
+      <h2 class="text-xl font-semibold text-slate mb-2">1. What MePay is</h2>
+      <p>MePay is a free comparison and discovery tool for virtual cards and international money transfer services. MePay is not a bank, payment institution or card issuer. We never hold, send or receive your money. When you sign up with a provider, your agreement is directly with that provider.</p>
+    </section>
+    <section>
+      <h2 class="text-xl font-semibold text-slate mb-2">2. Affiliate disclosure</h2>
+      <p>MePay earns a commission or reward when you sign up with a provider through our links or referral codes, at no extra cost to you. This may influence which providers appear on the site. We list first what is commonly used in your region, but you should compare options yourself.</p>
+    </section>
+    <section>
+      <h2 class="text-xl font-semibold text-slate mb-2">3. Information only, not advice</h2>
+      <p>Everything on MePay, including the fee calculator, is general information and estimates. It is not financial, legal or tax advice. Fees, exchange-rate markups, limits, eligibility rules and promo offers change and may differ from what we show. Always confirm details with the provider before you sign up, add money, send or receive payments.</p>
+    </section>
+    <section>
+      <h2 class="text-xl font-semibold text-slate mb-2">4. Availability and local laws</h2>
+      <p>Whether a provider is available to you depends on your country, the provider's own rules and local laws. You are responsible for making sure your use of any service is legal where you live and complies with the provider's terms, including identity checks.</p>
+    </section>
+    <section>
+      <h2 class="text-xl font-semibold text-slate mb-2">5. Third-party services</h2>
+      <p>We do not control third-party providers or their websites, and we are not responsible for their services, fees, decisions about your account, or any loss you suffer when using them.</p>
+    </section>
+    <section>
+      <h2 class="text-xl font-semibold text-slate mb-2">6. No warranty and limitation of liability</h2>
+      <p>MePay is provided "as is" without warranties of any kind. To the extent allowed by law, MePay and its owner are not liable for any loss or damage arising from your use of the site or reliance on its content.</p>
+    </section>
+    <section>
+      <h2 class="text-xl font-semibold text-slate mb-2">7. Changes</h2>
+      <p>We may change the site and these terms at any time. Continued use of the site means you accept the updated terms.</p>
+    </section>
+    <section>
+      <h2 class="text-xl font-semibold text-slate mb-2">8. Contact</h2>
+      <p>Questions about these terms: <a href="mailto:fadhe.ai786@gmail.com" class="text-red underline">fadhe.ai786@gmail.com</a></p>
+    </section>
+  </div>
+
+</section>
+<section id="page-contact" class="hidden max-w-3xl mx-auto px-4 py-12">
+  <a href="#finder" class="inline-block mb-6 text-sm text-slategray hover:text-red">← Back to MePay</a>
+
+  <h1 class="text-3xl font-bold mb-4">Contact MePay</h1>
+  <p class="text-slategray leading-relaxed mb-6">Found a wrong fee, a broken link or an outdated offer? Have a question or a partnership idea? Send us an email and we will reply as soon as we can.</p>
+
+  <div class="bg-rose border border-roseaccent rounded-2xl p-6 mb-8">
+    <p class="text-sm font-semibold text-red uppercase tracking-wide">Email</p>
+    <a href="mailto:fadhe.ai786@gmail.com" class="mt-1 block text-xl font-bold text-slate hover:text-red break-all">fadhe.ai786@gmail.com</a>
+  </div>
+
+  <div class="space-y-4 text-sm text-slategray leading-relaxed">
+    <p><span class="font-semibold text-slate">Please note:</span> MePay is a comparison website. We do not hold your money, issue cards or have access to your provider accounts, so we cannot fix account, card or payment problems. For those, contact the provider directly (RedotPay, Rizon, DogPay, Wise or AirTM) through their official app.</p>
+    <p>Never send us card numbers, passwords, verification codes or ID documents.</p>
+    <p><span class="font-semibold text-slate">Affiliate disclosure:</span> MePay earns a commission when you sign up through our links, at no extra cost to you.</p>
+  </div>
+
 </section>
 
 <!-- Footer -->
 <footer class="bg-white border-t border-border py-10">
   <div class="max-w-4xl mx-auto px-4 text-center text-sm text-slategray">
-    <p class="font-medium text-slate mb-2">MePay – Independent Comparison & Discovery Platform</p>
-    <p>Available worldwide. MePay connects you directly to licensed global financial institutions at zero extra cost. We do not hold funds or issue cards ourselves.</p>
-    <p class="mt-4 text-xs">© 2026 MePay. All partner services are provided by their respective licensed operators.</p>
+    <p class="font-medium text-slate mb-2">MePay – Free Comparison & Discovery Tool</p>
+    <p>MePay connects you to licensed global financial providers. We do not hold funds or issue cards ourselves.</p>
+    <p class="mt-3"><span class="font-medium text-slate">Affiliate disclosure:</span> We earn a commission when you sign up through our links or codes, at no extra cost to you.</p>
+    <p class="mt-4 space-x-4">
+      <a href="#privacy" class="hover:text-red underline">Privacy</a>
+      <a href="#terms" class="hover:text-red underline">Terms</a>
+      <a href="#contact" class="hover:text-red underline">Contact</a>
+      <a href="mailto:fadhe.ai786@gmail.com" class="hover:text-red underline">fadhe.ai786@gmail.com</a>
+    </p>
+    <p class="mt-4 text-xs">© 2026 MePay. All partner services are provided by their respective operators.</p>
   </div>
 </footer>
 
 <script>
-document.addEventListener('DOMContentLoaded', function () {
-  const southAsia = ['Pakistan', 'India', 'Bangladesh', 'Sri Lanka'];
+(function () {
+  // ---------- Analytics (add later) ----------
+  // Paste your Google Analytics Measurement ID between the quotes, e.g. 'G-XXXXXXXXXX'
+  var GA_ID = '';
+  if (GA_ID) {
+    var s = document.createElement('script');
+    s.async = true;
+    s.src = 'https://www.googletagmanager.com/gtag/js?id=' + GA_ID;
+    document.head.appendChild(s);
+    window.dataLayer = window.dataLayer || [];
+    window.gtag = function () { window.dataLayer.push(arguments); };
+    gtag('js', new Date());
+    gtag('config', GA_ID);
+  }
+  function track(name, params) {
+    try { if (window.gtag) window.gtag('event', name, params || {}); } catch (e) {}
+  }
+  document.addEventListener('click', function (e) {
+    var el = e.target.closest('[data-track]');
+    if (el) track(el.getAttribute('data-track'), { page_location: location.href });
+  });
 
-  // Banks + digital providers by country
-  const banks = {
-    'Pakistan': ['PayPal', 'Stripe', 'Wise', 'AirTM', 'HBL (Habib Bank Limited)', 'United Bank Limited (UBL)', 'MCB Bank', 'Allied Bank', 'Meezan Bank', 'Bank Alfalah', 'Askari Bank', 'Faysal Bank', 'Bank Al Habib', 'National Bank of Pakistan', 'Bank of Punjab', 'Standard Chartered Pakistan'],
-    'India': ['PayPal', 'Stripe', 'Wise', 'AirTM', 'State Bank of India', 'HDFC Bank', 'ICICI Bank', 'Axis Bank', 'Kotak Mahindra Bank', 'Punjab National Bank', 'Bank of Baroda', 'Yes Bank'],
-    'Bangladesh': ['PayPal', 'Stripe', 'Wise', 'AirTM', 'Dutch-Bangla Bank', 'BRAC Bank', 'The City Bank', 'Islami Bank Bangladesh', 'Sonali Bank', 'Eastern Bank'],
-    'Sri Lanka': ['PayPal', 'Stripe', 'Wise', 'AirTM', 'Bank of Ceylon', "People's Bank", 'Commercial Bank of Ceylon', 'Hatton National Bank', 'Sampath Bank'],
-    'United Arab Emirates': ['PayPal', 'Stripe', 'Wise', 'AirTM', 'Emirates NBD', 'First Abu Dhabi Bank', 'Abu Dhabi Commercial Bank', 'Dubai Islamic Bank', 'Mashreq Bank', 'RAKBANK'],
-    'Saudi Arabia': ['PayPal', 'Stripe', 'Wise', 'AirTM', 'Al Rajhi Bank', 'Saudi National Bank', 'Riyad Bank', 'Banque Saudi Fransi', 'Alinma Bank'],
-    'Qatar': ['PayPal', 'Stripe', 'Wise', 'AirTM', 'Qatar National Bank (QNB)', 'Commercial Bank of Qatar', 'Doha Bank', 'Masraf Al Rayan'],
-    'United Kingdom': ['PayPal', 'Stripe', 'Wise', 'AirTM', 'Barclays', 'HSBC UK', 'Lloyds Bank', 'NatWest', 'Santander UK', 'Monzo', 'Starling Bank'],
-    'United States': ['PayPal', 'Stripe', 'Wise', 'AirTM', 'JPMorgan Chase', 'Bank of America', 'Wells Fargo', 'Citibank', 'Capital One', 'PNC Bank', 'TD Bank'],
-    'Canada': ['PayPal', 'Stripe', 'Wise', 'AirTM', 'Royal Bank of Canada (RBC)', 'TD Canada Trust', 'Scotiabank', 'BMO', 'CIBC'],
-    'Germany': ['PayPal', 'Stripe', 'Wise', 'AirTM', 'Deutsche Bank', 'Commerzbank', 'Sparkasse', 'ING Germany', 'N26'],
-    'France': ['PayPal', 'Stripe', 'Wise', 'AirTM', 'BNP Paribas', 'Crédit Agricole', 'Société Générale', 'La Banque Postale'],
-    'Nigeria': ['PayPal', 'Stripe', 'Wise', 'AirTM', 'Guaranty Trust Bank (GTBank)', 'Access Bank', 'Zenith Bank', 'First Bank of Nigeria', 'United Bank for Africa (UBA)'],
-    'Kenya': ['PayPal', 'Stripe', 'Wise', 'AirTM', 'KCB Bank', 'Equity Bank', 'Co-operative Bank', 'Absa Bank Kenya', 'Standard Chartered Kenya'],
-    'South Africa': ['PayPal', 'Stripe', 'Wise', 'AirTM', 'Standard Bank', 'FNB (First National Bank)', 'Absa', 'Nedbank', 'Capitec'],
-    'Brazil': ['PayPal', 'Stripe', 'Wise', 'AirTM', 'Itaú Unibanco', 'Bradesco', 'Banco do Brasil', 'Nubank'],
-    'Philippines': ['PayPal', 'Stripe', 'Wise', 'AirTM', 'BDO Unibank', 'Bank of the Philippine Islands (BPI)', 'Metrobank', 'UnionBank'],
-    'Indonesia': ['PayPal', 'Stripe', 'Wise', 'AirTM', 'Bank Central Asia (BCA)', 'Bank Mandiri', 'Bank Negara Indonesia (BNI)', 'Bank Rakyat Indonesia (BRI)'],
-    'Turkey': ['PayPal', 'Stripe', 'Wise', 'AirTM', 'Ziraat Bankası', 'İş Bankası', 'Garanti BBVA', 'Akbank'],
-    'Egypt': ['PayPal', 'Stripe', 'Wise', 'AirTM', 'National Bank of Egypt', 'Banque Misr', 'Commercial International Bank (CIB)'],
-    'Australia': ['PayPal', 'Stripe', 'Wise', 'AirTM', 'Commonwealth Bank', 'Westpac', 'ANZ', 'NAB'],
-    'Malaysia': ['PayPal', 'Stripe', 'Wise', 'AirTM', 'Maybank', 'CIMB Bank', 'Public Bank', 'RHB Bank'],
-    'Singapore': ['PayPal', 'Stripe', 'Wise', 'AirTM', 'DBS Bank', 'OCBC Bank', 'UOB']
+  // ---------- Partners ----------
+  var PARTNERS = {
+    redotpay: { name: 'RedotPay', kind: 'Virtual card', url: 'https://url.hk/i/en/i61b4', code: 'i61b4',
+      desc: 'Global virtual Visa & Mastercard for online shopping, AI tools and ads.' },
+    rizon: { name: 'Rizon', kind: 'Virtual card', url: 'https://getrizon.sng.link/Eshdf/1cro/dfwn?ref=44LF7JL&_forward_params=2', code: '44LF7JL',
+      desc: 'Global virtual Visa & Mastercard for shopping and running ads.' },
+    dogpay: { name: 'DogPay', kind: 'Virtual card', url: 'https://dogpay.com/us/register?reffercode=38775402', code: '38775402',
+      desc: 'Virtual card and global payments platform.' },
+    wise: { name: 'Wise', kind: 'Transfers', url: 'https://wise.com/invite/arhc/azhara786',
+      desc: 'International transfers at the mid-market rate, with the fee shown before you send.',
+      note: 'Account eligibility depends on your country of residence.' },
+    airtm: { name: 'AirTM', kind: 'Dollar account', url: 'https://app.airtm.com/ivt/new2i5jtzhq',
+      desc: 'Digital dollar account with local cash-out options through its marketplace.',
+      note: 'Fees depend on the payment method and peer. Check live rates in the app.' }
   };
-  const DEFAULT_PROVIDERS = ['PayPal', 'Stripe', 'Wise', 'AirTM'];
+  Object.keys(PARTNERS).forEach(function (k) { PARTNERS[k].key = k; });
 
-  // Default currency by country
-  const countryCurrency = {
-    'Pakistan': 'PKR', 'India': 'INR', 'Bangladesh': 'BDT', 'Sri Lanka': 'LKR',
-    'United Arab Emirates': 'AED', 'Saudi Arabia': 'SAR', 'Qatar': 'QAR',
-    'United Kingdom': 'GBP', 'United States': 'USD', 'Canada': 'CAD',
-    'Germany': 'EUR', 'France': 'EUR', 'Nigeria': 'NGN', 'Kenya': 'KES',
-    'South Africa': 'ZAR', 'Brazil': 'BRL', 'Philippines': 'PHP', 'Indonesia': 'IDR',
-    'Turkey': 'TRY', 'Egypt': 'EGP', 'Australia': 'AUD', 'Malaysia': 'MYR',
-    'Singapore': 'SGD', 'Japan': 'JPY', 'China': 'CNY'
-  };
-
-  // Real published fee data (USD-based for digital providers)
-  // PayPal US commercial: 3.49% + $0.49 domestic, +1.50% international
-  // Stripe US: 2.9% + $0.30 domestic, +1.5% intl, +1% FX
-  // Wise receive: free for local, ~$6.11 for SWIFT/wire
-  // Traditional banks: typical published incoming wire fees
-
-  function getFee(provider, direction, amount, intl, fx) {
-    const p = provider.toLowerCase();
-    let fee = 0;
-    let formula = '';
-    let note = '';
-
-    if (p === 'paypal') {
-      if (direction === 'receive') {
-        // Commercial receive (most common for freelancers / business)
-        const pct = 3.49 + (intl ? 1.5 : 0);
-        fee = amount * pct / 100 + 0.49;
-        formula = pct.toFixed(2) + '% + $0.49';
-        note = 'PayPal commercial receiving fee (US published rate). International adds 1.50%. Source: paypal.com/us/business/paypal-business-fees';
-      } else {
-        // Sending (personal / goods)
-        // Approx: 2.9% + fixed or higher for international personal
-        const pct = intl ? 5 : 2.9;
-        fee = amount * pct / 100 + (intl ? 0 : 0.30);
-        if (intl) fee = Math.min(Math.max(fee, 0.99), 4.99); // personal send often capped
-        formula = intl ? 'Up to 5% (min $0.99 / max $4.99 for personal)' : '≈2.9% + fixed';
-        note = 'PayPal send fee varies by funding source and whether it is personal or commercial. Confirm in the PayPal app before sending.';
-      }
-    } else if (p === 'stripe') {
-      if (direction === 'receive') {
-        const pct = 2.9 + (intl ? 1.5 : 0) + (fx ? 1 : 0);
-        fee = amount * pct / 100 + 0.30;
-        formula = pct.toFixed(2) + '% + $0.30';
-        note = 'Stripe US card rate. International cards +1.5%, currency conversion +1%. Source: stripe.com/pricing';
-      } else {
-        fee = 0;
-        formula = 'N/A (Stripe is for receiving payments)';
-        note = 'Stripe is a payment processor for receiving money. Use it when customers pay you.';
-      }
-    } else if (p === 'wise') {
-      if (direction === 'receive') {
-        // Local receive free; SWIFT/wire ~$6.11
-        if (intl) {
-          fee = 6.11;
-          formula = '$6.11 (SWIFT / wire)';
-          note = 'Wise: free for local bank transfers in supported currencies. SWIFT/wire receives cost $6.11. Source: wise.com';
-        } else {
-          fee = 0;
-          formula = 'Free (local transfer)';
-          note = 'Wise local account details (ACH, SEPA, etc.) are free to receive. Source: wise.com';
-        }
-      } else {
-        // Send – variable, typical ~0.4–1.5% depending on corridor. Show approximate mid.
-        const pct = 0.7;
-        fee = amount * pct / 100 + 1.5;
-        formula = '≈0.4–1.5% + small fixed (live quote shown in app)';
-        note = 'Wise shows the exact fee before you confirm. Uses mid-market rate. Check wise.com for your corridor.';
-      }
-    } else if (p === 'airtm') {
-      if (direction === 'receive') {
-        fee = amount * 0.5 / 100; // typical P2P / platform fee range
-        formula = '≈0.5%–1% (varies by method)';
-        note = 'AirTM fees depend on the payment method and peer. Check the live rate inside the AirTM app.';
-      } else {
-        fee = amount * 1 / 100;
-        formula = '≈0.5%–2% (method dependent)';
-        note = 'AirTM cash-out / send fees vary. Confirm the exact fee in the app before confirming.';
-      }
-    } else {
-      // Traditional banks – typical published incoming / outgoing wire ranges
-      if (direction === 'receive') {
-        // Common published incoming SWIFT / wire fees (USD equivalent ranges)
-        fee = 15; // typical mid of $10–$45 range many banks charge
-        formula = 'Typically $10–$45 flat (plus FX margin)';
-        note = 'Most traditional banks charge a flat incoming international wire / SWIFT fee. Exact amount depends on your account type and the sending bank. Check your bank’s schedule of charges.';
-      } else {
-        fee = 25;
-        formula = 'Typically $15–$50 flat (plus FX margin)';
-        note = 'Outgoing international wires usually have a higher flat fee. Correspondent banks may also deduct fees. Confirm with your bank.';
-      }
-    }
-
-    return { fee: Math.max(fee, 0), formula, note };
+  function cta(p, label, cls) {
+    return '<a href="' + p.url + '" target="_blank" rel="sponsored noopener noreferrer" data-track="click_' + p.key + '" class="' + cls + '">' + label + '</a>';
+  }
+  function codeBtn(p, cls) {
+    return p.code ? '<button type="button" data-code="' + p.code + '" data-track="copy_code_' + p.key + '" class="copy-btn ' + cls + '">Copy code: ' + p.code + '</button>' : '';
   }
 
-  function getRecommendation(country, goal) {
-    const isSouthAsia = southAsia.includes(country);
+  document.getElementById('partnerGrid').innerHTML = ['redotpay', 'rizon', 'dogpay', 'wise', 'airtm'].map(function (k) {
+    var p = PARTNERS[k];
+    return '<div class="border border-border rounded-2xl p-6 hover:shadow-lg transition flex flex-col">' +
+      '<p class="text-xs font-semibold text-slategray uppercase tracking-wide">' + p.kind + '</p>' +
+      '<h3 class="text-xl font-bold text-red mt-1">' + p.name + '</h3>' +
+      '<p class="text-sm text-slategray mt-2">' + p.desc + '</p>' +
+      (p.note ? '<p class="text-xs text-slategray mt-2">' + p.note + '</p>' : '') +
+      '<div class="mt-auto pt-6 flex flex-col gap-2">' +
+        cta(p, 'Get ' + p.name, 'block text-center bg-red text-white font-semibold py-2.5 rounded-xl hover:bg-redhover') +
+        codeBtn(p, 'border border-red text-red text-sm py-2 rounded-xl hover:bg-roseborder') +
+      '</div></div>';
+  }).join('');
 
-    if (goal === 'virtual' || goal === 'ads') {
-      if (isSouthAsia) {
-        return {
-          title: 'RedotPay + Rizon',
-          desc: 'Global virtual Visa & Mastercard options for online shopping, AI tools, and ads.',
-          primary: { name: 'RedotPay', url: 'https://url.hk', code: 'i61b4' },
-          secondary: { name: 'Rizon', url: 'https://getrizon.sng.link/Eshdf/1cro/dfwn?ref=44LF7JL&_forward_params=2', code: '44LF7JL' },
-          extra: { name: 'DogPay', url: 'https://dogpay.com/us/register?reffercode=38775402', code: '38775402' }
-        };
+  // Copy-code buttons (works for buttons added later too)
+  document.addEventListener('click', function (e) {
+    var btn = e.target.closest('.copy-btn');
+    if (!btn) return;
+    var code = btn.getAttribute('data-code');
+    var orig = btn.getAttribute('data-orig') || btn.textContent;
+    btn.setAttribute('data-orig', orig);
+    function done() { btn.textContent = 'Copied!'; setTimeout(function () { btn.textContent = orig; }, 1500); }
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(code).then(done).catch(function () { window.prompt('Copy this code:', code); });
+    } else {
+      window.prompt('Copy this code:', code);
+    }
+  });
+
+  // ---------- Countries & regions ----------
+  var PRIORITY = ['Pakistan', 'India', 'Bangladesh', 'Nigeria', 'Egypt', 'United Arab Emirates', 'Saudi Arabia', 'Qatar', 'Kenya', 'Philippines', 'Indonesia', 'Brazil', 'Turkey', 'Sri Lanka', 'South Africa', 'United Kingdom', 'United States', 'Canada', 'Australia', 'Germany', 'France'];
+  var OTHERS = ['Afghanistan', 'Albania', 'Algeria', 'Andorra', 'Angola', 'Argentina', 'Armenia', 'Austria', 'Azerbaijan', 'Bahrain', 'Belgium', 'Bolivia', 'Chile', 'China', 'Colombia', 'Costa Rica', 'Czech Republic', 'Denmark', 'Dominican Republic', 'Ecuador', 'Ethiopia', 'Finland', 'Ghana', 'Greece', 'Hungary', 'Iraq', 'Ireland', 'Israel', 'Italy', 'Japan', 'Jordan', 'Kuwait', 'Lebanon', 'Malaysia', 'Mexico', 'Morocco', 'Netherlands', 'New Zealand', 'Norway', 'Oman', 'Peru', 'Poland', 'Portugal', 'Romania', 'Russia', 'Singapore', 'South Korea', 'Spain', 'Sweden', 'Switzerland', 'Thailand', 'Ukraine', 'Vietnam'];
+  var COUNTRIES = PRIORITY.concat(OTHERS.sort());
+
+  var REGIONS = {
+    southasia: ['Pakistan', 'India', 'Bangladesh', 'Sri Lanka', 'Afghanistan'],
+    mena: ['United Arab Emirates', 'Saudi Arabia', 'Qatar', 'Egypt', 'Algeria', 'Bahrain', 'Iraq', 'Jordan', 'Kuwait', 'Lebanon', 'Morocco', 'Oman', 'Turkey'],
+    africa: ['Nigeria', 'Kenya', 'South Africa', 'Ghana', 'Ethiopia', 'Angola'],
+    latam: ['Brazil', 'Argentina', 'Bolivia', 'Chile', 'Colombia', 'Costa Rica', 'Dominican Republic', 'Ecuador', 'Mexico', 'Peru'],
+    seasia: ['Philippines', 'Indonesia', 'Malaysia', 'Singapore', 'Thailand', 'Vietnam']
+  };
+  function regionOf(country) {
+    for (var r in REGIONS) { if (REGIONS[r].indexOf(country) !== -1) return r; }
+    return 'global';
+  }
+  var WISE_LIMITED = ['Pakistan', 'Bangladesh', 'Nigeria', 'Egypt', 'Sri Lanka', 'Afghanistan', 'Iraq', 'Lebanon', 'Algeria', 'Ethiopia'];
+
+  // ---------- Recommendations ----------
+  var CARD_ORDER = {
+    southasia: ['redotpay', 'rizon', 'dogpay'], mena: ['redotpay', 'rizon', 'dogpay'],
+    africa: ['redotpay', 'rizon', 'dogpay'], latam: ['rizon', 'redotpay', 'dogpay'],
+    seasia: ['redotpay', 'rizon', 'dogpay'], global: ['rizon', 'redotpay', 'dogpay']
+  };
+  var TRANSFER_ORDER = {
+    southasia: ['airtm', 'wise'], mena: ['wise', 'airtm'], africa: ['airtm', 'wise'],
+    latam: ['airtm', 'wise'], seasia: ['wise', 'airtm'], global: ['wise', 'airtm']
+  };
+  var CARD_DESC = {
+    southasia: 'Local bank cards are often declined for international payments in South Asia. These global virtual cards are commonly used for shopping, subscriptions and AI tools.',
+    mena: 'These global virtual cards are commonly used in the Middle East and North Africa for online shopping, subscriptions and AI tools.',
+    africa: 'These global virtual cards are commonly used across Africa for online shopping, subscriptions and AI tools.',
+    latam: 'These global virtual cards are commonly used in Latin America for online shopping, subscriptions and AI tools.',
+    seasia: 'These global virtual cards are commonly used in Southeast Asia for online shopping, subscriptions and AI tools.',
+    global: 'Global virtual Visa & Mastercard options for online shopping, subscriptions and AI tools.'
+  };
+  var TRANSFER_DESC = {
+    southasia: 'Receiving USD and cashing out locally is the main pain point. AirTM is built around local cash-out. Wise is mostly useful for sending to your region, or if you hold residency elsewhere.',
+    mena: 'Wise is strong for transparent international transfers. AirTM adds a digital dollar account with local cash-out options.',
+    africa: 'AirTM is popular for holding dollars and cashing out locally. Wise is useful where your country is supported.',
+    latam: 'AirTM is popular in Latin America for dollar accounts and local cash-out. Wise is useful where your country is supported.',
+    seasia: 'Wise offers transfers at the mid-market rate with the fee shown upfront. AirTM is an alternative for dollar accounts.',
+    global: 'Wise offers international transfers at the mid-market rate with the fee shown before you send.'
+  };
+
+  function renderBestMatch() {
+    var country = document.getElementById('countrySelect').value;
+    var goal = document.getElementById('goalSelect').value;
+    var isGlobal = country === 'All Countries / Global';
+    var region = isGlobal ? 'global' : regionOf(country);
+    var order = goal === 'transfer' ? TRANSFER_ORDER[region] : CARD_ORDER[region];
+    var desc = goal === 'transfer' ? TRANSFER_DESC[region] : CARD_DESC[region];
+    if (goal === 'ads') desc += ' Ad platforms review cards individually, so check limits and billing acceptance before you top up.';
+
+    document.getElementById('availableBadge').textContent = isGlobal ? 'Showing global options' : 'Showing options for ' + country;
+
+    var primary = PARTNERS[order[0]];
+    var title = order.slice(0, 2).map(function (k) { return PARTNERS[k].name; }).join(' + ');
+    var html = '<p class="text-xs font-semibold text-red uppercase tracking-wide">Top suggestion' + (isGlobal ? '' : ' for ' + country) + '</p>' +
+      '<h3 class="text-xl font-bold mt-1">' + title + '</h3>' +
+      '<p class="text-sm text-slategray mt-2">' + desc + '</p>' +
+      '<div class="mt-4 flex flex-col sm:flex-row gap-2">' +
+        cta(primary, 'Get ' + primary.name, 'flex-1 text-center bg-red text-white font-semibold py-2.5 rounded-xl hover:bg-redhover') +
+        codeBtn(primary, 'flex-1 border border-red text-red text-sm py-2 rounded-xl hover:bg-roseborder') +
+      '</div>';
+    order.slice(1).forEach(function (k) {
+      var p = PARTNERS[k];
+      html += '<div class="mt-3 text-sm">' + cta(p, 'Also try ' + p.name, 'text-red font-medium hover:underline') +
+        (p.code ? ' · ' + codeBtn(p, 'text-red font-medium hover:underline') : '') + '</div>';
+    });
+    if (order.indexOf('wise') !== -1 && WISE_LIMITED.indexOf(country) !== -1) {
+      html += '<p class="mt-3 text-xs text-slategray">Note: Wise account availability for residents of ' + country + ' may be limited. Check eligibility before relying on it.</p>';
+    }
+    html += '<p class="mt-3 text-xs text-slategray">Order reflects what is commonly used in your region, not a guarantee. We earn a commission from every partner listed.</p>';
+    document.getElementById('bestMatch').innerHTML = html;
+  }
+
+  // ---------- Calculator data ----------
+  var DIGITAL = ['PayPal', 'Stripe', 'Wise', 'AirTM'];
+  var BANKS = {
+    'Pakistan': ['HBL (Habib Bank Limited)', 'United Bank Limited (UBL)', 'MCB Bank', 'Allied Bank', 'Meezan Bank', 'Bank Alfalah', 'Askari Bank', 'Faysal Bank', 'Bank Al Habib', 'National Bank of Pakistan', 'Bank of Punjab', 'Standard Chartered Pakistan'],
+    'India': ['State Bank of India', 'HDFC Bank', 'ICICI Bank', 'Axis Bank', 'Kotak Mahindra Bank', 'Punjab National Bank', 'Bank of Baroda', 'Yes Bank'],
+    'Bangladesh': ['Dutch-Bangla Bank', 'BRAC Bank', 'The City Bank', 'Islami Bank Bangladesh', 'Sonali Bank', 'Eastern Bank'],
+    'Sri Lanka': ['Bank of Ceylon', "People's Bank", 'Commercial Bank of Ceylon', 'Hatton National Bank', 'Sampath Bank'],
+    'United Arab Emirates': ['Emirates NBD', 'First Abu Dhabi Bank', 'Abu Dhabi Commercial Bank', 'Dubai Islamic Bank', 'Mashreq Bank', 'RAKBANK'],
+    'Saudi Arabia': ['Al Rajhi Bank', 'Saudi National Bank', 'Riyad Bank', 'Banque Saudi Fransi', 'Alinma Bank'],
+    'Qatar': ['Qatar National Bank (QNB)', 'Commercial Bank of Qatar', 'Doha Bank', 'Masraf Al Rayan'],
+    'United Kingdom': ['Barclays', 'HSBC UK', 'Lloyds Bank', 'NatWest', 'Santander UK', 'Monzo', 'Starling Bank'],
+    'United States': ['JPMorgan Chase', 'Bank of America', 'Wells Fargo', 'Citibank', 'Capital One', 'PNC Bank', 'TD Bank'],
+    'Canada': ['Royal Bank of Canada (RBC)', 'TD Canada Trust', 'Scotiabank', 'BMO', 'CIBC'],
+    'Germany': ['Deutsche Bank', 'Commerzbank', 'Sparkasse', 'ING Germany', 'N26'],
+    'France': ['BNP Paribas', 'Crédit Agricole', 'Société Générale', 'La Banque Postale'],
+    'Nigeria': ['Guaranty Trust Bank (GTBank)', 'Access Bank', 'Zenith Bank', 'First Bank of Nigeria', 'United Bank for Africa (UBA)'],
+    'Kenya': ['KCB Bank', 'Equity Bank', 'Co-operative Bank', 'Absa Bank Kenya', 'Standard Chartered Kenya'],
+    'South Africa': ['Standard Bank', 'FNB (First National Bank)', 'Absa', 'Nedbank', 'Capitec'],
+    'Brazil': ['Itaú Unibanco', 'Bradesco', 'Banco do Brasil', 'Nubank'],
+    'Philippines': ['BDO Unibank', 'Bank of the Philippine Islands (BPI)', 'Metrobank', 'UnionBank'],
+    'Indonesia': ['Bank Central Asia (BCA)', 'Bank Mandiri', 'Bank Negara Indonesia (BNI)', 'Bank Rakyat Indonesia (BRI)'],
+    'Turkey': ['Ziraat Bankası', 'İş Bankası', 'Garanti BBVA', 'Akbank'],
+    'Egypt': ['National Bank of Egypt', 'Banque Misr', 'Commercial International Bank (CIB)'],
+    'Australia': ['Commonwealth Bank', 'Westpac', 'ANZ', 'NAB'],
+    'Malaysia': ['Maybank', 'CIMB Bank', 'Public Bank', 'RHB Bank'],
+    'Singapore': ['DBS Bank', 'OCBC Bank', 'UOB']
+  };
+
+  // Approximate units of each currency per 1 US dollar. Used only to convert fixed US$ fees.
+  // Update these now and then to keep estimates realistic.
+  var RATES = {
+    USD: 1, EUR: 0.92, GBP: 0.79, PKR: 280, INR: 88, BDT: 122, AED: 3.67, SAR: 3.75, QAR: 3.64,
+    CAD: 1.38, AUD: 1.52, NGN: 1500, KES: 129, ZAR: 18, BRL: 5.5, PHP: 58, IDR: 16000, TRY: 42,
+    EGP: 50, MYR: 4.4, SGD: 1.35, JPY: 150, CNY: 7.2, CHF: 0.88, SEK: 10.5, NOK: 10.8, DKK: 6.9,
+    PLN: 4, MXN: 19, THB: 34, VND: 25000, LKR: 300
+  };
+  var CUR_NAMES = {
+    USD: 'US Dollar', EUR: 'Euro', GBP: 'British Pound', PKR: 'Pakistani Rupee', INR: 'Indian Rupee', BDT: 'Bangladeshi Taka',
+    AED: 'UAE Dirham', SAR: 'Saudi Riyal', QAR: 'Qatari Riyal', CAD: 'Canadian Dollar', AUD: 'Australian Dollar',
+    NGN: 'Nigerian Naira', KES: 'Kenyan Shilling', ZAR: 'South African Rand', BRL: 'Brazilian Real', PHP: 'Philippine Peso',
+    IDR: 'Indonesian Rupiah', TRY: 'Turkish Lira', EGP: 'Egyptian Pound', MYR: 'Malaysian Ringgit', SGD: 'Singapore Dollar',
+    JPY: 'Japanese Yen', CNY: 'Chinese Yuan', CHF: 'Swiss Franc', SEK: 'Swedish Krona', NOK: 'Norwegian Krone',
+    DKK: 'Danish Krone', PLN: 'Polish Zloty', MXN: 'Mexican Peso', THB: 'Thai Baht', VND: 'Vietnamese Dong', LKR: 'Sri Lankan Rupee'
+  };
+
+  function isBank(provider) { return DIGITAL.indexOf(provider) === -1; }
+  function defaultMarkup(provider) {
+    var p = provider.toLowerCase();
+    if (p === 'paypal') return 4;
+    if (p === 'stripe') return 1;
+    if (p === 'wise' || p === 'airtm') return 0;
+    return 3;
+  }
+
+  function fmt(n, cur) {
+    var d = (cur === 'JPY' || cur === 'IDR' || cur === 'VND') ? 0 : 2;
+    return cur + ' ' + n.toLocaleString('en-US', { minimumFractionDigits: d, maximumFractionDigits: d });
+  }
+  function rng(a, b, cur) {
+    return Math.abs(a - b) < 0.005 ? fmt(a, cur) : fmt(a, cur) + ' – ' + fmt(b, cur);
+  }
+
+  // Fee model: returns {low, high, formula, note} or {na:true,...}. All fixed US$ fees are converted into the chosen currency.
+  function feeFor(provider, dir, amount, intl, cur) {
+    var p = provider.toLowerCase();
+    function u(n) { return n * (RATES[cur] || 1); }
+    var f, pct;
+    if (p === 'paypal') {
+      if (dir === 'receive') {
+        pct = 3.49 + (intl ? 1.5 : 0);
+        f = amount * pct / 100 + u(0.49);
+        return { low: f, high: f, formula: pct.toFixed(2) + '% + US$0.49',
+          note: 'PayPal commercial receiving rate (US published). International payments add 1.50%. See paypal.com business fees page.' };
       }
-      return {
-        title: 'Rizon',
-        desc: 'Global virtual Visa & Mastercard for shopping and running ads.',
-        primary: { name: 'Rizon', url: 'https://getrizon.sng.link/Eshdf/1cro/dfwn?ref=44LF7JL&_forward_params=2', code: '44LF7JL' },
-        secondary: { name: 'RedotPay', url: 'https://url.hk', code: 'i61b4' },
-        extra: { name: 'DogPay', url: 'https://dogpay.com/us/register?reffercode=38775402', code: '38775402' }
-      };
+      if (intl) {
+        return { low: u(0.99), high: u(4.99), formula: 'US$0.99–4.99 (personal, international)',
+          note: 'PayPal personal international send fee varies by funding source. Confirm in the PayPal app before sending.' };
+      }
+      return { low: 0, high: amount * 0.029 + u(0.30), formula: 'Free from balance/bank; about 2.9% + US$0.30 by card',
+        note: 'PayPal domestic send fee depends on funding source and whether the payment is personal or commercial.' };
     }
+    if (p === 'stripe') {
+      if (dir !== 'receive') return { na: true, formula: 'Not applicable', note: 'Stripe is for receiving customer payments, not sending money.' };
+      pct = 2.9 + (intl ? 1.5 : 0);
+      f = amount * pct / 100 + u(0.30);
+      return { low: f, high: f, formula: pct.toFixed(2) + '% + US$0.30',
+        note: 'Stripe US card rate. International cards add 1.5%. Currency conversion adds about 1%. See stripe.com/pricing.' };
+    }
+    if (p === 'wise') {
+      if (dir === 'receive') {
+        f = intl ? u(6.11) : 0;
+        return { low: f, high: f, formula: intl ? 'About US$6.11 (SWIFT / wire)' : 'Free (local account details)',
+          note: 'Wise: receiving through local account details is free. SWIFT/wire receives carry a fee. Converts at the mid-market rate. See wise.com.' };
+      }
+      return { low: amount * 0.004 + u(0.5), high: amount * 0.015 + u(1.5), formula: 'About 0.4–1.5% + small fixed fee',
+        note: 'Wise shows the exact fee before you confirm and uses the mid-market rate. Check wise.com for your route.' };
+    }
+    if (p === 'airtm') {
+      if (dir === 'receive') {
+        return { low: amount * 0.005, high: amount * 0.01, formula: 'About 0.5–1% (varies by method)',
+          note: 'AirTM fees depend on the payment method and peer. Check the live rate inside the app.' };
+      }
+      return { low: amount * 0.005, high: amount * 0.02, formula: 'About 0.5–2% (varies by method)',
+        note: 'AirTM cash-out and send fees vary. Confirm the exact fee in the app before you confirm.' };
+    }
+    // Traditional banks: typical published ranges
+    if (dir === 'receive') {
+      return { low: u(10), high: u(45), formula: 'Typically US$10–45 flat',
+        note: 'Most banks charge a flat incoming international wire fee, and may add a hidden exchange-rate markup. Check your bank\'s schedule of charges.' };
+    }
+    return { low: u(15), high: u(50), formula: 'Typically US$15–50 flat',
+      note: 'Outgoing international wires usually cost more. Correspondent banks may also deduct fees. Confirm with your bank.' };
+  }
 
-    if (isSouthAsia) {
-      return {
-        title: 'AirTM + Wise',
-        desc: 'Receive USD and cash out to local banks or wallets. Compare live quotes before sending.',
-        primary: { name: 'AirTM', url: 'https://airtm.com' },
-        secondary: { name: 'Wise', url: 'https://wise.com' }
-      };
-    }
+  var elCountry = document.getElementById('calcCountry');
+  var elProvider = document.getElementById('calcProvider');
+  var elCurrency = document.getElementById('calcCurrency');
+  var elMarkup = document.getElementById('calcMarkup');
+
+  function row(provider, dir, amount, intl, fx, cur, markupPct) {
+    var fee = feeFor(provider, dir, amount, intl, cur);
+    if (fee.na) return { name: provider, na: true, formula: fee.formula, note: fee.note };
+    var mk = (fx && markupPct > 0) ? amount * markupPct / 100 : 0;
+    var low = fee.low + mk, high = fee.high + mk;
     return {
-      title: 'Wise',
-      desc: 'International transfers at the mid-market exchange rate with a transparent fee shown before you send.',
-      primary: { name: 'Wise', url: 'https://wise.com' },
-      secondary: { name: 'AirTM', url: 'https://airtm.com' }
+      name: provider, low: low, high: high,
+      keepLow: Math.max(amount - high, 0), keepHigh: Math.max(amount - low, 0),
+      formula: fee.formula + (mk > 0 ? ' + about ' + markupPct + '% exchange-rate markup' : ''),
+      note: fee.note
     };
   }
 
-  function renderBestMatch() {
-    const country = document.getElementById('countrySelect').value;
-    const goal = document.getElementById('goalSelect').value;
-    const rec = getRecommendation(country, goal);
-
-    document.getElementById('availableBadge').textContent = 'Available in ' + country;
-
-    let html = `
-      <p class="text-xs font-semibold text-red uppercase tracking-wide">#1 Best Match</p>
-      <h3 class="text-xl font-bold mt-1">${rec.title}</h3>
-      <p class="text-sm text-slategray mt-2">${rec.desc}</p>
-      <div class="mt-4 flex flex-col sm:flex-row gap-2">
-        <a href="${rec.primary.url}" target="_blank" rel="noopener noreferrer" class="flex-1 text-center bg-red text-white font-semibold py-2.5 rounded-xl hover:bg-redhover">Get ${rec.primary.name}</a>
-        ${rec.primary.code ? `<button data-code="${rec.primary.code}" class="copy-btn flex-1 border border-red text-red text-sm py-2 rounded-xl hover:bg-roseborder">Copy Code: ${rec.primary.code}</button>` : ''}
-      </div>
-    `;
-    [rec.secondary, rec.extra].forEach(function (item) {
-      if (!item) return;
-      html += `<div class="mt-3 text-sm"><a href="${item.url}" target="_blank" rel="noopener noreferrer" class="text-red font-medium hover:underline">Also try ${item.name}</a>${item.code ? ` · <button data-code="${item.code}" class="copy-btn text-red font-medium hover:underline">Copy ${item.code}</button>` : ''}</div>`;
-    });
-    document.getElementById('bestMatch').innerHTML = html;
-    attachCopyButtons();
-  }
-
-  function attachCopyButtons() {
-    document.querySelectorAll('.copy-btn').forEach(function (btn) {
-      btn.removeEventListener('click', copyCode);
-      btn.addEventListener('click', copyCode);
-    });
-  }
-
-  function copyCode(e) {
-    const btn = e.currentTarget;
-    const code = btn.dataset.code;
-    const original = btn.textContent;
-    navigator.clipboard.writeText(code).then(function () {
-      btn.textContent = 'Copied!';
-      setTimeout(function () { btn.textContent = original; }, 1500);
-    }).catch(function () { alert('Code: ' + code); });
-  }
-
-  // ---------- Calculator ----------
-  const calcCountry = document.getElementById('calcCountry');
-  const calcProvider = document.getElementById('calcProvider');
-  const calcCurrency = document.getElementById('calcCurrency');
-
-  // Fill countries
-  Array.from(document.getElementById('countrySelect').options).forEach(function (opt) {
-    if (opt.value === 'All Countries / Global') return;
-    calcCountry.add(new Option(opt.text, opt.value));
-  });
-  calcCountry.value = document.getElementById('countrySelect').value === 'All Countries / Global'
-    ? 'United States' : document.getElementById('countrySelect').value;
-
-  function money(n, cur) {
-    return cur + ' ' + n.toFixed(2);
-  }
-
-  function fillProviders() {
-    const list = banks[calcCountry.value] || DEFAULT_PROVIDERS;
-    calcProvider.innerHTML = '';
-    list.forEach(function (b) { calcProvider.add(new Option(b, b)); });
+  function rowHtml(r, cur, tag, dir) {
+    var tagHtml = tag ? ' <span class="ml-1 text-[10px] font-semibold uppercase bg-red text-white rounded px-1.5 py-0.5">' + tag + '</span>' : '';
+    if (r.na) {
+      return '<div class="flex justify-between gap-3 py-3 border-t border-roseborder text-sm"><div><p class="font-semibold">' + r.name + tagHtml + '</p><p class="text-xs text-slategray">' + r.formula + '</p></div><div class="text-right text-slategray">N/A</div></div>';
+    }
+    return '<div class="flex justify-between gap-3 py-3 border-t border-roseborder text-sm">' +
+      '<div class="min-w-0"><p class="font-semibold">' + r.name + tagHtml + '</p><p class="text-xs text-slategray">' + r.formula + '</p></div>' +
+      '<div class="text-right shrink-0"><p class="font-semibold text-red">Cost: ' + rng(r.low, r.high, cur) + '</p>' +
+      '<p class="text-xs text-slategray">' + (dir === 'receive' ? 'You keep: ' : 'Recipient gets: ') + rng(r.keepLow, r.keepHigh, cur) + '</p></div></div>';
   }
 
   function updateCalc() {
-    const amount = Math.max(parseFloat(document.getElementById('calcAmount').value) || 0, 0);
-    const intl = document.getElementById('calcIntl').checked;
-    const fx = document.getElementById('calcFx').checked;
-    const cur = calcCurrency.value;
-    const provider = calcProvider.value || 'PayPal';
-    const direction = document.querySelector('input[name="direction"]:checked').value;
+    var amount = Math.max(parseFloat(document.getElementById('calcAmount').value) || 0, 0);
+    var intl = document.getElementById('calcIntl').checked;
+    var fx = document.getElementById('calcFx').checked;
+    var cur = elCurrency.value;
+    var provider = elProvider.value || 'PayPal';
+    var dir = document.querySelector('input[name="direction"]:checked').value;
+    var country = elCountry.value;
+    var provLower = provider.toLowerCase();
+    var markup = Math.max(parseFloat(elMarkup.value) || 0, 0);
 
     document.getElementById('curLabel').textContent = '(' + cur + ')';
+    document.getElementById('markupWrap').style.display = (fx && provLower !== 'wise' && provLower !== 'airtm') ? '' : 'none';
 
-    const result = getFee(provider, direction, amount, intl, fx);
-    const net = Math.max(amount - result.fee, 0);
+    var sel = row(provider, dir, amount, intl, fx, cur, markup);
+    var wise = provLower === 'wise' ? null : row('Wise', dir, amount, intl, fx, cur, 0);
+    var airtm = provLower === 'airtm' ? null : row('AirTM', dir, amount, intl, fx, cur, 0);
 
-    document.getElementById('resultProvider').textContent = provider + (direction === 'receive' ? ' · Receiving' : ' · Sending');
-    document.getElementById('feeAmount').textContent = money(result.fee, cur);
-    document.getElementById('feeFormula').textContent = result.formula;
-    document.getElementById('netLabel').textContent = direction === 'receive' ? 'You keep' : 'Recipient gets (approx)';
-    document.getElementById('netAmount').textContent = money(net, cur);
-    document.getElementById('resultNote').textContent = result.note;
+    var html = '<p class="text-xs font-semibold text-red uppercase tracking-wide">What you pay</p>';
+    html += rowHtml(sel, cur, 'Your provider', dir).replace('border-t border-roseborder ', '');
+    if (wise) html += rowHtml(wise, cur, '', dir);
+    if (airtm) html += rowHtml(airtm, cur, '', dir);
+
+    if (!sel.na && wise && !wise.na) {
+      var saveLow = sel.low - wise.high, saveHigh = sel.high - wise.low;
+      var msg;
+      if (saveHigh <= 0.005) {
+        msg = 'In this case Wise is not estimated to be cheaper than ' + provider + '.';
+      } else if (saveLow > 0.005) {
+        msg = 'Estimated saving with Wise: ' + rng(saveLow, saveHigh, cur) + '.';
+      } else {
+        msg = 'Wise could save you up to ' + fmt(saveHigh, cur) + ', depending on the exact fees.';
+      }
+      html += '<div class="mt-2 p-3 bg-white border border-roseaccent rounded-xl text-sm font-semibold text-red">' + msg + '</div>';
+    } else if (provLower === 'wise') {
+      html += '<div class="mt-2 p-3 bg-white border border-roseaccent rounded-xl text-sm font-semibold text-slate">Wise is already one of the lowest-cost options in this comparison.</div>';
+    }
+
+    var notes = '<p class="mt-3 text-xs text-slategray leading-relaxed">' + sel.note + '</p>';
+    if (WISE_LIMITED.indexOf(country) !== -1 && (wise || provLower === 'wise')) {
+      notes += '<p class="mt-2 text-xs text-slategray leading-relaxed">Wise account availability for residents of ' + country + ' may be limited. Check eligibility before relying on it.</p>';
+    }
+    document.getElementById('calcResult').innerHTML = html + notes;
   }
 
-  // Events
-  calcCountry.addEventListener('change', function () {
-    fillProviders();
-    if (countryCurrency[calcCountry.value]) {
-      calcCurrency.value = countryCurrency[calcCountry.value];
-    }
-    updateCalc();
-  });
-  calcProvider.addEventListener('change', updateCalc);
-  calcCurrency.addEventListener('change', updateCalc);
-  document.getElementById('calcAmount').addEventListener('input', updateCalc);
-  document.getElementById('calcIntl').addEventListener('change', updateCalc);
-  document.getElementById('calcFx').addEventListener('change', updateCalc);
-  document.querySelectorAll('input[name="direction"]').forEach(function (r) {
-    r.addEventListener('change', updateCalc);
-  });
+  function fillProviders() {
+    var list = DIGITAL.concat(BANKS[elCountry.value] || [], ['Other local bank']);
+    elProvider.innerHTML = '';
+    list.forEach(function (b) { elProvider.add(new Option(b, b)); });
+    elMarkup.value = defaultMarkup(elProvider.value);
+  }
 
-  // Sync from main finder
-  document.getElementById('countrySelect').addEventListener('change', function () {
+  // ---------- Init ----------
+  var finderCountry = document.getElementById('countrySelect');
+  finderCountry.add(new Option('All Countries / Global', 'All Countries / Global'));
+  COUNTRIES.forEach(function (c) {
+    finderCountry.add(new Option(c, c));
+    elCountry.add(new Option(c, c));
+  });
+  Object.keys(RATES).forEach(function (c) { elCurrency.add(new Option(c + ' – ' + CUR_NAMES[c], c)); });
+  elCurrency.value = 'USD';
+
+  // Pick a starting country from the browser time zone (no data leaves the device). Falls back to Pakistan.
+  var TZ = {
+    'Asia/Karachi': 'Pakistan', 'Asia/Kolkata': 'India', 'Asia/Calcutta': 'India', 'Asia/Dhaka': 'Bangladesh', 'Asia/Colombo': 'Sri Lanka',
+    'Asia/Dubai': 'United Arab Emirates', 'Asia/Riyadh': 'Saudi Arabia', 'Asia/Qatar': 'Qatar', 'Europe/London': 'United Kingdom',
+    'Africa/Lagos': 'Nigeria', 'Africa/Nairobi': 'Kenya', 'Africa/Johannesburg': 'South Africa', 'Africa/Cairo': 'Egypt', 'Africa/Accra': 'Ghana',
+    'America/Sao_Paulo': 'Brazil', 'America/Mexico_City': 'Mexico', 'America/Bogota': 'Colombia', 'America/Argentina/Buenos_Aires': 'Argentina',
+    'Asia/Manila': 'Philippines', 'Asia/Jakarta': 'Indonesia', 'Europe/Istanbul': 'Turkey', 'Asia/Kuala_Lumpur': 'Malaysia', 'Asia/Singapore': 'Singapore',
+    'Asia/Bangkok': 'Thailand', 'Asia/Ho_Chi_Minh': 'Vietnam', 'Australia/Sydney': 'Australia', 'Europe/Berlin': 'Germany', 'Europe/Paris': 'France',
+    'America/New_York': 'United States', 'America/Chicago': 'United States', 'America/Denver': 'United States', 'America/Los_Angeles': 'United States',
+    'America/Toronto': 'Canada', 'America/Vancouver': 'Canada'
+  };
+  var startCountry = 'Pakistan';
+  try {
+    var tz = Intl.DateTimeFormat().resolvedOptions().timeZone;
+    if (tz && TZ[tz]) startCountry = TZ[tz];
+  } catch (e) {}
+  finderCountry.value = startCountry;
+  elCountry.value = startCountry;
+
+  fillProviders();
+  updateCalc();
+  renderBestMatch();
+
+  document.getElementById('calcCtas').innerHTML =
+    cta(PARTNERS.wise, 'Get a live quote on Wise', 'flex-1 text-center bg-red text-white font-semibold py-3 rounded-xl hover:bg-redhover') +
+    cta(PARTNERS.airtm, 'Use AirTM', 'flex-1 text-center border border-red text-red font-semibold py-3 rounded-xl hover:bg-rose');
+
+  // ---------- Events ----------
+  finderCountry.addEventListener('change', function () {
     renderBestMatch();
     if (this.value !== 'All Countries / Global') {
-      calcCountry.value = this.value;
+      elCountry.value = this.value;
       fillProviders();
-      if (countryCurrency[this.value]) {
-        calcCurrency.value = countryCurrency[this.value];
-      }
       updateCalc();
     }
   });
   document.getElementById('goalSelect').addEventListener('change', renderBestMatch);
-
-  // Init
-  attachCopyButtons();
-  fillProviders();
-  updateCalc();
-  renderBestMatch();
-});
+  elCountry.addEventListener('change', function () { fillProviders(); updateCalc(); });
+  elProvider.addEventListener('change', function () { elMarkup.value = defaultMarkup(elProvider.value); updateCalc(); });
+  elCurrency.addEventListener('change', updateCalc);
+  elMarkup.addEventListener('input', updateCalc);
+  document.getElementById('calcAmount').addEventListener('input', updateCalc);
+  document.getElementById('calcIntl').addEventListener('change', updateCalc);
+  document.getElementById('calcFx').addEventListener('change', updateCalc);
+  document.querySelectorAll('input[name="direction"]').forEach(function (r) { r.addEventListener('change', updateCalc); });
+})();
+</script>
+<script>
+(function () {
+  var pages = { privacy: 'Privacy Policy – MePay', terms: 'Terms of Use – MePay', contact: 'Contact – MePay' };
+  var homeTitle = document.title;
+  function route() {
+    var h = location.hash.replace('#', '');
+    var home = document.getElementById('home');
+    Object.keys(pages).forEach(function (p) { document.getElementById('page-' + p).classList.add('hidden'); });
+    if (pages[h]) {
+      home.classList.add('hidden');
+      document.getElementById('page-' + h).classList.remove('hidden');
+      document.title = pages[h];
+      window.scrollTo(0, 0);
+    } else {
+      home.classList.remove('hidden');
+      document.title = homeTitle;
+      if (h) { var t = document.getElementById(h); if (t) t.scrollIntoView(); }
+    }
+  }
+  window.addEventListener('hashchange', route);
+  route();
+})();
 </script>
 </body>
 </html>
