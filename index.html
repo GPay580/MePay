@@ -640,7 +640,7 @@ tailwind.config = {
       var src = ' Source: paypal.com/us/business/paypal-business-fees (US rates). Accounts registered outside the US may pay different rates.';
       if (dir === 'receive') {
         if (ppType === 'ff') {
-          return { low: 0, high: 0, formula: 'Free (friends & family, no currency conversion)',
+          return { low: 0, high: 0, formula: fx ? 'Free (friends & family)' : 'Free (friends & family, no currency conversion)',
             note: 'PayPal does not charge to receive a personal (friends & family) payment unless a currency conversion is involved. Personal payments must not be used for goods or services. Source: paypal.com/us/digital-wallet/paypal-consumer-fees.' };
         }
         var base = ppType === 'goods' ? 2.99 : (ppType === 'card' ? 2.99 : 3.49);
@@ -652,7 +652,7 @@ tailwind.config = {
           note: 'PayPal US commercial rates: 3.49% + fixed fee for PayPal Checkout and other commercial payments, 2.99% for goods & services sent with Send/Receive Money, 2.99% + fixed fee for standard card payments; international payments add 1.50%. The fixed fee depends on the currency received (US$0.49 for USD).' + src };
       }
       if (ppType !== 'ff') {
-        return { low: 0, high: 0, formula: 'Free to pay for goods or services (no currency conversion)',
+        return { low: 0, high: 0, formula: fx ? 'Free buyer fee' : 'Free to pay for goods or services (no currency conversion)',
           note: 'PayPal does not charge the buyer for a purchase unless a currency conversion is involved; the seller pays the commercial fee. Source: paypal.com/us/digital-wallet/paypal-consumer-fees.' };
       }
       var cardPart = amount * 0.029 + pFix;
