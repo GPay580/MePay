@@ -147,6 +147,17 @@ tailwind.config = {
         <select id="calcProvider" class="mt-1 w-full px-4 py-3 border border-border rounded-xl bg-white focus:outline-none focus:ring-2 focus:ring-red/30"></select>
       </div>
 
+      <div id="ppTypeWrap" class="mb-5" style="display:none">
+        <label for="calcPpType" class="text-sm font-medium text-slategray">PayPal payment type</label>
+        <select id="calcPpType" class="mt-1 w-full px-4 py-3 border border-border rounded-xl bg-white focus:outline-none focus:ring-2 focus:ring-red/30">
+          <option value="checkout" selected>Invoice, PayPal Checkout or other commercial payment</option>
+          <option value="goods">Goods &amp; services sent from a PayPal account (Send/Receive Money)</option>
+          <option value="card">Card payment through PayPal (standard credit/debit card)</option>
+          <option value="ff">Friends &amp; family (personal, not for goods or services)</option>
+        </select>
+        <p class="mt-1 text-xs text-slategray">PayPal charges different rates for each type. MePay uses PayPal's published US rates; accounts in other countries may pay different rates.</p>
+      </div>
+
       <div class="mb-5">
         <span class="text-sm font-medium text-slategray block mb-2">What are you doing?</span>
         <div class="grid grid-cols-2 gap-3">
@@ -180,14 +191,15 @@ tailwind.config = {
       <div id="markupWrap" class="mb-5">
         <label for="calcMarkup" class="text-sm font-medium text-slategray">Estimated hidden exchange-rate markup (%)</label>
         <input id="calcMarkup" type="number" value="3" min="0" max="15" step="0.1" inputmode="decimal" class="mt-1 w-full px-4 py-3 border border-border rounded-xl focus:outline-none focus:ring-2 focus:ring-red/30">
-        <p class="mt-1 text-xs text-slategray">Banks and PayPal often convert at a rate worse than the real mid-market rate. This is an estimate (banks roughly 2–4%, PayPal roughly 3–4%). Change it to match your own bank.</p>
+        <p class="mt-1 text-xs text-slategray">Banks and PayPal often convert at a rate worse than the real mid-market rate. PayPal publishes a 3–4% currency conversion spread (3% for most conversions, 4% when paying or sending in another currency). Bank markups are an estimate (roughly 2–4%). Change it to match your own bank.</p>
       </div>
 
       <div id="calcResult" class="p-5 bg-rose border border-roseaccent rounded-2xl"></div>
 
       <p class="mt-5 text-xs text-slategray leading-relaxed">
-        Estimates only. Fees come from provider pricing pages (PayPal, Stripe, Wise) as last checked by MePay, and bank wire fees are typical ranges because they vary by bank and account. Fixed fees in US dollars are converted at approximate rates. Always confirm the exact fee with the provider before you send or receive money.
+        Estimates only. Fees come from the providers' own pricing and help pages (PayPal US, Stripe US, Wise, Airtm help centre), last checked by MePay on 25 Nov 2026. Where a provider does not publish a fixed number (for example Airtm P2P cash-out, or Wise fees that vary by currency), we say so and show only the published minimum. Bank wire fees are typical ranges because they vary by bank and account. Always confirm the exact fee with the provider before you send or receive money.
       </p>
+      <p id="fxNote" class="mt-2 text-xs text-slategray leading-relaxed"></p>
 
       <div class="mt-6 flex flex-col sm:flex-row gap-3" id="calcCtas"></div>
     </div>
@@ -439,7 +451,30 @@ tailwind.config = {
     for (var r in REGIONS) { if (REGIONS[r].indexOf(country) !== -1) return r; }
     return 'global';
   }
-  var WISE_LIMITED = ['Pakistan', 'Bangladesh', 'Nigeria', 'Egypt', 'Sri Lanka', 'Afghanistan', 'Iraq', 'Lebanon', 'Algeria', 'Ethiopia'];
+  // Wise country rules, from Wise's own help centre (checked 25 Nov 2026):
+  // Unsupported: https://wise.com/help/articles/2978049/which-countriesregions-can-i-send-to
+  var WISE_UNSUPPORTED = ['Afghanistan', 'Belarus', 'Burundi', 'Central African Republic', 'Chad', 'Congo', 'Democratic Republic of the Congo', 'Cuba', 'Eritrea', 'Iran', 'Iraq', 'North Korea', 'Libya', 'Myanmar', 'Somalia', 'South Sudan', 'Russia', 'Sudan', 'Syria', 'Yemen', 'Venezuela'];
+  // Where residents can hold money (and so get account details): https://wise.com/help/articles/2813542/where-do-i-need-to-live-to-hold-money-with-wise
+  var WISE_HOLD = ['Andorra', 'Argentina', 'Australia', 'Austria', 'Bahrain', 'Belgium', 'Brazil', 'Bulgaria', 'Canada', 'Chile', 'China', 'Colombia', 'Costa Rica', 'Croatia', 'Cyprus', 'Czech Republic', 'Denmark', 'Estonia', 'Finland', 'France', 'Georgia', 'Germany', 'Greece', 'Hong Kong', 'Hungary', 'Iceland', 'Ireland', 'Israel', 'Italy', 'Japan', 'Kuwait', 'Latvia', 'Liechtenstein', 'Lithuania', 'Luxembourg', 'Malaysia', 'Malta', 'Monaco', 'Netherlands', 'New Zealand', 'North Macedonia', 'Norway', 'Peru', 'Philippines', 'Poland', 'Portugal', 'Qatar', 'Romania', 'Saudi Arabia', 'Singapore', 'Slovakia', 'Slovenia', 'South Africa', 'South Korea', 'Spain', 'Sweden', 'Switzerland', 'Taiwan', 'United Kingdom', 'United States', 'Uruguay'];
+  // On Wise's list but with restrictions (India: only when travelling overseas; Thailand: paused for new account details).
+  var WISE_HOLD_LIMITED = ['India', 'Thailand'];
+  // No USD account details: https://wise.com/help/articles/2810318/can-i-get-usd-account-details
+  var WISE_NO_USD = ['Afghanistan', 'Bangladesh', 'Belarus', 'Burundi', 'Cameroon', 'Central African Republic', 'Chad', 'Congo', 'Democratic Republic of the Congo', 'Cuba', 'Eritrea', 'Guinea-Bissau', 'Iran', 'Iraq', 'Libya', 'Myanmar', 'Nigeria', 'North Korea', 'Pakistan', 'Russia', 'Serbia', 'Somalia', 'South Sudan', 'Sri Lanka', 'Sudan', 'Syria', 'Turkey', 'United Arab Emirates', 'Ukraine', 'Venezuela', 'Yemen'];
+  // 'unsupported' | 'nodetails' (can't hold money / get account details) | 'limited' | 'ok'
+  function wiseStatus(country) {
+    if (!country || country === 'All Countries / Global') return 'ok';
+    if (WISE_UNSUPPORTED.indexOf(country) !== -1) return 'unsupported';
+    if (WISE_HOLD_LIMITED.indexOf(country) !== -1) return 'limited';
+    if (WISE_HOLD.indexOf(country) === -1) return 'nodetails';
+    return 'ok';
+  }
+  function wiseCountryNote(country) {
+    var st = wiseStatus(country);
+    if (st === 'unsupported') return 'Wise does not operate in ' + country + ' (it is on Wise\'s list of unsupported countries), so you cannot send to, receive from or use a Wise account there.';
+    if (st === 'nodetails') return 'Residents of ' + country + ' cannot hold money or get account details with Wise' + (WISE_NO_USD.indexOf(country) !== -1 ? ' (including USD account details)' : '') + '. What works instead: your client sends the payment with Wise straight to your local bank account.';
+    if (st === 'limited') return 'Wise lists restrictions for residents of ' + country + (country === 'India' ? ' (holding money is only possible while travelling overseas)' : ' (new currencies and account details are temporarily paused)') + '. Your client can still send with Wise straight to your local bank account.';
+    return '';
+  }
 
   // ---------- Recommendations ----------
   var CARD_ORDER = {
@@ -474,7 +509,10 @@ tailwind.config = {
     var isGlobal = country === 'All Countries / Global';
     var region = isGlobal ? 'global' : regionOf(country);
     var order = goal === 'transfer' ? TRANSFER_ORDER[region] : CARD_ORDER[region];
+    // Don't suggest Wise where Wise itself says it does not operate.
+    if (!isGlobal && wiseStatus(country) === 'unsupported') order = order.filter(function (k) { return k !== 'wise'; });
     var desc = goal === 'transfer' ? TRANSFER_DESC[region] : CARD_DESC[region];
+    if (goal === 'transfer' && !isGlobal && wiseStatus(country) === 'unsupported') desc = 'AirTM offers a digital dollar account with local cash-out options. Wise is not available in ' + country + '.';
     if (goal === 'ads') desc += ' Ad platforms review cards individually, so check limits and billing acceptance before you top up.';
 
     document.getElementById('availableBadge').textContent = isGlobal ? 'Showing global options' : 'Showing options for ' + country;
@@ -493,8 +531,8 @@ tailwind.config = {
       html += '<div class="mt-3 text-sm">' + cta(p, 'Also try ' + p.name, 'text-red font-medium hover:underline') +
         (p.code ? ' · ' + codeBtn(p, 'text-red font-medium hover:underline') : '') + '</div>';
     });
-    if (order.indexOf('wise') !== -1 && WISE_LIMITED.indexOf(country) !== -1) {
-      html += '<p class="mt-3 text-xs text-slategray">Note: Wise account availability for residents of ' + country + ' may be limited. Check eligibility before relying on it.</p>';
+    if (goal === 'transfer' && !isGlobal && wiseCountryNote(country)) {
+      html += '<p class="mt-3 text-xs text-slategray">Note: ' + wiseCountryNote(country) + '</p>';
     }
     html += '<p class="mt-3 text-xs text-slategray">Order reflects what is commonly used in your region, not a guarantee. We earn a commission from every partner listed.</p>';
     document.getElementById('bestMatch').innerHTML = html;
@@ -528,14 +566,18 @@ tailwind.config = {
     'Singapore': ['DBS Bank', 'OCBC Bank', 'UOB']
   };
 
-  // Approximate units of each currency per 1 US dollar. Used only to convert fixed US$ fees.
-  // Update these now and then to keep estimates realistic.
+  // Units of each currency per 1 US dollar. Used only to convert fixed fees into the chosen currency.
+  // Live rates are loaded at runtime from ExchangeRate-API's free open endpoint (updated daily, cached 12h in the browser).
+  // The values below are a fallback snapshot from that source, taken 25 Nov 2026 (cross-checked against Wise's mid-market PKR 276.4).
+  var FX_FALLBACK_DATE = '25 Nov 2026';
   var RATES = {
-    USD: 1, EUR: 0.92, GBP: 0.79, PKR: 280, INR: 88, BDT: 122, AED: 3.67, SAR: 3.75, QAR: 3.64,
-    CAD: 1.38, AUD: 1.52, NGN: 1500, KES: 129, ZAR: 18, BRL: 5.5, PHP: 58, IDR: 16000, TRY: 42,
-    EGP: 50, MYR: 4.4, SGD: 1.35, JPY: 150, CNY: 7.2, CHF: 0.88, SEK: 10.5, NOK: 10.8, DKK: 6.9,
-    PLN: 4, MXN: 19, THB: 34, VND: 25000, LKR: 300
+    USD: 1, EUR: 0.912, GBP: 0.763, PKR: 276.39, INR: 92.93, BDT: 124.68, AED: 3.6725, SAR: 3.75, QAR: 3.64,
+    CAD: 1.429, AUD: 1.507, NGN: 1366.83, KES: 129.98, ZAR: 17.53, BRL: 5.894, PHP: 63.77, IDR: 18227, TRY: 50.67,
+    EGP: 54.23, MYR: 4.116, SGD: 1.290, JPY: 159.24, CNY: 6.678, CHF: 0.837, SEK: 10.24, NOK: 9.80, DKK: 6.821,
+    PLN: 4.070, MXN: 19.38, THB: 33.94, VND: 25766, LKR: 332.42
   };
+  var FALLBACK_RATES = JSON.parse(JSON.stringify(RATES));
+  var fxInfo = { live: false, date: FX_FALLBACK_DATE };
   var CUR_NAMES = {
     USD: 'US Dollar', EUR: 'Euro', GBP: 'British Pound', PKR: 'Pakistani Rupee', INR: 'Indian Rupee', BDT: 'Bangladeshi Taka',
     AED: 'UAE Dirham', SAR: 'Saudi Riyal', QAR: 'Qatari Riyal', CAD: 'Canadian Dollar', AUD: 'Australian Dollar',
@@ -548,7 +590,8 @@ tailwind.config = {
   function isBank(provider) { return DIGITAL.indexOf(provider) === -1; }
   function defaultMarkup(provider) {
     var p = provider.toLowerCase();
-    if (p === 'paypal') return 4;
+    // PayPal US: 3.00% spread for most conversions, 4.00% when paying/sending so the other side gets a different currency.
+    if (p === 'paypal') { var d = document.querySelector('input[name="direction"]:checked'); return (d && d.value === 'send') ? 4 : 3; }
     if (p === 'stripe') return 1;
     if (p === 'wise' || p === 'airtm') return 0;
     return 3;
@@ -562,48 +605,139 @@ tailwind.config = {
     return Math.abs(a - b) < 0.005 ? fmt(a, cur) : fmt(a, cur) + ' – ' + fmt(b, cur);
   }
 
-  // Fee model: returns {low, high, formula, note} or {na:true,...}. All fixed US$ fees are converted into the chosen currency.
-  function feeFor(provider, dir, amount, intl, cur) {
+  // Fee model: returns {low, high, formula, note, open} or {na:true,...}.
+  // open:true means the provider publishes only a minimum ("from"), so no upper bound is shown.
+  // Sources (checked 25 Nov 2026):
+  //  PayPal merchant (US): https://www.paypal.com/us/business/paypal-business-fees
+  //  PayPal consumer (US): https://www.paypal.com/us/digital-wallet/paypal-consumer-fees
+  //  Stripe (US): https://stripe.com/pricing
+  //  Wise: https://wise.com/us/pricing/ and https://wise.com/us/pricing/receive
+  //  Airtm: help.airtm.com articles 47001265604 (USA virtual account), 47001307561 (UK), 47001299436 (EUR), 47001198097 (send), 47001250523 (P2P)
+  var PP_COMMERCIAL_FIXED = { AUD: 0.59, BRL: 2.90, CAD: 0.59, DKK: 2.90, EUR: 0.39, JPY: 49, MYR: 2.00, MXN: 9.00, NOK: 3.90, PHP: 25, PLN: 1.89, SGD: 0.69, SEK: 4.09, CHF: 0.49, THB: 15, GBP: 0.39, USD: 0.49 };
+  var PP_PERSONAL_FIXED = { AUD: 0.30, BRL: 0.60, CAD: 0.30, DKK: 2.60, EUR: 0.35, JPY: 40, MYR: 2.00, MXN: 4.00, NOK: 2.80, PHP: 15, PLN: 1.35, SGD: 0.50, SEK: 3.25, CHF: 0.55, THB: 11, GBP: 0.20, USD: 0.30 };
+  var WISE_LOCAL = ['AUD', 'CAD', 'EUR', 'GBP', 'HUF', 'NZD', 'PHP', 'SGD', 'USD'];
+  var WISE_SWIFT = { USD: 6.11, GBP: 2.16, EUR: 2.39 };
+  var WISE_MIN_PCT = 0.23;
+  var AIRTM_ACH = { 'Argentina': { p: 0.5 }, 'Bolivia': { p: 0.5, max: 1000 }, 'Brazil': { p: 0, max: 1000 }, 'Colombia': { f: 0.5, p: 0.5, max: 10 }, 'Dominican Republic': { f: 0.5, p: 0.5, max: 10 }, 'Indonesia': { f: 0.5, p: 0.5, max: 10 } };
+  var AIRTM_FEDNOW = { 'Argentina': { p: 0.5, max: 10000 }, 'Bolivia': { p: 0.5, max: 10000 }, 'Brazil': { p: 0, max: 1000 }, 'Colombia': { f: 0.5, p: 0.5, max: 10 }, 'Dominican Republic': { f: 0.5, p: 0.5, max: 10 }, 'Indonesia': { f: 0.5, p: 0.5, max: 10 } };
+  var AIRTM_WIRE = { 'Argentina': { f: 10, p: 0.5 }, 'Bolivia': { f: 10, p: 0.5, max: 10 }, 'Brazil': { f: 10, p: 0, max: 1000 }, 'Colombia': { f: 10, p: 0.5, max: 10 }, 'Dominican Republic': { f: 10, p: 0.5, max: 10 }, 'Indonesia': { f: 10, p: 0.5, max: 10 }, 'Nigeria': { f: 10, p: 1.8, max: 100 }, 'Philippines': { f: 10, p: 1.8, max: 100 }, 'Turkey': { f: 10, p: 1.8, max: 100 } };
+  var AIRTM_UK_RESTRICTED = ['Afghanistan', 'Algeria', 'Belarus', 'Burundi', 'Central African Republic', 'China', 'Democratic Republic of the Congo', 'Cuba', 'Eritrea', 'Guinea-Bissau', 'Iran', 'Iraq', 'Japan', 'Lebanon', 'Libya', 'Mali', 'Myanmar', 'North Korea', 'Russia', 'Somalia', 'South Sudan', 'Sudan', 'Syria', 'Tunisia', 'Venezuela', 'Yemen'];
+  var AIRTM_SEND_11 = ['United Kingdom', 'Indonesia', 'Nigeria', 'Canada', 'Turkey', 'Bangladesh'];
+  var AIRTM_P2P_NOTE = 'Cashing out to local currency through Airtm\'s P2P marketplace costs extra (cashier commission plus Airtm service and escrow fees). Airtm does not publish a fixed rate for this; the total is shown in the app before you confirm.';
+
+  function feeFor(provider, dir, amount, intl, cur, country, fx, ppType) {
     var p = provider.toLowerCase();
-    function u(n) { return n * (RATES[cur] || 1); }
+    var rate = RATES[cur] || 1;
+    function u(n) { return n * rate; }
+    function usd(n) { return n / rate; }
+    function money(n, c) { return (c === 'USD' ? 'US$' : '') + n.toFixed(2) + (c === 'USD' ? '' : ' ' + c); }
     var f, pct;
     if (p === 'paypal') {
+      var cFix = PP_COMMERCIAL_FIXED[cur] != null ? PP_COMMERCIAL_FIXED[cur] : u(0.49);
+      var cFixLabel = PP_COMMERCIAL_FIXED[cur] != null ? money(PP_COMMERCIAL_FIXED[cur], cur) : 'US$0.49 (converted)';
+      var pFix = PP_PERSONAL_FIXED[cur] != null ? PP_PERSONAL_FIXED[cur] : u(0.30);
+      var pFixLabel = PP_PERSONAL_FIXED[cur] != null ? money(PP_PERSONAL_FIXED[cur], cur) : 'US$0.30 (converted)';
+      var src = ' Source: paypal.com/us/business/paypal-business-fees (US rates). Accounts registered outside the US may pay different rates.';
       if (dir === 'receive') {
-        pct = 3.49 + (intl ? 1.5 : 0);
-        f = amount * pct / 100 + u(0.49);
-        return { low: f, high: f, formula: pct.toFixed(2) + '% + US$0.49',
-          note: 'PayPal commercial receiving rate (US published). International payments add 1.50%. See paypal.com business fees page.' };
+        if (ppType === 'ff') {
+          return { low: 0, high: 0, formula: 'Free (friends & family, no currency conversion)',
+            note: 'PayPal does not charge to receive a personal (friends & family) payment unless a currency conversion is involved. Personal payments must not be used for goods or services. Source: paypal.com/us/digital-wallet/paypal-consumer-fees.' };
+        }
+        var base = ppType === 'goods' ? 2.99 : (ppType === 'card' ? 2.99 : 3.49);
+        var hasFix = ppType !== 'goods';
+        pct = base + (intl ? 1.5 : 0);
+        f = amount * pct / 100 + (hasFix ? cFix : 0);
+        var label = ppType === 'goods' ? 'goods & services (Send/Receive Money)' : (ppType === 'card' ? 'standard card payment' : 'PayPal Checkout / invoice / other commercial');
+        return { low: f, high: f, formula: pct.toFixed(2) + '%' + (hasFix ? ' + ' + cFixLabel : '') + ' (' + label + ')',
+          note: 'PayPal US commercial rates: 3.49% + fixed fee for PayPal Checkout and other commercial payments, 2.99% for goods & services sent with Send/Receive Money, 2.99% + fixed fee for standard card payments; international payments add 1.50%. The fixed fee depends on the currency received (US$0.49 for USD).' + src };
       }
+      if (ppType !== 'ff') {
+        return { low: 0, high: 0, formula: 'Free to pay for goods or services (no currency conversion)',
+          note: 'PayPal does not charge the buyer for a purchase unless a currency conversion is involved; the seller pays the commercial fee. Source: paypal.com/us/digital-wallet/paypal-consumer-fees.' };
+      }
+      var cardPart = amount * 0.029 + pFix;
       if (intl) {
-        return { low: u(0.99), high: u(4.99), formula: 'US$0.99–4.99 (personal, international)',
-          note: 'PayPal personal international send fee varies by funding source. Confirm in the PayPal app before sending.' };
+        var intlFee = u(Math.min(Math.max(usd(amount) * 0.05, 0.99), 4.99));
+        return { low: intlFee, high: intlFee + cardPart, formula: '5% (min US$0.99, max US$4.99) international fee, plus 2.90% + ' + pFixLabel + ' if paid by card',
+          note: 'PayPal US personal international send: 5.00% with a minimum of US$0.99 and maximum of US$4.99 from balance, bank or card; card funding also adds the domestic card fee of 2.90% + fixed fee. Source: paypal.com/us/digital-wallet/paypal-consumer-fees.' };
       }
-      return { low: 0, high: amount * 0.029 + u(0.30), formula: 'Free from balance/bank; about 2.9% + US$0.30 by card',
-        note: 'PayPal domestic send fee depends on funding source and whether the payment is personal or commercial.' };
+      return { low: 0, high: cardPart, formula: 'Free from balance/bank; 2.90% + ' + pFixLabel + ' by card',
+        note: 'PayPal US personal domestic send: free from PayPal balance or bank account, 2.90% + fixed fee when paid by card. Source: paypal.com/us/digital-wallet/paypal-consumer-fees.' };
     }
     if (p === 'stripe') {
       if (dir !== 'receive') return { na: true, formula: 'Not applicable', note: 'Stripe is for receiving customer payments, not sending money.' };
       pct = 2.9 + (intl ? 1.5 : 0);
       f = amount * pct / 100 + u(0.30);
       return { low: f, high: f, formula: pct.toFixed(2) + '% + US$0.30',
-        note: 'Stripe US card rate. International cards add 1.5%. Currency conversion adds about 1%. See stripe.com/pricing.' };
+        note: 'Stripe US card rate: 2.9% + 30¢; international cards add 1.5% and currency conversion adds 1%. Source: stripe.com/pricing.' };
     }
     if (p === 'wise') {
-      if (dir === 'receive') {
-        f = intl ? u(6.11) : 0;
-        return { low: f, high: f, formula: intl ? 'About US$6.11 (SWIFT / wire)' : 'Free (local account details)',
-          note: 'Wise: receiving through local account details is free. SWIFT/wire receives carry a fee. Converts at the mid-market rate. See wise.com.' };
+      var st = wiseStatus(country);
+      if (st === 'unsupported') {
+        return { na: true, formula: 'Not available in ' + country,
+          note: 'Wise lists ' + country + ' as a country where it does not offer its services. Source: wise.com/help/articles/2978049.' };
       }
-      return { low: amount * 0.004 + u(0.5), high: amount * 0.015 + u(1.5), formula: 'About 0.4–1.5% + small fixed fee',
-        note: 'Wise shows the exact fee before you confirm and uses the mid-market rate. Check wise.com for your route.' };
+      var minPct = amount * WISE_MIN_PCT / 100;
+      if (dir === 'receive') {
+        if (st !== 'ok' || (cur === 'USD' && WISE_NO_USD.indexOf(country) !== -1)) {
+          return { low: minPct, high: minPct, open: true, viaBank: true,
+            formula: 'Client sends with Wise to your local bank: transfer fee from ' + WISE_MIN_PCT + '% (varies by currency and payment method)',
+            note: wiseCountryNote(country) + ' Wise shows the exact fee and mid-market rate in its calculator before your client pays; your local bank may charge its own incoming fee. Sources: wise.com/help/articles/2813542, wise.com/help/articles/2810318, wise.com/us/pricing/.' };
+        }
+        if (WISE_LOCAL.indexOf(cur) === -1) {
+          return { low: minPct, high: minPct, open: true,
+            formula: 'No local ' + cur + ' account details: receive in USD, EUR, GBP etc. and convert (from ' + WISE_MIN_PCT + '%)',
+            note: 'Wise offers free local account details in AUD, CAD, EUR, GBP, HUF, NZD, PHP, SGD and USD. Converting costs from 0.23% and varies by currency. Source: wise.com/us/pricing/receive.' };
+        }
+        var sw = WISE_SWIFT[cur];
+        var swiftFee = (sw != null && (cur === 'USD' || intl)) ? sw : 0;
+        var convLow = fx ? minPct : 0;
+        var formula = 'Free via local account details' + (swiftFee ? '; ' + money(sw, cur) + ' if paid by ' + (cur === 'USD' ? 'USD wire/Swift' : cur + ' Swift') : '') + (fx ? ' + conversion from ' + WISE_MIN_PCT + '%' : '');
+        return { low: convLow, high: convLow + swiftFee, open: fx,
+          formula: formula,
+          note: 'Wise: receiving domestic (non-Swift, non-wire) payments to your account details is free. Wire/Swift receipts have a fixed fee: 6.11 USD, 2.16 GBP, 2.39 EUR (other currencies listed on Wise). Conversion is at the mid-market rate with a fee from 0.23%. Source: wise.com/us/pricing/receive.' };
+      }
+      if (!fx) {
+        return { low: 0, high: 0, open: true, formula: 'Free to another Wise account in the same currency; to a bank account the fee varies by currency',
+          note: 'Wise: sending the same currency between contacts on Wise is free. Other transfers have a fee that varies by currency, shown before you confirm. Source: wise.com/us/pricing/.' };
+      }
+      return { low: minPct, high: minPct, open: true, formula: 'From ' + WISE_MIN_PCT + '% (varies by currency and payment method), at the mid-market rate',
+        note: 'Wise: sending money costs from 0.23%, depending on the currency and how you pay, and uses the mid-market rate. The exact fee is shown before you confirm. Source: wise.com/us/pricing/.' };
     }
     if (p === 'airtm') {
+      var amtU = usd(amount);
+      function band(b) { if (!b) return 0; var v = (b.f || 0) + amtU * (b.p || 0) / 100; if (b.max != null) v = Math.min(v, b.max); return v; }
+      function desc(b) { return (b.f ? b.f + ' USDC + ' : '') + (b.p || 0) + '%' + (b.max != null ? ' (max ' + b.max + ' USDC)' : ''); }
       if (dir === 'receive') {
-        return { low: amount * 0.005, high: amount * 0.01, formula: 'About 0.5–1% (varies by method)',
-          note: 'AirTM fees depend on the payment method and peer. Check the live rate inside the app.' };
+        if (cur === 'EUR') {
+          return { low: 0, high: 0, formula: 'Free into the EUR Virtual Account (converting EURC to USDC has a fee in the rate)',
+            note: 'Airtm: receiving euros in the EUR Virtual Account is free; converting EURC to USDC and SEPA withdrawals carry fees shown in the app. ' + AIRTM_P2P_NOTE + ' Source: help.airtm.com/en/support/solutions/articles/47001299436.' };
+        }
+        if (cur === 'GBP') {
+          if (AIRTM_UK_RESTRICTED.indexOf(country) !== -1) {
+            return { na: true, formula: 'UK Virtual Account not available in ' + country, note: 'Airtm lists ' + country + ' as restricted for the UK Virtual Account. Source: help.airtm.com/en/support/solutions/articles/47001307561.' };
+          }
+          f = amount * 0.0175;
+          return { low: f, high: f, formula: '1.75% (built into the GBP to USDC rate, UK Virtual Account)',
+            note: 'Airtm UK Virtual Account: no separate receiving fee; a 1.75% fee is built into the GBP to USDC rate. Deposits from individuals are not supported. ' + AIRTM_P2P_NOTE + ' Source: help.airtm.com/en/support/solutions/articles/47001307561.' };
+        }
+        var ach = AIRTM_ACH[country] || { p: 1.75 };
+        var fed = AIRTM_FEDNOW[country] || { p: 1.5 };
+        var opts = [{ n: 'FedNow', b: fed }, { n: 'ACH', b: ach }];
+        if (amtU >= 1501) opts.push({ n: 'wire', b: AIRTM_WIRE[country] || { p: 1.75 } });
+        var vals = opts.map(function (o) { return band(o.b); });
+        var lo = Math.min.apply(null, vals), hi = Math.max.apply(null, vals);
+        return { low: u(lo), high: u(hi),
+          formula: 'USA Virtual Account: ' + opts.map(function (o) { return o.n + ' ' + desc(o.b); }).join(', '),
+          note: 'Airtm USA Virtual Account fees for ' + (country || 'your country') + ' (ACH, FedNow' + (amtU >= 1501 ? ', wire' : '; wires need at least US$1,501') + '). Availability depends on your country and verification, and Airtm says fees may change and are always shown in the app. ' + AIRTM_P2P_NOTE + ' Source: help.airtm.com/en/support/solutions/articles/47001265604.' };
       }
-      return { low: amount * 0.005, high: amount * 0.02, formula: 'About 0.5–2% (varies by method)',
-        note: 'AirTM cash-out and send fees vary. Confirm the exact fee in the app before you confirm.' };
+      if (AIRTM_SEND_11.indexOf(country) !== -1) {
+        f = amount * 0.011;
+        return { low: f, high: f, formula: '1.1% send fee (accounts registered in ' + country + ')',
+          note: 'Airtm applies a flat 1.1% send fee to accounts registered in the UK, Indonesia, Nigeria, Canada, Turkey or Bangladesh. ' + AIRTM_P2P_NOTE + ' Source: help.airtm.com/en/support/solutions/articles/47001198097.' };
+      }
+      return { low: 0, high: amount * 0.01, formula: 'Free for your first 3 sends or 400 USDC a month, then 1%',
+        note: 'Airtm sets send fees by account history; by default the first 3 sends or 400 USDC in a month are free and later sends cost 1%. ' + AIRTM_P2P_NOTE + ' Source: help.airtm.com/en/support/solutions/articles/47001198097.' };
     }
     // Traditional banks: typical published ranges
     if (dir === 'receive') {
@@ -619,8 +753,8 @@ tailwind.config = {
   var elCurrency = document.getElementById('calcCurrency');
   var elMarkup = document.getElementById('calcMarkup');
 
-  function row(provider, dir, amount, intl, fx, cur, markupPct) {
-    var fee = feeFor(provider, dir, amount, intl, cur);
+  function row(provider, dir, amount, intl, fx, cur, markupPct, country, ppType) {
+    var fee = feeFor(provider, dir, amount, intl, cur, country, fx, ppType);
     if (fee.na) return { name: provider, na: true, formula: fee.formula, note: fee.note };
     var mk = (fx && markupPct > 0) ? amount * markupPct / 100 : 0;
     var low = fee.low + mk, high = fee.high + mk;
@@ -628,7 +762,7 @@ tailwind.config = {
       name: provider, low: low, high: high,
       keepLow: Math.max(amount - high, 0), keepHigh: Math.max(amount - low, 0),
       formula: fee.formula + (mk > 0 ? ' + about ' + markupPct + '% exchange-rate markup' : ''),
-      note: fee.note
+      note: fee.note, open: !!fee.open
     };
   }
 
@@ -639,8 +773,8 @@ tailwind.config = {
     }
     return '<div class="flex justify-between gap-3 py-3 border-t border-roseborder text-sm">' +
       '<div class="min-w-0"><p class="font-semibold">' + r.name + tagHtml + '</p><p class="text-xs text-slategray">' + r.formula + '</p></div>' +
-      '<div class="text-right shrink-0"><p class="font-semibold text-red">Cost: ' + rng(r.low, r.high, cur) + '</p>' +
-      '<p class="text-xs text-slategray">' + (dir === 'receive' ? 'You keep: ' : 'Recipient gets: ') + rng(r.keepLow, r.keepHigh, cur) + '</p></div></div>';
+      '<div class="text-right shrink-0"><p class="font-semibold text-red">Cost: ' + (r.open ? 'from ' + fmt(r.low, cur) : rng(r.low, r.high, cur)) + '</p>' +
+      '<p class="text-xs text-slategray">' + (dir === 'receive' ? 'You keep: ' : 'Recipient gets: ') + (r.open ? 'up to ' + fmt(r.keepHigh, cur) : rng(r.keepLow, r.keepHigh, cur)) + '</p></div></div>';
   }
 
   function updateCalc() {
@@ -653,13 +787,15 @@ tailwind.config = {
     var country = elCountry.value;
     var provLower = provider.toLowerCase();
     var markup = Math.max(parseFloat(elMarkup.value) || 0, 0);
+    var ppType = document.getElementById('calcPpType').value;
+    document.getElementById('ppTypeWrap').style.display = provLower === 'paypal' ? '' : 'none';
 
     document.getElementById('curLabel').textContent = '(' + cur + ')';
     document.getElementById('markupWrap').style.display = (fx && provLower !== 'wise' && provLower !== 'airtm') ? '' : 'none';
 
-    var sel = row(provider, dir, amount, intl, fx, cur, markup);
-    var wise = provLower === 'wise' ? null : row('Wise', dir, amount, intl, fx, cur, 0);
-    var airtm = provLower === 'airtm' ? null : row('AirTM', dir, amount, intl, fx, cur, 0);
+    var sel = row(provider, dir, amount, intl, fx, cur, markup, country, ppType);
+    var wise = provLower === 'wise' ? null : row('Wise', dir, amount, intl, fx, cur, 0, country);
+    var airtm = provLower === 'airtm' ? null : row('AirTM', dir, amount, intl, fx, cur, 0, country);
 
     var html = '<p class="text-xs font-semibold text-red uppercase tracking-wide">What you pay</p>';
     html += rowHtml(sel, cur, 'Your provider', dir).replace('border-t border-roseborder ', '');
@@ -671,19 +807,22 @@ tailwind.config = {
       var msg;
       if (saveHigh <= 0.005) {
         msg = 'In this case Wise is not estimated to be cheaper than ' + provider + '.';
-      } else if (saveLow > 0.005) {
+      } else if (saveLow > 0.005 && !wise.open) {
         msg = 'Estimated saving with Wise: ' + rng(saveLow, saveHigh, cur) + '.';
       } else {
-        msg = 'Wise could save you up to ' + fmt(saveHigh, cur) + ', depending on the exact fees.';
+        msg = 'Wise could save you up to ' + fmt(saveHigh, cur) + ', depending on the exact fees. Get a live quote on Wise to see the exact amount.';
       }
       html += '<div class="mt-2 p-3 bg-white border border-roseaccent rounded-xl text-sm font-semibold text-red">' + msg + '</div>';
     } else if (provLower === 'wise') {
-      html += '<div class="mt-2 p-3 bg-white border border-roseaccent rounded-xl text-sm font-semibold text-slate">Wise is already one of the lowest-cost options in this comparison.</div>';
+      if (wiseStatus(country) !== 'unsupported') html += '<div class="mt-2 p-3 bg-white border border-roseaccent rounded-xl text-sm font-semibold text-slate">Wise is usually one of the lowest-cost options in this comparison.</div>';
     }
 
     var notes = '<p class="mt-3 text-xs text-slategray leading-relaxed">' + sel.note + '</p>';
-    if (WISE_LIMITED.indexOf(country) !== -1 && (wise || provLower === 'wise')) {
-      notes += '<p class="mt-2 text-xs text-slategray leading-relaxed">Wise account availability for residents of ' + country + ' may be limited. Check eligibility before relying on it.</p>';
+    if (wiseCountryNote(country) && provLower !== 'wise') {
+      notes += '<p class="mt-2 text-xs text-slategray leading-relaxed">' + wiseCountryNote(country) + '</p>';
+    }
+    if (airtm && !airtm.na) {
+      notes += '<p class="mt-2 text-xs text-slategray leading-relaxed">' + AIRTM_P2P_NOTE + '</p>';
     }
     document.getElementById('calcResult').innerHTML = html + notes;
   }
@@ -693,6 +832,38 @@ tailwind.config = {
     elProvider.innerHTML = '';
     list.forEach(function (b) { elProvider.add(new Option(b, b)); });
     elMarkup.value = defaultMarkup(elProvider.value);
+  }
+
+  // ---------- Live exchange rates ----------
+  function renderFxNote() {
+    var el = document.getElementById('fxNote');
+    if (!el) return;
+    el.innerHTML = fxInfo.live
+      ? 'Exchange rates used to convert fixed fees: live daily rates, as of ' + fxInfo.date + ' (<a href="https://www.exchangerate-api.com" target="_blank" rel="noopener" class="underline">Rates By Exchange Rate API</a>).'
+      : 'Exchange rates used to convert fixed fees: saved rates as of ' + fxInfo.date + ' (live rates could not be loaded).';
+  }
+  function applyRates(r, when) {
+    var used = 0;
+    Object.keys(FALLBACK_RATES).forEach(function (c) {
+      var v = r[c], fb = FALLBACK_RATES[c];
+      // Accept only sane values (within 3x of the saved snapshot) so a bad response can't break the calculator.
+      if (typeof v === 'number' && v > 0 && v > fb / 3 && v < fb * 3) { RATES[c] = v; used++; }
+    });
+    if (used > 0) { fxInfo = { live: true, date: when }; renderFxNote(); updateCalc(); }
+  }
+  function loadLiveRates() {
+    var KEY = 'mepay_fx_v1', TTL = 12 * 3600 * 1000;
+    try {
+      var c = JSON.parse(localStorage.getItem(KEY) || 'null');
+      if (c && c.rates && c.saved && (Date.now() - c.saved) < TTL) { applyRates(c.rates, c.when); return; }
+    } catch (e) {}
+    if (!window.fetch) return;
+    fetch('https://open.er-api.com/v6/latest/USD').then(function (res) { return res.json(); }).then(function (d) {
+      if (!d || d.result !== 'success' || !d.rates) return;
+      var when = new Date((d.time_last_update_unix || 0) * 1000).toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric', timeZone: 'UTC' });
+      try { localStorage.setItem(KEY, JSON.stringify({ rates: d.rates, when: when, saved: Date.now() })); } catch (e) {}
+      applyRates(d.rates, when);
+    }).catch(function () {});
   }
 
   // ---------- Init ----------
@@ -727,6 +898,8 @@ tailwind.config = {
   fillProviders();
   updateCalc();
   renderBestMatch();
+  renderFxNote();
+  loadLiveRates();
 
   document.getElementById('calcCtas').innerHTML =
     cta(PARTNERS.wise, 'Get a live quote on Wise', 'flex-1 text-center bg-red text-white font-semibold py-3 rounded-xl hover:bg-redhover') +
@@ -749,7 +922,8 @@ tailwind.config = {
   document.getElementById('calcAmount').addEventListener('input', updateCalc);
   document.getElementById('calcIntl').addEventListener('change', updateCalc);
   document.getElementById('calcFx').addEventListener('change', updateCalc);
-  document.querySelectorAll('input[name="direction"]').forEach(function (r) { r.addEventListener('change', updateCalc); });
+  document.querySelectorAll('input[name="direction"]').forEach(function (r) { r.addEventListener('change', function () { if (elProvider.value === 'PayPal') elMarkup.value = defaultMarkup('PayPal'); updateCalc(); }); });
+  document.getElementById('calcPpType').addEventListener('change', updateCalc);
 })();
 </script>
 <script>
